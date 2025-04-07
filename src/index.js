@@ -29,7 +29,8 @@ const map = new Map({
 });
 
 // --- POINT OF INTEREST (POI) SETUP ---
-const pois = [new POI([5.134037, 52.080354], 'test 1', 'this is a very cool place')];
+const pois = [new POI([5.134037, 52.080354], '<strong>test 1</strong>', '<span>this is a very cool place</span>'), 
+new POI([5.133896, 52.080912], '<strong>test 2</strong>', '<span>this is a very cool place too</span>')];
 
 for(let i = 0; i < pois.length; i++){
     map.addLayer(pois[i].getLayer());
@@ -99,7 +100,7 @@ function updateUserLocation(coords) {
         duration: 500
     });
 
-    document.getElementById('info').innerHTML = `<span>coords: ${coords.toFixed(2)}</span>`
+    document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}</span>`
 
     // Check distance to POI
     for(let i = 0; i < pois.length; i++)

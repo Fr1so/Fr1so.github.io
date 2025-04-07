@@ -1,6 +1,10 @@
 import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
+import { fromLonLat } from 'ol/proj';
+import Style from 'ol/style/Style';
+import Icon from 'ol/style/Icon';
 
 export default class POI {
     constructor(coords, name, content) {
@@ -9,7 +13,7 @@ export default class POI {
         this.content = content;
 
         this.poiFeature = new Feature({
-            geometry: new Point(fromLonLat(poiCoords))
+            geometry: new Point(fromLonLat(this.coords))
         });
 
         this.poiFeature.setStyle(new Style({
@@ -20,11 +24,11 @@ export default class POI {
         }));
 
         this.poiSource = new VectorSource({
-            features: [poiFeature]
+            features: [this.poiFeature]
         });
 
         this.poiLayer = new VectorLayer({
-            source: poiSource
+            source: this.poiSource
         });
     }
 

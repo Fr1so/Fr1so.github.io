@@ -54058,9 +54058,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ POI)
 /* harmony export */ });
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+
+
+
+
 
 
 
@@ -54071,23 +54079,23 @@ class POI {
         this.name = name;
         this.content = content;
 
-        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_0__["default"]({
-            geometry: new Point(fromLonLat(poiCoords))
+        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_2__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords))
         });
 
-        this.poiFeature.setStyle(new Style({
-            image: new Icon({
+        this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_3__["default"]({
+            image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_4__["default"]({
                 src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
                 scale: 0.05
             })
         }));
 
-        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            features: [poiFeature]
+        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            features: [this.poiFeature]
         });
 
-        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_2__["default"]({
-            source: poiSource
+        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
+            source: this.poiSource
         });
     }
 
@@ -54280,7 +54288,8 @@ const map = new ol_Map__WEBPACK_IMPORTED_MODULE_4__["default"]({
 });
 
 // --- POINT OF INTEREST (POI) SETUP ---
-const pois = [new _poi__WEBPACK_IMPORTED_MODULE_3__["default"]([5.134037, 52.080354], 'test 1', 'this is a very cool place')];
+const pois = [new _poi__WEBPACK_IMPORTED_MODULE_3__["default"]([5.134037, 52.080354], '<strong>test 1</strong>', '<span>this is a very cool place</span>'), 
+new _poi__WEBPACK_IMPORTED_MODULE_3__["default"]([5.133896, 52.080912], '<strong>test 2</strong>', '<span>this is a very cool place too</span>')];
 
 for(let i = 0; i < pois.length; i++){
     map.addLayer(pois[i].getLayer());
@@ -54350,7 +54359,7 @@ function updateUserLocation(coords) {
         duration: 500
     });
 
-    document.getElementById('info').innerHTML = `<span>coords: ${coords.toFixed(2)}</span>`
+    document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}</span>`
 
     // Check distance to POI
     for(let i = 0; i < pois.length; i++)
