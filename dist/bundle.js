@@ -1250,7 +1250,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 }
 
 #map {
-    width: 100%;
+    width: 50%;
     height: 100vh;
 }
 
@@ -1269,7 +1269,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
     font-size: 14px;
     pointer-events: none;
     transition: opacity 0.3s ease;
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;AACjC","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    min-width: 200px;\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,UAAU;IACV,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;AACjC","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 50%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    min-width: 200px;\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
