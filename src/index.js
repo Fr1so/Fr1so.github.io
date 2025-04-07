@@ -12,7 +12,7 @@ import Point from 'ol/geom/Point';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import Overlay from 'ol/Overlay';
-import { toLonLat } from 'ol/proj';
+import POI from './poi'
 
 // Create map
 const map = new Map({
@@ -29,28 +29,11 @@ const map = new Map({
 });
 
 // --- POINT OF INTEREST (POI) SETUP ---
-const poiCoords = [5.134037, 52.080354];
+const pois = [new POI([5.134037, 52.080354], 'test 1', 'this is a very cool place')];
 
-const poiFeature = new Feature({
-    geometry: new Point(fromLonLat(poiCoords))
-});
-
-poiFeature.setStyle(new Style({
-    image: new Icon({
-        src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-        scale: 0.05
-    })
-}));
-
-const poiSource = new VectorSource({
-    features: [poiFeature]
-});
-
-const poiLayer = new VectorLayer({
-    source: poiSource
-});
-
-map.addLayer(poiLayer);
+for(let i = 0; i < pois.length; i++){
+    map.addLayer(pois[i].getLayer());
+}
 
 // --- POPUP SETUP ---
 const popupElement = document.createElement('div');
@@ -116,20 +99,23 @@ function updateUserLocation(coords) {
         duration: 500
     });
 
-    // Check distance to POI
-    const distance = getDistanceMeters(coords, poiCoords);
-    document.getElementById('info').innerHTML = `<span>distance: ${distance.toFixed(2)} meters</span>`
-    console.log(`Distance to POI: ${distance.toFixed(2)} meters`);
+    document.getElementById('info').innerHTML = `<span>coords: ${coords.toFixed(2)}</span>`
 
-    if (distance <= 10) {
-        popupElement.innerHTML = `
-            <strong>Point of Interest</strong><br>
-            You're within 10 meters! 🎉<br>
-            This is a cool place. 😎
-        `;
-        popupOverlay.setPosition(fromLonLat(poiCoords));
-    } else {
-        popupOverlay.setPosition(undefined); // Hide popup
+    // Check distance to POI
+    for(let i = 0; i < pois.length; i++)
+    {
+        const distance = getDistanceMeters(coords, pois[i].getCoords());
+
+        if (distance <= 10) {
+            popupElement.innerHTML = `
+                ${pois[i].name} 😎
+                ${pois[i].content}
+            `;
+            popupOverlay.setPosition(fromLonLat(pois[i].getCoords()));
+            break;
+        } else {
+            popupOverlay.setPosition(undefined); // Hide popup
+        }
     }
 }
 

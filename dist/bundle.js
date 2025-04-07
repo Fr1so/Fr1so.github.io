@@ -54048,6 +54048,60 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/poi.js":
+/*!********************!*\
+  !*** ./src/poi.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ POI)
+/* harmony export */ });
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+
+
+
+
+class POI {
+    constructor(coords, name, content) {
+        this.coords = coords;
+        this.name = name;
+        this.content = content;
+
+        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            geometry: new Point(fromLonLat(poiCoords))
+        });
+
+        this.poiFeature.setStyle(new Style({
+            image: new Icon({
+                src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+                scale: 0.05
+            })
+        }));
+
+        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            features: [poiFeature]
+        });
+
+        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_2__["default"]({
+            source: poiSource
+        });
+    }
+
+    getCoords(){
+        return this.coords;
+    }
+
+    getLayer() {
+        return this.poiLayer;
+    }
+}
+
+/***/ }),
+
 /***/ "./src/style.css":
 /*!***********************!*\
   !*** ./src/style.css ***!
@@ -54182,18 +54236,19 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var ol_Map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/Map */ "./node_modules/ol/Map.js");
-/* harmony import */ var ol_View__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/View */ "./node_modules/ol/View.js");
-/* harmony import */ var ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Tile */ "./node_modules/ol/layer/Tile.js");
-/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
+/* harmony import */ var ol_Map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/Map */ "./node_modules/ol/Map.js");
+/* harmony import */ var ol_View__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/View */ "./node_modules/ol/View.js");
+/* harmony import */ var ol_layer_Tile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/layer/Tile */ "./node_modules/ol/layer/Tile.js");
+/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
-/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+/* harmony import */ var _poi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./poi */ "./src/poi.js");
 
 
 
@@ -54211,42 +54266,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Create map
-const map = new ol_Map__WEBPACK_IMPORTED_MODULE_3__["default"]({
+const map = new ol_Map__WEBPACK_IMPORTED_MODULE_4__["default"]({
     target: 'map',
     layers: [
-        new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
-            source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__["default"]()
+        new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_6__["default"]()
         })
     ],
-    view: new ol_View__WEBPACK_IMPORTED_MODULE_6__["default"]({
+    view: new ol_View__WEBPACK_IMPORTED_MODULE_7__["default"]({
         center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)([0, 0]), // Default center
         zoom: 2
     })
 });
 
 // --- POINT OF INTEREST (POI) SETUP ---
-const poiCoords = [5.134037, 52.080354];
+const pois = [new _poi__WEBPACK_IMPORTED_MODULE_3__["default"]([5.134037, 52.080354], 'test 1', 'this is a very cool place')];
 
-const poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_7__["default"]({
-    geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poiCoords))
-});
-
-poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_9__["default"]({
-    image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_10__["default"]({
-        src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-        scale: 0.05
-    })
-}));
-
-const poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_11__["default"]({
-    features: [poiFeature]
-});
-
-const poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_12__["default"]({
-    source: poiSource
-});
-
-map.addLayer(poiLayer);
+for(let i = 0; i < pois.length; i++){
+    map.addLayer(pois[i].getLayer());
+}
 
 // --- POPUP SETUP ---
 const popupElement = document.createElement('div');
@@ -54257,7 +54295,7 @@ popupElement.style.borderRadius = '8px';
 popupElement.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
 popupElement.style.position = 'absolute';
 
-const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_13__["default"]({
+const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_8__["default"]({
     element: popupElement,
     positioning: 'bottom-center',
     stopEvent: false,
@@ -54287,19 +54325,19 @@ function getDistanceMeters(coord1, coord2) {
 }
 
 // Create a vector source to store the user's location
-const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_11__["default"]();
-const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_12__["default"]({ source: userLocationSource });
+const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_9__["default"]();
+const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_10__["default"]({ source: userLocationSource });
 map.addLayer(userLocationLayer);
 
 function updateUserLocation(coords) {
     userLocationSource.clear();
 
-    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_7__["default"]({
-        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
+    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_11__["default"]({
+        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_12__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
     });
 
-    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_9__["default"]({
-        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_10__["default"]({
+    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_13__["default"]({
+        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_14__["default"]({
             src: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
             scale: 0.05
         })
@@ -54312,20 +54350,23 @@ function updateUserLocation(coords) {
         duration: 500
     });
 
-    // Check distance to POI
-    const distance = getDistanceMeters(coords, poiCoords);
-    document.getElementById('info').innerHTML = `<span>distance: ${distance.toFixed(2)} meters</span>`
-    console.log(`Distance to POI: ${distance.toFixed(2)} meters`);
+    document.getElementById('info').innerHTML = `<span>coords: ${coords.toFixed(2)}</span>`
 
-    if (distance <= 10) {
-        popupElement.innerHTML = `
-            <strong>Point of Interest</strong><br>
-            You're within 10 meters! 🎉<br>
-            This is a cool place. 😎
-        `;
-        popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poiCoords));
-    } else {
-        popupOverlay.setPosition(undefined); // Hide popup
+    // Check distance to POI
+    for(let i = 0; i < pois.length; i++)
+    {
+        const distance = getDistanceMeters(coords, pois[i].getCoords());
+
+        if (distance <= 10) {
+            popupElement.innerHTML = `
+                ${pois[i].name} 😎
+                ${pois[i].content}
+            `;
+            popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(pois[i].getCoords()));
+            break;
+        } else {
+            popupOverlay.setPosition(undefined); // Hide popup
+        }
     }
 }
 
