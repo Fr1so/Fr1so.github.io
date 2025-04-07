@@ -1226,6 +1226,56 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root,
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
+/*!*************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `body {
+    margin: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+}
+
+#info {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    font-size: 2em;
+    background-color: white;
+    opacity: 0.7;
+}
+
+.ol-popup {
+    min-width: 200px;
+    font-family: sans-serif;
+    font-size: 14px;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;AACjC","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    min-width: 200px;\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -53996,6 +54046,58 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/style.css":
+/*!***********************!*\
+  !*** ./src/style.css ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js!./style.css */ "./node_modules/css-loader/dist/cjs.js!./src/style.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
 /***/ })
 
 /******/ 	});
@@ -54079,18 +54181,20 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
-/* harmony import */ var ol_Map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/Map */ "./node_modules/ol/Map.js");
-/* harmony import */ var ol_View__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/View */ "./node_modules/ol/View.js");
-/* harmony import */ var ol_layer_Tile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/layer/Tile */ "./node_modules/ol/layer/Tile.js");
-/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
-/* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
-/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var ol_Map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/Map */ "./node_modules/ol/Map.js");
+/* harmony import */ var ol_View__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/View */ "./node_modules/ol/View.js");
+/* harmony import */ var ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Tile */ "./node_modules/ol/layer/Tile.js");
+/* harmony import */ var ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/source/OSM */ "./node_modules/ol/source/OSM.js");
+/* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+
 
 
 
@@ -54107,15 +54211,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Create map
-const map = new ol_Map__WEBPACK_IMPORTED_MODULE_2__["default"]({
+const map = new ol_Map__WEBPACK_IMPORTED_MODULE_3__["default"]({
     target: 'map',
     layers: [
-        new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_3__["default"]({
-            source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_4__["default"]()
+        new ol_layer_Tile__WEBPACK_IMPORTED_MODULE_4__["default"]({
+            source: new ol_source_OSM__WEBPACK_IMPORTED_MODULE_5__["default"]()
         })
     ],
-    view: new ol_View__WEBPACK_IMPORTED_MODULE_5__["default"]({
-        center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_1__.fromLonLat)([0, 0]), // Default center
+    view: new ol_View__WEBPACK_IMPORTED_MODULE_6__["default"]({
+        center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)([0, 0]), // Default center
         zoom: 2
     })
 });
@@ -54123,22 +54227,22 @@ const map = new ol_Map__WEBPACK_IMPORTED_MODULE_2__["default"]({
 // --- POINT OF INTEREST (POI) SETUP ---
 const poiCoords = [5.134037, 52.080354];
 
-const poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_6__["default"]({
-    geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_7__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_1__.fromLonLat)(poiCoords))
+const poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_7__["default"]({
+    geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poiCoords))
 });
 
-poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_8__["default"]({
-    image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_9__["default"]({
+poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_9__["default"]({
+    image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_10__["default"]({
         src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
         scale: 0.05
     })
 }));
 
-const poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_10__["default"]({
+const poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_11__["default"]({
     features: [poiFeature]
 });
 
-const poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_11__["default"]({
+const poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_12__["default"]({
     source: poiSource
 });
 
@@ -54153,7 +54257,7 @@ popupElement.style.borderRadius = '8px';
 popupElement.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
 popupElement.style.position = 'absolute';
 
-const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_12__["default"]({
+const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_13__["default"]({
     element: popupElement,
     positioning: 'bottom-center',
     stopEvent: false,
@@ -54183,19 +54287,19 @@ function getDistanceMeters(coord1, coord2) {
 }
 
 // Create a vector source to store the user's location
-const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_10__["default"]();
-const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_11__["default"]({ source: userLocationSource });
+const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_11__["default"]();
+const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_12__["default"]({ source: userLocationSource });
 map.addLayer(userLocationLayer);
 
 function updateUserLocation(coords) {
     userLocationSource.clear();
 
-    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_6__["default"]({
-        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_7__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_1__.fromLonLat)(coords))
+    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_7__["default"]({
+        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
     });
 
-    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_8__["default"]({
-        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_9__["default"]({
+    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_9__["default"]({
+        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_10__["default"]({
             src: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
             scale: 0.05
         })
@@ -54204,7 +54308,7 @@ function updateUserLocation(coords) {
     userLocationSource.addFeature(userLocation);
 
     map.getView().animate({
-        center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_1__.fromLonLat)(coords),
+        center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords),
         duration: 500
     });
 
@@ -54219,7 +54323,7 @@ function updateUserLocation(coords) {
             You're within 10 meters! 🎉<br>
             This is a cool place. 😎
         `;
-        popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_1__.fromLonLat)(poiCoords));
+        popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poiCoords));
     } else {
         popupOverlay.setPosition(undefined); // Hide popup
     }
