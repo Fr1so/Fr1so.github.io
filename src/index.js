@@ -38,7 +38,7 @@ function updateUserLocation(coords, heading) {
     });
 
     const zoom = mapHandler.getMap().getView().getZoom();
-    const iconScale = 0.05 * Math.pow(1.5, (zoom)); // Adjust multiplier as needed
+    const iconScale = 0.05 * Math.pow(1.5, (zoom - 15)); // Adjust multiplier as needed
 
     userLocation.setStyle(new Style({
         image: new Icon({
