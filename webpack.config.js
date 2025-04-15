@@ -17,12 +17,16 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            }
+          {
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+          },
+          {
+            test: /\.(png|jpe?g|gif|svg)$/i,
+            type: 'asset/resource', // <-- handles image imports
+          }
         ]
-    },
+      },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html'

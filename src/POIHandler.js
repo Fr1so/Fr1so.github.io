@@ -7,7 +7,7 @@ export default class POIHandler {
         const amsterdam1 = new POIContent('Amsterdam', 'testing');
 
         // create pois here with coords and content
-        this.pois = [new POI([4.8876, 52.3733], 100, amsterdam1)];
+        this.pois = [new POI([4.8876, 52.3733], 30, amsterdam1)];
     }
 
     getPois() {

@@ -16512,6 +16512,302 @@ function toPromise(getter) {
 
 /***/ }),
 
+/***/ "./node_modules/ol/geom/Circle.js":
+/*!****************************************!*\
+  !*** ./node_modules/ol/geom/Circle.js ***!
+  \****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
+/* harmony import */ var _SimpleGeometry_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SimpleGeometry.js */ "./node_modules/ol/geom/SimpleGeometry.js");
+/* harmony import */ var _flat_deflate_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./flat/deflate.js */ "./node_modules/ol/geom/flat/deflate.js");
+/* harmony import */ var _flat_transform_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./flat/transform.js */ "./node_modules/ol/geom/flat/transform.js");
+/**
+ * @module ol/geom/Circle
+ */
+
+
+
+
+
+/**
+ * @classdesc
+ * Circle geometry.
+ *
+ * @api
+ */
+class Circle extends _SimpleGeometry_js__WEBPACK_IMPORTED_MODULE_0__["default"] {
+  /**
+   * @param {!import("../coordinate.js").Coordinate} center Center.
+   *     For internal use, flat coordinates in combination with `layout` and no
+   *     `radius` are also accepted.
+   * @param {number} [radius] Radius in units of the projection.
+   * @param {import("./Geometry.js").GeometryLayout} [layout] Layout.
+   */
+  constructor(center, radius, layout) {
+    super();
+    if (layout !== undefined && radius === undefined) {
+      this.setFlatCoordinates(layout, center);
+    } else {
+      radius = radius ? radius : 0;
+      this.setCenterAndRadius(center, radius, layout);
+    }
+  }
+
+  /**
+   * Make a complete copy of the geometry.
+   * @return {!Circle} Clone.
+   * @api
+   * @override
+   */
+  clone() {
+    const circle = new Circle(
+      this.flatCoordinates.slice(),
+      undefined,
+      this.layout,
+    );
+    circle.applyProperties(this);
+    return circle;
+  }
+
+  /**
+   * @param {number} x X.
+   * @param {number} y Y.
+   * @param {import("../coordinate.js").Coordinate} closestPoint Closest point.
+   * @param {number} minSquaredDistance Minimum squared distance.
+   * @return {number} Minimum squared distance.
+   * @override
+   */
+  closestPointXY(x, y, closestPoint, minSquaredDistance) {
+    const flatCoordinates = this.flatCoordinates;
+    const dx = x - flatCoordinates[0];
+    const dy = y - flatCoordinates[1];
+    const squaredDistance = dx * dx + dy * dy;
+    if (squaredDistance < minSquaredDistance) {
+      if (squaredDistance === 0) {
+        for (let i = 0; i < this.stride; ++i) {
+          closestPoint[i] = flatCoordinates[i];
+        }
+      } else {
+        const delta = this.getRadius() / Math.sqrt(squaredDistance);
+        closestPoint[0] = flatCoordinates[0] + delta * dx;
+        closestPoint[1] = flatCoordinates[1] + delta * dy;
+        for (let i = 2; i < this.stride; ++i) {
+          closestPoint[i] = flatCoordinates[i];
+        }
+      }
+      closestPoint.length = this.stride;
+      return squaredDistance;
+    }
+    return minSquaredDistance;
+  }
+
+  /**
+   * @param {number} x X.
+   * @param {number} y Y.
+   * @return {boolean} Contains (x, y).
+   * @override
+   */
+  containsXY(x, y) {
+    const flatCoordinates = this.flatCoordinates;
+    const dx = x - flatCoordinates[0];
+    const dy = y - flatCoordinates[1];
+    return dx * dx + dy * dy <= this.getRadiusSquared_();
+  }
+
+  /**
+   * Return the center of the circle as {@link module:ol/coordinate~Coordinate coordinate}.
+   * @return {import("../coordinate.js").Coordinate} Center.
+   * @api
+   */
+  getCenter() {
+    return this.flatCoordinates.slice(0, this.stride);
+  }
+
+  /**
+   * @param {import("../extent.js").Extent} extent Extent.
+   * @protected
+   * @return {import("../extent.js").Extent} extent Extent.
+   * @override
+   */
+  computeExtent(extent) {
+    const flatCoordinates = this.flatCoordinates;
+    const radius = flatCoordinates[this.stride] - flatCoordinates[0];
+    return (0,_extent_js__WEBPACK_IMPORTED_MODULE_1__.createOrUpdate)(
+      flatCoordinates[0] - radius,
+      flatCoordinates[1] - radius,
+      flatCoordinates[0] + radius,
+      flatCoordinates[1] + radius,
+      extent,
+    );
+  }
+
+  /**
+   * Return the radius of the circle.
+   * @return {number} Radius.
+   * @api
+   */
+  getRadius() {
+    return Math.sqrt(this.getRadiusSquared_());
+  }
+
+  /**
+   * @private
+   * @return {number} Radius squared.
+   */
+  getRadiusSquared_() {
+    const dx = this.flatCoordinates[this.stride] - this.flatCoordinates[0];
+    const dy = this.flatCoordinates[this.stride + 1] - this.flatCoordinates[1];
+    return dx * dx + dy * dy;
+  }
+
+  /**
+   * Get the type of this geometry.
+   * @return {import("./Geometry.js").Type} Geometry type.
+   * @api
+   * @override
+   */
+  getType() {
+    return 'Circle';
+  }
+
+  /**
+   * Test if the geometry and the passed extent intersect.
+   * @param {import("../extent.js").Extent} extent Extent.
+   * @return {boolean} `true` if the geometry and the extent intersect.
+   * @api
+   * @override
+   */
+  intersectsExtent(extent) {
+    const circleExtent = this.getExtent();
+    if ((0,_extent_js__WEBPACK_IMPORTED_MODULE_1__.intersects)(extent, circleExtent)) {
+      const center = this.getCenter();
+
+      if (extent[0] <= center[0] && extent[2] >= center[0]) {
+        return true;
+      }
+      if (extent[1] <= center[1] && extent[3] >= center[1]) {
+        return true;
+      }
+
+      return (0,_extent_js__WEBPACK_IMPORTED_MODULE_1__.forEachCorner)(extent, this.intersectsCoordinate.bind(this));
+    }
+    return false;
+  }
+
+  /**
+   * Set the center of the circle as {@link module:ol/coordinate~Coordinate coordinate}.
+   * @param {import("../coordinate.js").Coordinate} center Center.
+   * @api
+   */
+  setCenter(center) {
+    const stride = this.stride;
+    const radius = this.flatCoordinates[stride] - this.flatCoordinates[0];
+    const flatCoordinates = center.slice();
+    flatCoordinates[stride] = flatCoordinates[0] + radius;
+    for (let i = 1; i < stride; ++i) {
+      flatCoordinates[stride + i] = center[i];
+    }
+    this.setFlatCoordinates(this.layout, flatCoordinates);
+    this.changed();
+  }
+
+  /**
+   * Set the center (as {@link module:ol/coordinate~Coordinate coordinate}) and the radius (as
+   * number) of the circle.
+   * @param {!import("../coordinate.js").Coordinate} center Center.
+   * @param {number} radius Radius.
+   * @param {import("./Geometry.js").GeometryLayout} [layout] Layout.
+   * @api
+   */
+  setCenterAndRadius(center, radius, layout) {
+    this.setLayout(layout, center, 0);
+    if (!this.flatCoordinates) {
+      this.flatCoordinates = [];
+    }
+    /** @type {Array<number>} */
+    const flatCoordinates = this.flatCoordinates;
+    let offset = (0,_flat_deflate_js__WEBPACK_IMPORTED_MODULE_2__.deflateCoordinate)(flatCoordinates, 0, center, this.stride);
+    flatCoordinates[offset++] = flatCoordinates[0] + radius;
+    for (let i = 1, ii = this.stride; i < ii; ++i) {
+      flatCoordinates[offset++] = flatCoordinates[i];
+    }
+    flatCoordinates.length = offset;
+    this.changed();
+  }
+
+  /**
+   * @override
+   */
+  getCoordinates() {
+    return null;
+  }
+
+  /**
+   * @override
+   */
+  setCoordinates(coordinates, layout) {}
+
+  /**
+   * Set the radius of the circle. The radius is in the units of the projection.
+   * @param {number} radius Radius.
+   * @api
+   */
+  setRadius(radius) {
+    this.flatCoordinates[this.stride] = this.flatCoordinates[0] + radius;
+    this.changed();
+  }
+
+  /**
+   * Rotate the geometry around a given coordinate. This modifies the geometry
+   * coordinates in place.
+   * @param {number} angle Rotation angle in counter-clockwise radians.
+   * @param {import("../coordinate.js").Coordinate} anchor The rotation center.
+   * @api
+   * @override
+   */
+  rotate(angle, anchor) {
+    const center = this.getCenter();
+    const stride = this.getStride();
+    this.setCenter(
+      (0,_flat_transform_js__WEBPACK_IMPORTED_MODULE_3__.rotate)(center, 0, center.length, stride, angle, anchor, center),
+    );
+    this.changed();
+  }
+}
+
+/**
+ * Transform each coordinate of the circle from one coordinate reference system
+ * to another. The geometry is modified in place.
+ * If you do not want the geometry modified in place, first clone() it and
+ * then use this function on the clone.
+ *
+ * Internally a circle is currently represented by two points: the center of
+ * the circle `[cx, cy]`, and the point to the right of the circle
+ * `[cx + r, cy]`. This `transform` function just transforms these two points.
+ * So the resulting geometry is also a circle, and that circle does not
+ * correspond to the shape that would be obtained by transforming every point
+ * of the original circle.
+ *
+ * @param {import("../proj.js").ProjectionLike} source The current projection.  Can be a
+ *     string identifier or a {@link module:ol/proj/Projection~Projection} object.
+ * @param {import("../proj.js").ProjectionLike} destination The desired projection.  Can be a
+ *     string identifier or a {@link module:ol/proj/Projection~Projection} object.
+ * @return {Circle} This geometry.  Note that original geometry is
+ *     modified in place.
+ * @function
+ * @api
+ */
+Circle.prototype.transform;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Circle);
+
+
+/***/ }),
+
 /***/ "./node_modules/ol/geom/Geometry.js":
 /*!******************************************!*\
   !*** ./node_modules/ol/geom/Geometry.js ***!
@@ -54172,13 +54468,23 @@ class POIHandler {
         const amsterdam1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam', 'testing');
 
         // create pois here with coords and content
-        this.pois = [new _poi__WEBPACK_IMPORTED_MODULE_0__["default"]([4.8876, 52.3733], 100, amsterdam1)];
+        this.pois = [new _poi__WEBPACK_IMPORTED_MODULE_0__["default"]([4.8876, 52.3733], 30, amsterdam1)];
     }
 
     getPois() {
         return this.pois;
     }
 }
+
+/***/ }),
+
+/***/ "./src/assets/icons/navigation.png":
+/*!*****************************************!*\
+  !*** ./src/assets/icons/navigation.png ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
 
 /***/ }),
 
@@ -54200,9 +54506,10 @@ class GeoHandler {
             navigator.geolocation.watchPosition(
                 (position) => {
                     const coords = [position.coords.longitude, position.coords.latitude];
+                    const heading = (position.coords.heading ?? 0) * (Math.PI / 180);
                     
                     console.log('updated location');
-                    this.updateCallback(coords);
+                    this.updateCallback(coords, heading);
                 },
                 (error) => {
                     console.error('Error watching location:', error);
@@ -54252,14 +54559,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ POI)
 /* harmony export */ });
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/geom/Circle */ "./node_modules/ol/geom/Circle.js");
 /* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
 /* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
-/* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
+/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
 
 
 
@@ -54271,19 +54578,26 @@ __webpack_require__.r(__webpack_exports__);
 
 class POI {
     constructor(coords, radius, poiContent) {
-        this.radius = radius;
+        this.radius = radius; // In meters
         this.coords = coords;
         this.poiContent = poiContent;
 
-        // create element that is displayed on the map
-        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
-            geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_3__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords))
+        // Convert center to map projection
+        const projectedCenter = (0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords);
+
+        // Create a circle geometry
+        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            geometry: new ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__["default"](projectedCenter, radius)
         });
 
-        this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_4__["default"]({
-            image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_5__["default"]({
-                src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-                scale: 0.05
+        // Style: solid blue outline + semi-transparent fill
+        this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_3__["default"]({
+            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_4__["default"]({
+                color: 'blue',
+                width: 2
+            }),
+            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_5__["default"]({
+                color: 'rgba(30, 144, 255, 0.3)' // DodgerBlue with transparency
             })
         }));
 
@@ -54296,7 +54610,7 @@ class POI {
         });
     }
 
-    getCoords(){
+    getCoords() {
         return this.coords;
     }
 
@@ -54418,6 +54732,18 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -54432,6 +54758,29 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -54450,16 +54799,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
-/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
 /* harmony import */ var _geoHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./geoHandler */ "./src/geoHandler.js");
 /* harmony import */ var _MapHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MapHandler */ "./src/MapHandler.js");
 /* harmony import */ var _POIHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./POIHandler */ "./src/POIHandler.js");
+/* harmony import */ var _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/icons/navigation.png */ "./src/assets/icons/navigation.png");
+
 
 
 
@@ -54478,30 +54829,35 @@ __webpack_require__.r(__webpack_exports__);
 const popupElement = document.createElement('div');
 popupElement.className = 'ol-popup';
 
-const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_6__["default"]({
+const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_7__["default"]({
     element: popupElement,
     positioning: 'bottom-center',
     stopEvent: false,
-    offset: [0, -15],
+    offset: [0, -25],
 });
 
 // Create a vector source to store the user's location
-const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]();
-const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]({ source: userLocationSource });
+const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]();
+const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_9__["default"]({ source: userLocationSource });
 
 
 // -- MAIN UPDATE LOOP CALLBACK --
-function updateUserLocation(coords) {
+function updateUserLocation(coords, heading) {
     userLocationSource.clear();
 
-    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_9__["default"]({
-        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_10__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
+    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_10__["default"]({
+        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
     });
 
-    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_11__["default"]({
-        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_12__["default"]({
-            src: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
-            scale: 0.05
+    const zoom = mapHandler.getMap().getView().getZoom();
+    const iconScale = 0.05 * Math.pow(1.5, (zoom)); // Adjust multiplier as needed
+
+    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_12__["default"]({
+        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__["default"]({
+            src: _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__,
+            scale: iconScale,
+            rotation: heading,
+            rotateWithView: true
         })
     }));
 

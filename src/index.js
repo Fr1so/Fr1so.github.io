@@ -11,6 +11,7 @@ import Overlay from 'ol/Overlay';
 import GeoHandler from './geoHandler';
 import MapHandler from './MapHandler';
 import POIHandler from './POIHandler';
+import arrayIcon from './assets/icons/navigation.png'
 
 // --- POPUP SETUP ---
 const popupElement = document.createElement('div');
@@ -20,7 +21,7 @@ const popupOverlay = new Overlay({
     element: popupElement,
     positioning: 'bottom-center',
     stopEvent: false,
-    offset: [0, -15],
+    offset: [0, -25],
 });
 
 // Create a vector source to store the user's location
@@ -29,17 +30,22 @@ const userLocationLayer = new VectorLayer({ source: userLocationSource });
 
 
 // -- MAIN UPDATE LOOP CALLBACK --
-function updateUserLocation(coords) {
+function updateUserLocation(coords, heading) {
     userLocationSource.clear();
 
     const userLocation = new Feature({
         geometry: new Point(fromLonLat(coords))
     });
 
+    const zoom = mapHandler.getMap().getView().getZoom();
+    const iconScale = 0.05 * Math.pow(1.5, (zoom)); // Adjust multiplier as needed
+
     userLocation.setStyle(new Style({
         image: new Icon({
-            src: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
-            scale: 0.05
+            src: arrayIcon,
+            scale: iconScale,
+            rotation: heading,
+            rotateWithView: true
         })
     }));
 

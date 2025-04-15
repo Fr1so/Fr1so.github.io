@@ -6,9 +6,10 @@ export default class GeoHandler {
             navigator.geolocation.watchPosition(
                 (position) => {
                     const coords = [position.coords.longitude, position.coords.latitude];
+                    const heading = (position.coords.heading ?? 0) * (Math.PI / 180);
                     
                     console.log('updated location');
-                    this.updateCallback(coords);
+                    this.updateCallback(coords, heading);
                 },
                 (error) => {
                     console.error('Error watching location:', error);

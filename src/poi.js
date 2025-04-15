@@ -1,27 +1,34 @@
 import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
+import CircleGeom from 'ol/geom/Circle';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { fromLonLat } from 'ol/proj';
 import Style from 'ol/style/Style';
-import Icon from 'ol/style/Icon';
-import POIContent from './POIContent';
+import Fill from 'ol/style/Fill';
+import Stroke from 'ol/style/Stroke';
 
 export default class POI {
     constructor(coords, radius, poiContent) {
-        this.radius = radius;
+        this.radius = radius; // In meters
         this.coords = coords;
         this.poiContent = poiContent;
 
-        // create element that is displayed on the map
+        // Convert center to map projection
+        const projectedCenter = fromLonLat(this.coords);
+
+        // Create a circle geometry
         this.poiFeature = new Feature({
-            geometry: new Point(fromLonLat(this.coords))
+            geometry: new CircleGeom(projectedCenter, radius)
         });
 
+        // Style: solid blue outline + semi-transparent fill
         this.poiFeature.setStyle(new Style({
-            image: new Icon({
-                src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-                scale: 0.05
+            stroke: new Stroke({
+                color: 'blue',
+                width: 2
+            }),
+            fill: new Fill({
+                color: 'rgba(30, 144, 255, 0.3)' // DodgerBlue with transparency
             })
         }));
 
@@ -34,7 +41,7 @@ export default class POI {
         });
     }
 
-    getCoords(){
+    getCoords() {
         return this.coords;
     }
 
