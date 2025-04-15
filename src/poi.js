@@ -5,13 +5,15 @@ import VectorSource from 'ol/source/Vector';
 import { fromLonLat } from 'ol/proj';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
+import POIContent from './POIContent';
 
 export default class POI {
-    constructor(coords, name, content) {
+    constructor(coords, radius, poiContent) {
+        this.radius = radius;
         this.coords = coords;
-        this.name = name;
-        this.content = content;
+        this.poiContent = poiContent;
 
+        // create element that is displayed on the map
         this.poiFeature = new Feature({
             geometry: new Point(fromLonLat(this.coords))
         });
@@ -36,7 +38,15 @@ export default class POI {
         return this.coords;
     }
 
+    getRadius() {
+        return this.radius;
+    }
+
     getLayer() {
         return this.poiLayer;
+    }
+
+    getContent() {
+        return this.poiContent.getContent();
     }
 }

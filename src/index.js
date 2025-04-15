@@ -1,9 +1,5 @@
 import 'ol/ol.css';
 import './style.css';
-import Map from 'ol/Map';
-import View from 'ol/View';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
@@ -12,38 +8,13 @@ import Point from 'ol/geom/Point';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import Overlay from 'ol/Overlay';
-import POI from './poi'
-
-// Create map
-const map = new Map({
-    target: 'map',
-    layers: [
-        new TileLayer({
-            source: new OSM()
-        })
-    ],
-    view: new View({
-        center: fromLonLat([0, 0]), // Default center
-        zoom: 2
-    })
-});
-
-// --- POINT OF INTEREST (POI) SETUP ---
-const pois = [new POI([5.134037, 52.080354], '<strong>test 1</strong>', '<span>this is a very cool place</span>'), 
-new POI([5.133896, 52.080912], '<strong>test 2</strong>', '<span>this is a very cool place too</span>')];
-
-for(let i = 0; i < pois.length; i++){
-    map.addLayer(pois[i].getLayer());
-}
+import GeoHandler from './geoHandler';
+import MapHandler from './MapHandler';
+import POIHandler from './POIHandler';
 
 // --- POPUP SETUP ---
 const popupElement = document.createElement('div');
 popupElement.className = 'ol-popup';
-popupElement.style.background = 'white';
-popupElement.style.padding = '10px';
-popupElement.style.borderRadius = '8px';
-popupElement.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
-popupElement.style.position = 'absolute';
 
 const popupOverlay = new Overlay({
     element: popupElement,
@@ -52,33 +23,12 @@ const popupOverlay = new Overlay({
     offset: [0, -15],
 });
 
-map.addOverlay(popupOverlay);
-
-// --- DISTANCE CHECK FUNCTION ---
-function getDistanceMeters(coord1, coord2) {
-    const [lon1, lat1] = coord1;
-    const [lon2, lat2] = coord2;
-
-    const R = 6371000; // Radius of the Earth in meters
-    const toRad = (x) => x * Math.PI / 180;
-
-    const dLat = toRad(lat2 - lat1);
-    const dLon = toRad(lon2 - lon1);
-
-    const a = Math.sin(dLat / 2) ** 2 +
-              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-              Math.sin(dLon / 2) ** 2;
-
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-    return R * c; // Distance in meters
-}
-
 // Create a vector source to store the user's location
 const userLocationSource = new VectorSource();
 const userLocationLayer = new VectorLayer({ source: userLocationSource });
-map.addLayer(userLocationLayer);
 
+
+// -- MAIN UPDATE LOOP CALLBACK --
 function updateUserLocation(coords) {
     userLocationSource.clear();
 
@@ -95,23 +45,23 @@ function updateUserLocation(coords) {
 
     userLocationSource.addFeature(userLocation);
 
-    map.getView().animate({
-        center: fromLonLat(coords),
-        duration: 500
-    });
+    // map follows user
+    // map.getView().animate({
+    //     center: fromLonLat(coords),
+    //     duration: 500
+    // });
 
     document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}</span>`
 
     // Check distance to POI
+    const pois = poiHandler.getPois();
     for(let i = 0; i < pois.length; i++)
     {
-        const distance = getDistanceMeters(coords, pois[i].getCoords());
+        const distance = geoHandler.getDistanceMeters(coords, pois[i].getCoords());
 
-        if (distance <= 10) {
-            popupElement.innerHTML = `
-                ${pois[i].name} 😎
-                ${pois[i].content}
-            `;
+        if (distance <= pois[i].getRadius()) {
+            // display poi content
+            popupElement.innerHTML = pois[i].getContent();
             popupOverlay.setPosition(fromLonLat(pois[i].getCoords()));
             break;
         } else {
@@ -120,24 +70,11 @@ function updateUserLocation(coords) {
     }
 }
 
-// Watch the user's location continuously
-if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(
-        (position) => {
-            const coords = [position.coords.longitude, position.coords.latitude];
-            console.log('Updated Location:', coords);
 
-            updateUserLocation(coords);
-        },
-        (error) => {
-            console.error('Error watching location:', error);
-        },
-        {
-            enableHighAccuracy: true, // More accurate location
-            maximumAge: 0, // No cached positions
-            timeout: 5000 // Timeout before error
-        }
-    );
-} else {
-    console.error('Geolocation is not supported by this browser.');
-}
+// --- MAP AND GEO SETUP ---
+const layers = [userLocationLayer];
+const overlays = [popupOverlay];
+
+const geoHandler = new GeoHandler(updateUserLocation);
+const poiHandler = new POIHandler();
+const mapHandler = new MapHandler(geoHandler, layers, overlays, poiHandler.getPois());

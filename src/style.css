@@ -17,9 +17,21 @@ body {
 }
 
 .ol-popup {
-    min-width: 200px;
+    position: absolute;
+    width: fit-content;
+    min-width: 300px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fefefe;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     font-family: sans-serif;
     font-size: 14px;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    z-index: 2;
 }
