@@ -54849,13 +54849,10 @@ function updateUserLocation(coords, heading) {
         geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
     });
 
-    const zoom = mapHandler.getMap().getView().getZoom();
-    const iconScale = 0.05 * Math.pow(1.5, (zoom - 15)); // Adjust multiplier as needed
-
     userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_12__["default"]({
         image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__["default"]({
             src: _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__,
-            scale: iconScale,
+            scale: 0.08,
             rotation: heading,
             rotateWithView: true
         })

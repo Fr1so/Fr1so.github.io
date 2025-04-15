@@ -37,13 +37,10 @@ function updateUserLocation(coords, heading) {
         geometry: new Point(fromLonLat(coords))
     });
 
-    const zoom = mapHandler.getMap().getView().getZoom();
-    const iconScale = 0.05 * Math.pow(1.5, (zoom - 15)); // Adjust multiplier as needed
-
     userLocation.setStyle(new Style({
         image: new Icon({
             src: arrayIcon,
-            scale: iconScale,
+            scale: 0.08,
             rotation: heading,
             rotateWithView: true
         })
