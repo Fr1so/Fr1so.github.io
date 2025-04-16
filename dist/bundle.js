@@ -1281,7 +1281,25 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
     pointer-events: none;
     transition: opacity 0.3s ease;
     z-index: 2;
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,yBAAyB;IACzB,aAAa;IACb,kBAAkB;IAClB,qCAAqC;IACrC,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;IAC7B,UAAU;AACd","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    position: absolute;\n    width: fit-content;\n    min-width: 300px;\n    height: fit-content;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color: #fefefe;\n    padding: 1rem;\n    border-radius: 8px;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.3);\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n    z-index: 2;\n}"],"sourceRoot":""}]);
+}
+
+.map-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .map-btn:hover {
+    background-color: #fefefe
+  }`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,yBAAyB;IACzB,aAAa;IACb,kBAAkB;IAClB,qCAAqC;IACrC,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;IAC7B,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,aAAa;IACb,uBAAuB;IACvB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,eAAe;IACf,wCAAwC;EAC1C;;EAEA;IACE;EACF","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    position: absolute;\n    width: fit-content;\n    min-width: 300px;\n    height: fit-content;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color: #fefefe;\n    padding: 1rem;\n    border-radius: 8px;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.3);\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n    z-index: 2;\n}\n\n.map-btn {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    z-index: 1000;\n    background-color: white;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    padding: 8px 12px;\n    cursor: pointer;\n    font-size: 14px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n  }\n  \n  .map-btn:hover {\n    background-color: #fefefe\n  }"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -54356,6 +54374,147 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/Area.js":
+/*!*********************!*\
+  !*** ./src/Area.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Area)
+/* harmony export */ });
+/* harmony import */ var ol_geom_Polygon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/geom/Polygon */ "./node_modules/ol/geom/Polygon.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
+/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
+/* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
+
+
+
+
+
+
+
+
+
+class Area {
+    constructor(name, coords, pois, isUnlocked = false) {
+        this.name = name;
+        this.coords = coords;
+        this.pois = pois;
+        this.isUnlocked = isUnlocked;
+
+        // Convert coords to map projection
+        const transformedCoords = [coords.map(coord => (0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(coord))];
+
+        // Create polygon geometry
+        const areaPolygon = new ol_geom_Polygon__WEBPACK_IMPORTED_MODULE_1__["default"](transformedCoords);
+
+        // Create feature
+        this.areaFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
+            geometry: areaPolygon
+        });
+    }
+
+    getLayer() {
+        // set area color based on unlocked status
+        let fillColor = this.isUnlocked
+            ? 'rgba(76, 175, 80, 0.5)'  // natural leafy green
+             : 'rgba(128, 128, 128, 0.5)'; // grey for locked
+
+        this.areaFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_3__["default"]({
+            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_4__["default"]({
+            color: fillColor
+        }),
+        stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            color: '#555',
+            width: 2
+        })
+        }));
+    
+        // Create layer
+        const areaSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
+            features: [this.areaFeature]
+        });
+    
+        this.areaLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]({
+            source: areaSource
+        });
+
+        return this.areaLayer;
+    }
+
+    getPois() {
+        return this.pois;
+    }
+}
+
+/***/ }),
+
+/***/ "./src/AreaHandler.js":
+/*!****************************!*\
+  !*** ./src/AreaHandler.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AreaHandler)
+/* harmony export */ });
+/* harmony import */ var _POI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./POI */ "./src/POI.js");
+/* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
+/* harmony import */ var _Area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Area */ "./src/Area.js");
+
+
+
+
+class AreaHandler {
+    constructor() {
+        // create poi content here
+        const griftparkContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Griftpark 1', 'testing griftpark area');
+
+        // create pois here with coords and content
+        const griftparkPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128037, 52.099107], 30, griftparkContent1);
+
+        // create area's here with coords (outline polygon) and pois
+        const griftparkCoords = [
+            [5.128912, 52.099931],
+            [5.129038, 52.098940],
+            [5.129127, 52.098448],
+            [5.128907, 52.098261],
+            [5.127645, 52.098135],
+            [5.127466, 52.098531],
+            [5.127199, 52.098782],
+            [5.127037, 52.098769],
+            [5.126382, 52.099213],
+            [5.128912, 52.099931]
+          ];
+
+        this.areas = [new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('griftpark', griftparkCoords, [griftparkPoi1])];
+    }
+
+    getAreas() {
+        return this.areas;
+    }
+
+    getPois() {
+        let allPois = [];
+        this.areas.forEach(area => {
+            area.pois.forEach(poi => {
+                allPois.push(poi);
+            });
+        });
+
+        return allPois;
+    }
+}
+
+/***/ }),
+
 /***/ "./src/MapHandler.js":
 /*!***************************!*\
   !*** ./src/MapHandler.js ***!
@@ -54378,11 +54537,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class MapHandler {
-    constructor(geoHandler, layers, overlays, pois) {
+    constructor(geoHandler, layers, overlays, areas) {
         this.geoHandler = geoHandler;
         this.layers = layers;
         this.overlays = overlays;
-        this.pois = pois;
+        this.areas = areas;
 
         // Create map
         this.map = new ol_Map__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -54408,9 +54567,14 @@ class MapHandler {
             this.map.addOverlay(overlay);
         });
 
-        // add pois
-        this.pois.forEach(poi => {
-            this.map.addLayer(poi.getLayer());
+        // add areas
+        this.areas.forEach(area => {
+            this.map.addLayer(area.getLayer());
+
+            // add pois in area
+            area.getPois().forEach(poi => {
+                this.map.addLayer(poi.getLayer());
+            });
         });
     }
 
@@ -54421,137 +54585,9 @@ class MapHandler {
 
 /***/ }),
 
-/***/ "./src/POIContent.js":
-/*!***************************!*\
-  !*** ./src/POIContent.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ POIContent)
-/* harmony export */ });
-class POIContent {
-    constructor(name, content) {
-        this.name = name;
-        this.content = content;
-    }
-
-    getContent(){
-        return `
-        <h2>${this.name}</h2>
-        <span>${this.content}</span>
-        `
-    }
-}
-
-/***/ }),
-
-/***/ "./src/POIHandler.js":
-/*!***************************!*\
-  !*** ./src/POIHandler.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ POIHandler)
-/* harmony export */ });
-/* harmony import */ var _poi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./poi */ "./src/poi.js");
-/* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
-
-
-
-class POIHandler {
-    constructor() {
-        // create poi content here
-        const amsterdam1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam', 'testing');
-
-        // create pois here with coords and content
-        this.pois = [new _poi__WEBPACK_IMPORTED_MODULE_0__["default"]([4.8876, 52.3733], 30, amsterdam1)];
-    }
-
-    getPois() {
-        return this.pois;
-    }
-}
-
-/***/ }),
-
-/***/ "./src/assets/icons/navigation.png":
-/*!*****************************************!*\
-  !*** ./src/assets/icons/navigation.png ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
-
-/***/ }),
-
-/***/ "./src/geoHandler.js":
-/*!***************************!*\
-  !*** ./src/geoHandler.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ GeoHandler)
-/* harmony export */ });
-class GeoHandler {
-    constructor(updateCallback) {
-        this.updateCallback = updateCallback;
-        // Watch the user's location continuously
-        if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(
-                (position) => {
-                    const coords = [position.coords.longitude, position.coords.latitude];
-                    const heading = (position.coords.heading ?? 0) * (Math.PI / 180);
-                    
-                    console.log('updated location');
-                    this.updateCallback(coords, heading);
-                },
-                (error) => {
-                    console.error('Error watching location:', error);
-                },
-                {
-                    enableHighAccuracy: true, // More accurate location
-                    maximumAge: 0, // No cached positions
-                    timeout: 5000 // Timeout before error
-                }
-            );
-        } else {
-            console.error('Geolocation is not supported by this browser.');
-        }
-    }
-
-
-    // --- DISTANCE CHECK FUNCTION ---
-    getDistanceMeters(coord1, coord2) {
-        const [lon1, lat1] = coord1;
-        const [lon2, lat2] = coord2;
-
-        const R = 6371000; // Radius of the Earth in meters
-        const toRad = (x) => x * Math.PI / 180;
-
-        const dLat = toRad(lat2 - lat1);
-        const dLon = toRad(lon2 - lon1);
-
-        const a = Math.sin(dLat / 2) ** 2 +
-                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-                Math.sin(dLon / 2) ** 2;
-
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return R * c; // Distance in meters
-    }
-}
-
-/***/ }),
-
-/***/ "./src/poi.js":
+/***/ "./src/POI.js":
 /*!********************!*\
-  !*** ./src/poi.js ***!
+  !*** ./src/POI.js ***!
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -54624,6 +54660,103 @@ class POI {
 
     getContent() {
         return this.poiContent.getContent();
+    }
+}
+
+/***/ }),
+
+/***/ "./src/POIContent.js":
+/*!***************************!*\
+  !*** ./src/POIContent.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ POIContent)
+/* harmony export */ });
+class POIContent {
+    constructor(name, content) {
+        this.name = name;
+        this.content = content;
+    }
+
+    getContent(){
+        return `
+        <h2>${this.name}</h2>
+        <span>${this.content}</span>
+        `
+    }
+}
+
+/***/ }),
+
+/***/ "./src/assets/icons/navigation.png":
+/*!*****************************************!*\
+  !*** ./src/assets/icons/navigation.png ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
+
+/***/ }),
+
+/***/ "./src/geoHandler.js":
+/*!***************************!*\
+  !*** ./src/geoHandler.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GeoHandler)
+/* harmony export */ });
+class GeoHandler {
+    constructor(updateCallback) {
+        this.updateCallback = updateCallback;
+        // Watch the user's location continuously
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(
+                (position) => {
+                    const coords = [position.coords.longitude, position.coords.latitude];
+                    const heading = (position.coords.heading ?? 0) * (Math.PI / 180);
+                    
+                    console.log('updated location');
+                    this.updateCallback(coords, heading);
+                },
+                (error) => {
+                    console.error('Error watching location:', error);
+                },
+                {
+                    enableHighAccuracy: true, // More accurate location
+                    maximumAge: 0, // No cached positions
+                    timeout: 5000 // Timeout before error
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    }
+
+
+    // --- DISTANCE CHECK FUNCTION ---
+    getDistanceMeters(coord1, coord2) {
+        const [lon1, lat1] = coord1;
+        const [lon2, lat2] = coord2;
+
+        const R = 6371000; // Radius of the Earth in meters
+        const toRad = (x) => x * Math.PI / 180;
+
+        const dLat = toRad(lat2 - lat1);
+        const dLon = toRad(lon2 - lon1);
+
+        const a = Math.sin(dLat / 2) ** 2 +
+                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                Math.sin(dLon / 2) ** 2;
+
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return R * c; // Distance in meters
     }
 }
 
@@ -54799,16 +54932,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
-/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
 /* harmony import */ var _geoHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./geoHandler */ "./src/geoHandler.js");
 /* harmony import */ var _MapHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MapHandler */ "./src/MapHandler.js");
-/* harmony import */ var _POIHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./POIHandler */ "./src/POIHandler.js");
+/* harmony import */ var _AreaHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AreaHandler */ "./src/AreaHandler.js");
 /* harmony import */ var _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/icons/navigation.png */ "./src/assets/icons/navigation.png");
 
 
@@ -54825,32 +54958,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// --- POPUP SETUP ---
-const popupElement = document.createElement('div');
-popupElement.className = 'ol-popup';
-
-const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_7__["default"]({
-    element: popupElement,
-    positioning: 'bottom-center',
-    stopEvent: false,
-    offset: [0, -25],
-});
+// GLOBAL VARIABLES
+let firstLocationUpdate = true;
+let lastCoords = null;
 
 // Create a vector source to store the user's location
-const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]();
-const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_9__["default"]({ source: userLocationSource });
+const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]();
+const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]({ source: userLocationSource });
 
 
-// -- MAIN UPDATE LOOP CALLBACK --
+// -- GEO UPDATE CALLBACK --
 function updateUserLocation(coords, heading) {
+    lastCoords = coords;
     userLocationSource.clear();
 
-    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_10__["default"]({
-        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
+    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_9__["default"]({
+        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_10__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
     });
 
-    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_12__["default"]({
-        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__["default"]({
+    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_11__["default"]({
+        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_12__["default"]({
             src: _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__,
             scale: 0.08,
             rotation: heading,
@@ -54860,16 +54987,28 @@ function updateUserLocation(coords, heading) {
 
     userLocationSource.addFeature(userLocation);
 
+    // zoom to user when starting the website
+    if (firstLocationUpdate) {
+        mapHandler.getMap().getView().animate({
+            center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords),
+            zoom: 18,
+            duration: 1000
+        });
+        firstLocationUpdate = false;
+    }
+
     // map follows user
     // map.getView().animate({
     //     center: fromLonLat(coords),
     //     duration: 500
     // });
 
+
+    // display location based info on the map
     document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}</span>`
 
     // Check distance to POI
-    const pois = poiHandler.getPois();
+    const pois = areaHandler.getPois();
     for(let i = 0; i < pois.length; i++)
     {
         const distance = geoHandler.getDistanceMeters(coords, pois[i].getCoords());
@@ -54886,13 +55025,45 @@ function updateUserLocation(coords, heading) {
 }
 
 
+// SETUP
+// --- POPUP SETUP ---
+const popupElement = document.createElement('div');
+popupElement.className = 'ol-popup';
+
+const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_13__["default"]({
+    element: popupElement,
+    positioning: 'bottom-center',
+    stopEvent: false,
+    offset: [0, -25],
+});
+
 // --- MAP AND GEO SETUP ---
+const geoHandler = new _geoHandler__WEBPACK_IMPORTED_MODULE_3__["default"](updateUserLocation);
+const areaHandler = new _AreaHandler__WEBPACK_IMPORTED_MODULE_5__["default"]();
+
 const layers = [userLocationLayer];
 const overlays = [popupOverlay];
 
-const geoHandler = new _geoHandler__WEBPACK_IMPORTED_MODULE_3__["default"](updateUserLocation);
-const poiHandler = new _POIHandler__WEBPACK_IMPORTED_MODULE_5__["default"]();
-const mapHandler = new _MapHandler__WEBPACK_IMPORTED_MODULE_4__["default"](geoHandler, layers, overlays, poiHandler.getPois());
+const mapHandler = new _MapHandler__WEBPACK_IMPORTED_MODULE_4__["default"](geoHandler, layers, overlays, areaHandler.getAreas());
+
+// MAIN PROGRAM
+function main() {
+    // Add event listener to recenter button
+    document.getElementById('recenterBtn').addEventListener('click', () => {
+        if (lastCoords) {
+            mapHandler.getMap().getView().animate({
+                center: (0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(lastCoords),
+                zoom: 17,
+                duration: 500
+            });
+        }
+    });
+}
+
+
+// START THE PROGRAM    
+main();
+
 })();
 
 /******/ })()

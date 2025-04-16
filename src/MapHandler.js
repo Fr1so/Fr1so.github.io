@@ -5,11 +5,11 @@ import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
 
 export default class MapHandler {
-    constructor(geoHandler, layers, overlays, pois) {
+    constructor(geoHandler, layers, overlays, areas) {
         this.geoHandler = geoHandler;
         this.layers = layers;
         this.overlays = overlays;
-        this.pois = pois;
+        this.areas = areas;
 
         // Create map
         this.map = new Map({
@@ -35,9 +35,14 @@ export default class MapHandler {
             this.map.addOverlay(overlay);
         });
 
-        // add pois
-        this.pois.forEach(poi => {
-            this.map.addLayer(poi.getLayer());
+        // add areas
+        this.areas.forEach(area => {
+            this.map.addLayer(area.getLayer());
+
+            // add pois in area
+            area.getPois().forEach(poi => {
+                this.map.addLayer(poi.getLayer());
+            });
         });
     }
 
