@@ -56,4 +56,8 @@ export default class POI {
     getContent() {
         return this.poiContent.getContent();
     }
+
+    getAudio() {
+        return this.poiContent.getAudio();
+    }
 }

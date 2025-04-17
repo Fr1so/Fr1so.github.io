@@ -53,3 +53,44 @@ body {
   .map-btn:hover {
     background-color: #fefefe
   }
+
+  #start-overlay {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* ::before creates a blurred background image */
+  #start-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/img/map-placeholder.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(5px) brightness(0.8);
+    z-index: 1;
+  }
+  
+  
+  #start-button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 2;
+  }

@@ -1,7 +1,8 @@
 export default class POIContent {
-    constructor(name, content) {
+    constructor(name, content, audioFile) {
         this.name = name;
         this.content = content;
+        this.audio = new Audio(audioFile);
     }
 
     getContent(){
@@ -9,5 +10,9 @@ export default class POIContent {
         <h2>${this.name}</h2>
         <span>${this.content}</span>
         `
+    }
+
+    getAudio() {
+        return this.audio;
     }
 }

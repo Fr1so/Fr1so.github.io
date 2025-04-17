@@ -1240,10 +1240,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/map-placeholder.jpg */ "./src/assets/img/map-placeholder.jpg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
     margin: 0;
@@ -1299,7 +1304,48 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   
   .map-btn:hover {
     background-color: #fefefe
-  }`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,yBAAyB;IACzB,aAAa;IACb,kBAAkB;IAClB,qCAAqC;IACrC,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;IAC7B,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,aAAa;IACb,uBAAuB;IACvB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,eAAe;IACf,wCAAwC;EAC1C;;EAEA;IACE;EACF","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    position: absolute;\n    width: fit-content;\n    min-width: 300px;\n    height: fit-content;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color: #fefefe;\n    padding: 1rem;\n    border-radius: 8px;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.3);\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n    z-index: 2;\n}\n\n.map-btn {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    z-index: 1000;\n    background-color: white;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    padding: 8px 12px;\n    cursor: pointer;\n    font-size: 14px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n  }\n  \n  .map-btn:hover {\n    background-color: #fefefe\n  }"],"sourceRoot":""}]);
+  }
+
+  #start-overlay {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* ::before creates a blurred background image */
+  #start-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(5px) brightness(0.8);
+    z-index: 1;
+  }
+  
+  
+  #start-button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 2;
+  }`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,yBAAyB;IACzB,aAAa;IACb,kBAAkB;IAClB,qCAAqC;IACrC,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;IAC7B,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,aAAa;IACb,uBAAuB;IACvB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,eAAe;IACf,wCAAwC;EAC1C;;EAEA;IACE;EACF;;EAEA;IACE,kBAAkB;IAClB,aAAa;IACb,MAAM;IACN,OAAO;IACP,WAAW;IACX,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,gBAAgB;EAClB;;EAEA,gDAAgD;EAChD;IACE,WAAW;IACX,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,WAAW;IACX,YAAY;IACZ,yDAAuD;IACvD,sBAAsB;IACtB,4BAA4B;IAC5B,2BAA2B;IAC3B,iCAAiC;IACjC,UAAU;EACZ;;;EAGA;IACE,kBAAkB;IAClB,iBAAiB;IACjB,4BAA4B;IAC5B,YAAY;IACZ,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,UAAU;EACZ","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    position: absolute;\n    width: fit-content;\n    min-width: 300px;\n    height: fit-content;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color: #fefefe;\n    padding: 1rem;\n    border-radius: 8px;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.3);\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n    z-index: 2;\n}\n\n.map-btn {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    z-index: 1000;\n    background-color: white;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    padding: 8px 12px;\n    cursor: pointer;\n    font-size: 14px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n  }\n  \n  .map-btn:hover {\n    background-color: #fefefe\n  }\n\n  #start-overlay {\n    position: absolute;\n    z-index: 9999;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n  }\n  \n  /* ::before creates a blurred background image */\n  #start-overlay::before {\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-image: url(./assets/img/map-placeholder.jpg);\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    filter: blur(5px) brightness(0.8);\n    z-index: 1;\n  }\n  \n  \n  #start-button {\n    padding: 1rem 2rem;\n    font-size: 1.5rem;\n    background-color: dodgerblue;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    cursor: pointer;\n    z-index: 2;\n  }"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1396,6 +1442,41 @@ module.exports = function (cssWithMappingToString) {
     }
   };
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+  url = String(url.__esModule ? url.default : url);
+
+  // If url is already wrapped in quotes, remove them
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+  if (options.hash) {
+    url += options.hash;
+  }
+
+  // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+  return url;
 };
 
 /***/ }),
@@ -54468,6 +54549,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _POI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./POI */ "./src/POI.js");
 /* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
 /* harmony import */ var _Area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Area */ "./src/Area.js");
+/* harmony import */ var _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/amsterdam_street_testing.mp3 */ "./src/assets/audio/amsterdam_street_testing.mp3");
+
 
 
 
@@ -54475,12 +54558,22 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // create poi content here
+        const amsterdamContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', 'Amsterdam testing location', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__);
         const griftparkContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Griftpark 1', 'testing griftpark area');
 
         // create pois here with coords and content
+        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.8877, 52.3734], 20, amsterdamContent1);
         const griftparkPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128037, 52.099107], 30, griftparkContent1);
 
         // create area's here with coords (outline polygon) and pois
+        const amsterdamCoords = [
+            [4.888518, 52.373351],
+            [4.888449, 52.373207],
+            [4.887358, 52.373314],
+            [4.887379, 52.373454],
+            [4.888518, 52.373351]
+        ];
+
         const griftparkCoords = [
             [5.128912, 52.099931],
             [5.129038, 52.098940],
@@ -54494,7 +54587,10 @@ class AreaHandler {
             [5.128912, 52.099931]
           ];
 
-        this.areas = [new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('griftpark', griftparkCoords, [griftparkPoi1])];
+        this.areas = [
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('amsterdam', amsterdamCoords, [amsterdamPoi1]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('griftpark', griftparkCoords, [griftparkPoi1])
+        ];
     }
 
     getAreas() {
@@ -54661,6 +54757,10 @@ class POI {
     getContent() {
         return this.poiContent.getContent();
     }
+
+    getAudio() {
+        return this.poiContent.getAudio();
+    }
 }
 
 /***/ }),
@@ -54676,9 +54776,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ POIContent)
 /* harmony export */ });
 class POIContent {
-    constructor(name, content) {
+    constructor(name, content, audioFile) {
         this.name = name;
         this.content = content;
+        this.audio = new Audio(audioFile);
     }
 
     getContent(){
@@ -54687,7 +54788,21 @@ class POIContent {
         <span>${this.content}</span>
         `
     }
+
+    getAudio() {
+        return this.audio;
+    }
 }
+
+/***/ }),
+
+/***/ "./src/assets/audio/amsterdam_street_testing.mp3":
+/*!*******************************************************!*\
+  !*** ./src/assets/audio/amsterdam_street_testing.mp3 ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "80401f79cc2137eb5152.mp3";
 
 /***/ }),
 
@@ -54698,6 +54813,16 @@ class POIContent {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
+
+/***/ }),
+
+/***/ "./src/assets/img/map-placeholder.jpg":
+/*!********************************************!*\
+  !*** ./src/assets/img/map-placeholder.jpg ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "10840811ad38d149b7ad.jpg";
 
 /***/ }),
 
@@ -54840,6 +54965,9 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -54916,6 +55044,32 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -54959,6 +55113,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // GLOBAL VARIABLES
+let geoHandler;
+let areaHandler;
+let mapHandler;
+let popupElement;
+let popupOverlay;
 let firstLocationUpdate = true;
 let lastCoords = null;
 
@@ -55009,42 +55168,63 @@ function updateUserLocation(coords, heading) {
 
     // Check distance to POI
     const pois = areaHandler.getPois();
-    for(let i = 0; i < pois.length; i++)
-    {
-        const distance = geoHandler.getDistanceMeters(coords, pois[i].getCoords());
 
-        if (distance <= pois[i].getRadius()) {
-            // display poi content
-            popupElement.innerHTML = pois[i].getContent();
-            popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(pois[i].getCoords()));
+    for (let i = 0; i < pois.length; i++) {
+        const poi = pois[i];
+        const distance = geoHandler.getDistanceMeters(coords, poi.getCoords());
+    
+        if (distance <= poi.getRadius()) {
+            const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
+            const audio = poi.getAudio();
+            console.log(audio);
+            console.log(volume);
+    
+            if (audio) {
+                audio.volume = volume; // set volume
+                if (audio.paused) {
+                    audio.play();
+                }
+            }
+    
+            // show popup
+            popupElement.innerHTML = poi.getContent();
+            popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poi.getCoords()));
             break;
         } else {
-            popupOverlay.setPosition(undefined); // Hide popup
+            popupOverlay.setPosition(undefined);
+            const audio = poi.getAudio();
+            if (audio && !audio.paused) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
         }
     }
 }
 
 
 // SETUP
-// --- POPUP SETUP ---
-const popupElement = document.createElement('div');
-popupElement.className = 'ol-popup';
+function setup() {
+    // --- POPUP SETUP ---
+    popupElement = document.createElement('div');
+    popupElement.className = 'ol-popup';
 
-const popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_13__["default"]({
-    element: popupElement,
-    positioning: 'bottom-center',
-    stopEvent: false,
-    offset: [0, -25],
-});
+    popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_13__["default"]({
+        element: popupElement,
+        positioning: 'bottom-center',
+        stopEvent: false,
+        offset: [0, -25],
+    });
 
-// --- MAP AND GEO SETUP ---
-const geoHandler = new _geoHandler__WEBPACK_IMPORTED_MODULE_3__["default"](updateUserLocation);
-const areaHandler = new _AreaHandler__WEBPACK_IMPORTED_MODULE_5__["default"]();
+    // --- MAP AND GEO SETUP ---
+    geoHandler = new _geoHandler__WEBPACK_IMPORTED_MODULE_3__["default"](updateUserLocation);
+    areaHandler = new _AreaHandler__WEBPACK_IMPORTED_MODULE_5__["default"]();
 
-const layers = [userLocationLayer];
-const overlays = [popupOverlay];
+    const layers = [userLocationLayer];
+    const overlays = [popupOverlay];
 
-const mapHandler = new _MapHandler__WEBPACK_IMPORTED_MODULE_4__["default"](geoHandler, layers, overlays, areaHandler.getAreas());
+    mapHandler = new _MapHandler__WEBPACK_IMPORTED_MODULE_4__["default"](geoHandler, layers, overlays, areaHandler.getAreas());
+}
+
 
 // MAIN PROGRAM
 function main() {
@@ -55061,8 +55241,14 @@ function main() {
 }
 
 
-// START THE PROGRAM    
-main();
+// BUTTON THAT STARTS THE PROGRAM
+document.getElementById('start-button').addEventListener('click', () => {
+    document.getElementById('start-overlay').style.display = 'none';
+  
+    // 🔊 Now safe to play audio or request user location
+    setup();
+    main();
+});
 
 })();
 

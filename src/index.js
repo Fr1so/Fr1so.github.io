@@ -14,6 +14,11 @@ import AreaHandler from './AreaHandler';
 import arrayIcon from './assets/icons/navigation.png'
 
 // GLOBAL VARIABLES
+let geoHandler;
+let areaHandler;
+let mapHandler;
+let popupElement;
+let popupOverlay;
 let firstLocationUpdate = true;
 let lastCoords = null;
 
@@ -64,42 +69,63 @@ function updateUserLocation(coords, heading) {
 
     // Check distance to POI
     const pois = areaHandler.getPois();
-    for(let i = 0; i < pois.length; i++)
-    {
-        const distance = geoHandler.getDistanceMeters(coords, pois[i].getCoords());
 
-        if (distance <= pois[i].getRadius()) {
-            // display poi content
-            popupElement.innerHTML = pois[i].getContent();
-            popupOverlay.setPosition(fromLonLat(pois[i].getCoords()));
+    for (let i = 0; i < pois.length; i++) {
+        const poi = pois[i];
+        const distance = geoHandler.getDistanceMeters(coords, poi.getCoords());
+    
+        if (distance <= poi.getRadius()) {
+            const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
+            const audio = poi.getAudio();
+            console.log(audio);
+            console.log(volume);
+    
+            if (audio) {
+                audio.volume = volume; // set volume
+                if (audio.paused) {
+                    audio.play();
+                }
+            }
+    
+            // show popup
+            popupElement.innerHTML = poi.getContent();
+            popupOverlay.setPosition(fromLonLat(poi.getCoords()));
             break;
         } else {
-            popupOverlay.setPosition(undefined); // Hide popup
+            popupOverlay.setPosition(undefined);
+            const audio = poi.getAudio();
+            if (audio && !audio.paused) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
         }
     }
 }
 
 
 // SETUP
-// --- POPUP SETUP ---
-const popupElement = document.createElement('div');
-popupElement.className = 'ol-popup';
+function setup() {
+    // --- POPUP SETUP ---
+    popupElement = document.createElement('div');
+    popupElement.className = 'ol-popup';
 
-const popupOverlay = new Overlay({
-    element: popupElement,
-    positioning: 'bottom-center',
-    stopEvent: false,
-    offset: [0, -25],
-});
+    popupOverlay = new Overlay({
+        element: popupElement,
+        positioning: 'bottom-center',
+        stopEvent: false,
+        offset: [0, -25],
+    });
 
-// --- MAP AND GEO SETUP ---
-const geoHandler = new GeoHandler(updateUserLocation);
-const areaHandler = new AreaHandler();
+    // --- MAP AND GEO SETUP ---
+    geoHandler = new GeoHandler(updateUserLocation);
+    areaHandler = new AreaHandler();
 
-const layers = [userLocationLayer];
-const overlays = [popupOverlay];
+    const layers = [userLocationLayer];
+    const overlays = [popupOverlay];
 
-const mapHandler = new MapHandler(geoHandler, layers, overlays, areaHandler.getAreas());
+    mapHandler = new MapHandler(geoHandler, layers, overlays, areaHandler.getAreas());
+}
+
 
 // MAIN PROGRAM
 function main() {
@@ -116,5 +142,11 @@ function main() {
 }
 
 
-// START THE PROGRAM    
-main();
+// BUTTON THAT STARTS THE PROGRAM
+document.getElementById('start-button').addEventListener('click', () => {
+    document.getElementById('start-overlay').style.display = 'none';
+  
+    // 🔊 Now safe to play audio or request user location
+    setup();
+    main();
+});
