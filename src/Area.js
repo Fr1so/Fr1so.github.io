@@ -27,6 +27,16 @@ export default class Area {
     }
 
     getLayer() {
+        // check if all points are found
+        this.isUnlocked = true;
+        for(let i = 0; i < this.pois.length; i++) {
+            if(!this.pois[i].isFound) {
+                this.isUnlocked = false;
+                break;
+            }
+        }
+
+
         // set area color based on unlocked status
         let fillColor = this.isUnlocked
             ? 'rgba(76, 175, 80, 0.5)'  // natural leafy green

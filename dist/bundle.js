@@ -54502,6 +54502,16 @@ class Area {
     }
 
     getLayer() {
+        // check if all points are found
+        this.isUnlocked = true;
+        for(let i = 0; i < this.pois.length; i++) {
+            if(!this.pois[i].isFound) {
+                this.isUnlocked = false;
+                break;
+            }
+        }
+
+
         // set area color based on unlocked status
         let fillColor = this.isUnlocked
             ? 'rgba(76, 175, 80, 0.5)'  // natural leafy green
@@ -54550,6 +54560,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
 /* harmony import */ var _Area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Area */ "./src/Area.js");
 /* harmony import */ var _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/amsterdam_street_testing.mp3 */ "./src/assets/audio/amsterdam_street_testing.mp3");
+/* harmony import */ var _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/audio/amelisweerd1.mp3 */ "./src/assets/audio/amelisweerd1.mp3");
+/* harmony import */ var _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/audio/amelisweerd2.mp3 */ "./src/assets/audio/amelisweerd2.mp3");
+/* harmony import */ var _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/audio/amelisweerd3.mp3 */ "./src/assets/audio/amelisweerd3.mp3");
+/* harmony import */ var _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/audio/amelisweerd4.mp3 */ "./src/assets/audio/amelisweerd4.mp3");
+/* harmony import */ var _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/audio/amelisweerd5.mp3 */ "./src/assets/audio/amelisweerd5.mp3");
+
+
+
+
+
 
 
 
@@ -54561,9 +54581,23 @@ class AreaHandler {
         const amsterdamContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', 'Amsterdam testing location', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__);
         const griftparkContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Griftpark 1', 'testing griftpark area');
 
+        // Amelis Weerd Content
+        const amelisWeerdContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__);
+        const amelisWeerdContent2 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 2', 'Congrats! You found point 2/5', _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__);
+        const amelisWeerdContent3 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 3', 'Congrats! You found point 3/5', _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__);
+        const amelisWeerdContent4 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 4', 'Congrats! You found point 4/5', _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__);
+        const amelisWeerdContent5 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 5', 'Congrats! You found point 5/5', _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__);
+
         // create pois here with coords and content
-        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.8877, 52.3734], 20, amsterdamContent1);
+        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.134193, 52.080148], 20, amsterdamContent1);
         const griftparkPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128037, 52.099107], 30, griftparkContent1);
+
+        // Amelis Weerd POIS
+        const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, amelisWeerdContent1);
+        const amelisWeerdPoi2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169405256008835, 52.06722847589258], 20, amelisWeerdContent2);
+        const amelisWeerdPoi3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169252184001826, 52.06814756590774], 20, amelisWeerdContent3);
+        const amelisWeerdPoi4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1700515416997375, 52.06728206086768], 20, amelisWeerdContent4);
+        const amelisWeerdPoi5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169959040341838, 52.068197756130914], 20, amelisWeerdContent5);
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -54587,9 +54621,18 @@ class AreaHandler {
             [5.128912, 52.099931]
           ];
 
+        const amelisWeerdCoords = [
+            [5.168812, 52.067038],
+            [5.168461, 52.068208],
+            [5.170350, 52.068254],
+            [5.170438, 52.067280],
+            [5.168812, 52.067038]
+        ];
+
         this.areas = [
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('amsterdam', amsterdamCoords, [amsterdamPoi1]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('griftpark', griftparkCoords, [griftparkPoi1])
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('griftpark', griftparkCoords, [griftparkPoi1]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Amelisweerd', amelisWeerdCoords, [amelisWeerdPoi1, amelisWeerdPoi2, amelisWeerdPoi3, amelisWeerdPoi4, amelisWeerdPoi5])
         ];
     }
 
@@ -54709,10 +54752,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class POI {
-    constructor(coords, radius, poiContent) {
+    constructor(coords, radius, poiContent, isFound = false) {
         this.radius = radius; // In meters
         this.coords = coords;
         this.poiContent = poiContent;
+        this.isFound = isFound;
 
         // Convert center to map projection
         const projectedCenter = (0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords);
@@ -54723,13 +54767,14 @@ class POI {
         });
 
         // Style: solid blue outline + semi-transparent fill
+        let opacity = isFound ? 0.3 : 0.0;
         this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_3__["default"]({
             stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_4__["default"]({
-                color: 'blue',
+                color: `rgba(0, 0, 255, ${opacity * 3})`,
                 width: 2
             }),
             fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_5__["default"]({
-                color: 'rgba(30, 144, 255, 0.3)' // DodgerBlue with transparency
+                color: `rgba(30, 144, 255, ${opacity})` // DodgerBlue with transparency
             })
         }));
 
@@ -54793,6 +54838,56 @@ class POIContent {
         return this.audio;
     }
 }
+
+/***/ }),
+
+/***/ "./src/assets/audio/amelisweerd1.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/amelisweerd1.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "d0279d5c5b0c8d5c9b91.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/amelisweerd2.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/amelisweerd2.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "1de6ce1e3b0159b1d40a.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/amelisweerd3.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/amelisweerd3.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "cce20b35207c4150f131.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/amelisweerd4.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/amelisweerd4.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "037a9adb3d6aad5fcbcc.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/amelisweerd5.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/amelisweerd5.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "94b33986b16b5383e9ad.mp3";
 
 /***/ }),
 
@@ -55176,8 +55271,6 @@ function updateUserLocation(coords, heading) {
         if (distance <= poi.getRadius()) {
             const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
             const audio = poi.getAudio();
-            console.log(audio);
-            console.log(volume);
     
             if (audio) {
                 audio.volume = volume; // set volume
@@ -55185,13 +55278,22 @@ function updateUserLocation(coords, heading) {
                     audio.play();
                 }
             }
-    
-            // show popup
-            popupElement.innerHTML = poi.getContent();
-            popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poi.getCoords()));
+
+            if (distance <= poi.getRadius() * 0.5) {
+                // poi is found, display on map
+                poi.isFound = true;
+                // show popup
+                popupElement.innerHTML = poi.getContent();
+                popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poi.getCoords()));
+                break;
+            } else {
+                popupOverlay.setPosition(undefined);
+            }
+
             break;
         } else {
             popupOverlay.setPosition(undefined);
+
             const audio = poi.getAudio();
             if (audio && !audio.paused) {
                 audio.pause();

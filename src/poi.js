@@ -8,10 +8,11 @@ import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 
 export default class POI {
-    constructor(coords, radius, poiContent) {
+    constructor(coords, radius, poiContent, isFound = false) {
         this.radius = radius; // In meters
         this.coords = coords;
         this.poiContent = poiContent;
+        this.isFound = isFound;
 
         // Convert center to map projection
         const projectedCenter = fromLonLat(this.coords);
@@ -22,13 +23,14 @@ export default class POI {
         });
 
         // Style: solid blue outline + semi-transparent fill
+        let opacity = isFound ? 0.3 : 0.0;
         this.poiFeature.setStyle(new Style({
             stroke: new Stroke({
-                color: 'blue',
+                color: `rgba(0, 0, 255, ${opacity * 3})`,
                 width: 2
             }),
             fill: new Fill({
-                color: 'rgba(30, 144, 255, 0.3)' // DodgerBlue with transparency
+                color: `rgba(30, 144, 255, ${opacity})` // DodgerBlue with transparency
             })
         }));
 

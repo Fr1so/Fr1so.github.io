@@ -77,8 +77,6 @@ function updateUserLocation(coords, heading) {
         if (distance <= poi.getRadius()) {
             const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
             const audio = poi.getAudio();
-            console.log(audio);
-            console.log(volume);
     
             if (audio) {
                 audio.volume = volume; // set volume
@@ -86,13 +84,22 @@ function updateUserLocation(coords, heading) {
                     audio.play();
                 }
             }
-    
-            // show popup
-            popupElement.innerHTML = poi.getContent();
-            popupOverlay.setPosition(fromLonLat(poi.getCoords()));
+
+            if (distance <= poi.getRadius() * 0.5) {
+                // poi is found, display on map
+                poi.isFound = true;
+                // show popup
+                popupElement.innerHTML = poi.getContent();
+                popupOverlay.setPosition(fromLonLat(poi.getCoords()));
+                break;
+            } else {
+                popupOverlay.setPosition(undefined);
+            }
+
             break;
         } else {
             popupOverlay.setPosition(undefined);
+
             const audio = poi.getAudio();
             if (audio && !audio.paused) {
                 audio.pause();
