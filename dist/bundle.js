@@ -54467,11 +54467,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var ol_geom_Polygon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/geom/Polygon */ "./node_modules/ol/geom/Polygon.js");
 /* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
-/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
+/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
 
 
@@ -54499,43 +54499,33 @@ class Area {
         this.areaFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
             geometry: areaPolygon
         });
-    }
 
-    getLayer() {
-        // check if all points are found
-        this.isUnlocked = true;
-        for(let i = 0; i < this.pois.length; i++) {
-            if(!this.pois[i].isFound) {
-                this.isUnlocked = false;
-                break;
-            }
-        }
-
-
-        // set area color based on unlocked status
-        let fillColor = this.isUnlocked
-            ? 'rgba(76, 175, 80, 0.5)'  // natural leafy green
-             : 'rgba(128, 128, 128, 0.5)'; // grey for locked
-
-        this.areaFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_3__["default"]({
-            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_4__["default"]({
-            color: fillColor
-        }),
-        stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_5__["default"]({
-            color: '#555',
-            width: 2
-        })
-        }));
-    
         // Create layer
-        const areaSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
+        const areaSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_3__["default"]({
             features: [this.areaFeature]
         });
     
-        this.areaLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]({
+        this.areaLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_4__["default"]({
             source: areaSource
         });
 
+        this.updateStyle();
+    }
+
+    updateStyle() {
+        this.isUnlocked = this.pois.every(poi => poi.isFound);
+    
+        let fillColor = this.isUnlocked
+            ? 'rgba(76, 175, 80, 0.5)'  // green
+            : 'rgba(128, 128, 128, 0.5)'; // grey
+    
+        this.areaFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_6__["default"]({ color: fillColor }),
+            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_7__["default"]({ color: '#555', width: 2 })
+        }));
+    }
+
+    getLayer() {
         return this.areaLayer;
     }
 
@@ -54577,27 +54567,17 @@ __webpack_require__.r(__webpack_exports__);
 
 class AreaHandler {
     constructor() {
-        // create poi content here
-        const amsterdamContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', 'Amsterdam testing location', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__);
-        const griftparkContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Griftpark 1', 'testing griftpark area');
-
-        // Amelis Weerd Content
-        const amelisWeerdContent1 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__);
-        const amelisWeerdContent2 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 2', 'Congrats! You found point 2/5', _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__);
-        const amelisWeerdContent3 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 3', 'Congrats! You found point 3/5', _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__);
-        const amelisWeerdContent4 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 4', 'Congrats! You found point 4/5', _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__);
-        const amelisWeerdContent5 = new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 5', 'Congrats! You found point 5/5', _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__);
-
         // create pois here with coords and content
-        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.134193, 52.080148], 20, amsterdamContent1);
-        const griftparkPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128037, 52.099107], 30, griftparkContent1);
+        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.134193, 52.080148], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', 'Amsterdam testing location', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__), true);
 
         // Amelis Weerd POIS
-        const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, amelisWeerdContent1);
-        const amelisWeerdPoi2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169405256008835, 52.06722847589258], 20, amelisWeerdContent2);
-        const amelisWeerdPoi3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169252184001826, 52.06814756590774], 20, amelisWeerdContent3);
-        const amelisWeerdPoi4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1700515416997375, 52.06728206086768], 20, amelisWeerdContent4);
-        const amelisWeerdPoi5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169959040341838, 52.068197756130914], 20, amelisWeerdContent5);
+        const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));
+        const amelisWeerdPoi2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169405256008835, 52.06722847589258], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 2', 'Congrats! You found point 2/5', _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__));
+        const amelisWeerdPoi3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169252184001826, 52.06814756590774], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 3', 'Congrats! You found point 3/5', _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__));
+        const amelisWeerdPoi4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1700515416997375, 52.06728206086768], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 4', 'Congrats! You found point 4/5', _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__));
+        const amelisWeerdPoi5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169959040341838, 52.068197756130914], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 5', 'Congrats! You found point 5/5', _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__));
+
+        const finlandPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([25.3108, 60.6305], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Finland Test', 'Testing point 1', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__));
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -54608,19 +54588,6 @@ class AreaHandler {
             [4.888518, 52.373351]
         ];
 
-        const griftparkCoords = [
-            [5.128912, 52.099931],
-            [5.129038, 52.098940],
-            [5.129127, 52.098448],
-            [5.128907, 52.098261],
-            [5.127645, 52.098135],
-            [5.127466, 52.098531],
-            [5.127199, 52.098782],
-            [5.127037, 52.098769],
-            [5.126382, 52.099213],
-            [5.128912, 52.099931]
-          ];
-
         const amelisWeerdCoords = [
             [5.168812, 52.067038],
             [5.168461, 52.068208],
@@ -54629,10 +54596,19 @@ class AreaHandler {
             [5.168812, 52.067038]
         ];
 
+        const finlandCoords = [
+            [25.289142, 60.626276],
+            [25.296987, 60.624724],
+            [25.329634, 60.617337],
+            [25.326534, 60.633909],
+            [25.301416, 60.637415],
+            [25.289142, 60.626276]
+        ]
+
         this.areas = [
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('amsterdam', amsterdamCoords, [amsterdamPoi1]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('griftpark', griftparkCoords, [griftparkPoi1]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Amelisweerd', amelisWeerdCoords, [amelisWeerdPoi1, amelisWeerdPoi2, amelisWeerdPoi3, amelisWeerdPoi4, amelisWeerdPoi5])
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Amelisweerd', amelisWeerdCoords, [amelisWeerdPoi1, amelisWeerdPoi2, amelisWeerdPoi3, amelisWeerdPoi4, amelisWeerdPoi5]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Finland', finlandCoords, [finlandPoi1])
         ];
     }
 
@@ -54736,12 +54712,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
 /* harmony import */ var ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/geom/Circle */ "./node_modules/ol/geom/Circle.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
-/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
+/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
 
 
 
@@ -54763,28 +54739,18 @@ class POI {
 
         // Create a circle geometry
         this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            geometry: new ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__["default"](projectedCenter, radius)
+            geometry: new ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__["default"](projectedCenter, this.radius)
         });
 
-        // Style: solid blue outline + semi-transparent fill
-        let opacity = isFound ? 0.3 : 0.0;
-        this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_3__["default"]({
-            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_4__["default"]({
-                color: `rgba(0, 0, 255, ${opacity * 3})`,
-                width: 2
-            }),
-            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_5__["default"]({
-                color: `rgba(30, 144, 255, ${opacity})` // DodgerBlue with transparency
-            })
-        }));
-
-        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
+        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_3__["default"]({
             features: [this.poiFeature]
         });
 
-        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]({
+        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_4__["default"]({
             source: this.poiSource
         });
+
+        this.updateStyle();
     }
 
     getCoords() {
@@ -54795,7 +54761,25 @@ class POI {
         return this.radius;
     }
 
-    getLayer() {
+    setFound(isFound) {
+        this.isFound = isFound;
+        this.updateStyle();
+    }
+
+    updateStyle() {
+        const opacity = this.isFound ? 0.3 : 0.0;
+        this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_6__["default"]({
+                color: `rgba(0, 0, 255, ${opacity * 3})`,
+                width: 2
+            }),
+            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_7__["default"]({
+                color: `rgba(30, 144, 255, ${opacity})`
+            })
+        }));
+    }
+
+    getLayer() {  
         return this.poiLayer;
     }
 
@@ -55269,6 +55253,7 @@ function updateUserLocation(coords, heading) {
         const distance = geoHandler.getDistanceMeters(coords, poi.getCoords());
     
         if (distance <= poi.getRadius()) {
+            // IN AUDIBLE RANGE OF POI
             const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
             const audio = poi.getAudio();
     
@@ -55280,13 +55265,21 @@ function updateUserLocation(coords, heading) {
             }
 
             if (distance <= poi.getRadius() * 0.5) {
-                // poi is found, display on map
-                poi.isFound = true;
+                // POI FOUND
+                poi.setFound(true);
+
+                // force area layer to update
+                const parentArea = areaHandler.getAreas().find(area => area.getPois().includes(poi));
+                if (parentArea) {
+                    parentArea.updateStyle();
+                }
+
                 // show popup
                 popupElement.innerHTML = poi.getContent();
                 popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poi.getCoords()));
                 break;
             } else {
+                // Hide popup when out of range
                 popupOverlay.setPosition(undefined);
             }
 

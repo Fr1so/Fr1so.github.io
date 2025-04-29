@@ -19,20 +19,8 @@ export default class POI {
 
         // Create a circle geometry
         this.poiFeature = new Feature({
-            geometry: new CircleGeom(projectedCenter, radius)
+            geometry: new CircleGeom(projectedCenter, this.radius)
         });
-
-        // Style: solid blue outline + semi-transparent fill
-        let opacity = isFound ? 0.3 : 0.0;
-        this.poiFeature.setStyle(new Style({
-            stroke: new Stroke({
-                color: `rgba(0, 0, 255, ${opacity * 3})`,
-                width: 2
-            }),
-            fill: new Fill({
-                color: `rgba(30, 144, 255, ${opacity})` // DodgerBlue with transparency
-            })
-        }));
 
         this.poiSource = new VectorSource({
             features: [this.poiFeature]
@@ -41,6 +29,8 @@ export default class POI {
         this.poiLayer = new VectorLayer({
             source: this.poiSource
         });
+
+        this.updateStyle();
     }
 
     getCoords() {
@@ -51,7 +41,25 @@ export default class POI {
         return this.radius;
     }
 
-    getLayer() {
+    setFound(isFound) {
+        this.isFound = isFound;
+        this.updateStyle();
+    }
+
+    updateStyle() {
+        const opacity = this.isFound ? 0.3 : 0.0;
+        this.poiFeature.setStyle(new Style({
+            stroke: new Stroke({
+                color: `rgba(0, 0, 255, ${opacity * 3})`,
+                width: 2
+            }),
+            fill: new Fill({
+                color: `rgba(30, 144, 255, ${opacity})`
+            })
+        }));
+    }
+
+    getLayer() {  
         return this.poiLayer;
     }
 

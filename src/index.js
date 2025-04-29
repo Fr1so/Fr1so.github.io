@@ -75,6 +75,7 @@ function updateUserLocation(coords, heading) {
         const distance = geoHandler.getDistanceMeters(coords, poi.getCoords());
     
         if (distance <= poi.getRadius()) {
+            // IN AUDIBLE RANGE OF POI
             const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
             const audio = poi.getAudio();
     
@@ -86,13 +87,21 @@ function updateUserLocation(coords, heading) {
             }
 
             if (distance <= poi.getRadius() * 0.5) {
-                // poi is found, display on map
-                poi.isFound = true;
+                // POI FOUND
+                poi.setFound(true);
+
+                // force area layer to update
+                const parentArea = areaHandler.getAreas().find(area => area.getPois().includes(poi));
+                if (parentArea) {
+                    parentArea.updateStyle();
+                }
+
                 // show popup
                 popupElement.innerHTML = poi.getContent();
                 popupOverlay.setPosition(fromLonLat(poi.getCoords()));
                 break;
             } else {
+                // Hide popup when out of range
                 popupOverlay.setPosition(undefined);
             }
 
