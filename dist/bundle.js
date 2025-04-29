@@ -54577,7 +54577,11 @@ class AreaHandler {
         const amelisWeerdPoi4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1700515416997375, 52.06728206086768], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 4', 'Congrats! You found point 4/5', _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__));
         const amelisWeerdPoi5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169959040341838, 52.068197756130914], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 5', 'Congrats! You found point 5/5', _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__));
 
-        const finlandPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([25.3108, 60.6305], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Finland Test', 'Testing point 1', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__));
+        const finlandPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([25.310620, 60.630724], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Finland Test', 'Testing point 1', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__));
+
+        const griftPark1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127110, 52.100298], 40 , new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Beelden Griftpark', '', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));
+        const griftPark2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128639, 52.101224], 40, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Speeltuin Griftsteede', '', _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__));
+        const griftPark3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127680, 52.098828], 40, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Skatepark', '', _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__));
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -54603,12 +54607,51 @@ class AreaHandler {
             [25.326534, 60.633909],
             [25.301416, 60.637415],
             [25.289142, 60.626276]
-        ]
+        ];
+
+        const griftparkCoords = [
+            [5.127653, 52.098138],
+            [5.127491, 52.098499],
+            [5.127161, 52.098780],
+            [5.127049, 52.098760],
+            [5.126412, 52.099210],
+            [5.125540, 52.098955],
+            [5.125433, 52.099117],
+            [5.124611, 52.098880],
+            [5.124622, 52.098997],
+            [5.124824, 52.099777],
+            [5.124766, 52.099781],
+            [5.124819, 52.100090],
+            [5.124539, 52.100108],
+            [5.124608, 52.100568],
+            [5.123776, 52.100629],
+            [5.123883, 52.101181],
+            [5.125141, 52.101228],
+            [5.125102, 52.101684],
+            [5.126158, 52.101613],
+            [5.126290, 52.102183],
+            [5.127113, 52.102276],
+            [5.128159, 52.102234],
+            [5.128288, 52.102278],
+            [5.129114, 52.102215],
+            [5.129728, 52.102090],
+            [5.129336, 52.101028],
+            [5.129254, 52.100914],
+            [5.128968, 52.100167],
+            [5.128912, 52.100005],
+            [5.129028, 52.098996],
+            [5.129147, 52.098604],
+            [5.129114, 52.098418],
+            [5.129012, 52.098314],
+            [5.128810, 52.098249],
+            [5.127653, 52.098138]
+        ];
 
         this.areas = [
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('amsterdam', amsterdamCoords, [amsterdamPoi1]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Amelisweerd', amelisWeerdCoords, [amelisWeerdPoi1, amelisWeerdPoi2, amelisWeerdPoi3, amelisWeerdPoi4, amelisWeerdPoi5]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Finland', finlandCoords, [finlandPoi1])
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Finland', finlandCoords, [finlandPoi1]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark', griftparkCoords, [griftPark1, griftPark2, griftPark3])
         ];
     }
 
@@ -55243,7 +55286,7 @@ function updateUserLocation(coords, heading) {
 
 
     // display location based info on the map
-    document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}</span>`
+    document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}</span>`
 
     // Check distance to POI
     const pois = areaHandler.getPois();

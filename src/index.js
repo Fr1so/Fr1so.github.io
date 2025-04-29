@@ -65,7 +65,7 @@ function updateUserLocation(coords, heading) {
 
 
     // display location based info on the map
-    document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}</span>`
+    document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}</span>`
 
     // Check distance to POI
     const pois = areaHandler.getPois();
