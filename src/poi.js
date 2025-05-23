@@ -42,6 +42,7 @@ export default class POI {
     }
 
     setFound(isFound) {
+        console.log('POI FOUND');
         this.isFound = isFound;
         this.updateStyle();
     }
@@ -64,7 +65,7 @@ export default class POI {
     }
 
     getContent() {
-        return this.poiContent.getContent();
+        return this.poiContent;
     }
 
     getAudio() {

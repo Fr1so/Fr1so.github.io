@@ -12,13 +12,13 @@ import GeoHandler from './geoHandler';
 import MapHandler from './MapHandler';
 import AreaHandler from './AreaHandler';
 import arrayIcon from './assets/icons/navigation.png'
+import QuizOverlay from './QuizOverlay';
 
 // GLOBAL VARIABLES
+let quizOverlay;
 let geoHandler;
 let areaHandler;
 let mapHandler;
-let popupElement;
-let popupOverlay;
 let firstLocationUpdate = true;
 let lastCoords = null;
 
@@ -87,27 +87,18 @@ function updateUserLocation(coords, heading) {
             }
 
             if (distance <= poi.getRadius() * 0.5) {
-                // POI FOUND
-                poi.setFound(true);
-
-                // force area layer to update
-                const parentArea = areaHandler.getAreas().find(area => area.getPois().includes(poi));
-                if (parentArea) {
-                    parentArea.updateStyle();
-                }
-
                 // show popup
-                popupElement.innerHTML = poi.getContent();
-                popupOverlay.setPosition(fromLonLat(poi.getCoords()));
+                quizOverlay.setPoi(poi);
+                quizOverlay.show();
+
                 break;
             } else {
-                // Hide popup when out of range
-                popupOverlay.setPosition(undefined);
+                quizOverlay.hide();
             }
 
             break;
         } else {
-            popupOverlay.setPosition(undefined);
+            quizOverlay.hide();
 
             const audio = poi.getAudio();
             if (audio && !audio.paused) {
@@ -118,26 +109,33 @@ function updateUserLocation(coords, heading) {
     }
 }
 
+function updateAreaCallback(poi) {
+    // force area layer to update
+    const parentArea = areaHandler.getAreas().find(area => area.getPois().includes(poi));
+    if (parentArea) {
+        parentArea.updateStyle();
+    }
+}
+
 
 // SETUP
 function setup() {
-    // --- POPUP SETUP ---
-    popupElement = document.createElement('div');
-    popupElement.className = 'ol-popup';
-
-    popupOverlay = new Overlay({
-        element: popupElement,
-        positioning: 'bottom-center',
-        stopEvent: false,
-        offset: [0, -25],
-    });
+    // --- UI SETUP ---
+    quizOverlay = new QuizOverlay(updateAreaCallback);
+    // Close event listeners
+        document.getElementById('modal-close').addEventListener('click', quizOverlay.hide.bind(quizOverlay));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                quizOverlay.hide();
+            }
+        });
 
     // --- MAP AND GEO SETUP ---
     geoHandler = new GeoHandler(updateUserLocation);
     areaHandler = new AreaHandler();
 
     const layers = [userLocationLayer];
-    const overlays = [popupOverlay];
+    const overlays = [];
 
     mapHandler = new MapHandler(geoHandler, layers, overlays, areaHandler.getAreas());
 }
@@ -145,6 +143,7 @@ function setup() {
 
 // MAIN PROGRAM
 function main() {
+    quizOverlay.hide();
     // Add event listener to recenter button
     document.getElementById('recenterBtn').addEventListener('click', () => {
         if (lastCoords) {

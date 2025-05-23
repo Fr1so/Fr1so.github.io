@@ -1,15 +1,27 @@
 export default class POIContent {
-    constructor(name, content, audioFile) {
+    constructor(name, content, audioFile, question = null, options = [], correctAnswer = null) {
         this.name = name;
         this.content = content;
         this.audio = new Audio(audioFile);
+        this.question = question;
+        this.options = options;
+        this.correctAnswer = correctAnswer;
     }
 
-    getContent(){
-        return `
-        <h2>${this.name}</h2>
-        <span>${this.content}</span>
-        `
+    getTitle() {
+        return this.name;
+    }
+
+    getQuestion() {
+        return this.question;
+    }
+
+    getAnswerOptions() {
+        return this.options;
+    }
+
+    getCorrectAnswer() {
+        return this.correctAnswer;
     }
 
     getAudio() {

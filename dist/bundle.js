@@ -1251,101 +1251,156 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
-    margin: 0;
+  margin: 0;
 }
 
 #map {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
 
 #info {
-    position: absolute;
-    top: 10px;
-    left: 50px;
-    font-size: 2em;
-    background-color: white;
-    opacity: 0.7;
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  font-size: 2em;
+  background-color: white;
+  opacity: 0.7;
 }
 
-.ol-popup {
-    position: absolute;
-    width: fit-content;
-    min-width: 300px;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #fefefe;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    font-family: sans-serif;
-    font-size: 14px;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-}
 
 .map-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  .map-btn:hover {
-    background-color: #fefefe
-  }
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
-  #start-overlay {
-    position: absolute;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  /* ::before creates a blurred background image */
-  #start-overlay::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: blur(5px) brightness(0.8);
-    z-index: 1;
-  }
-  
-  
-  #start-button {
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    background-color: dodgerblue;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 2;
-  }`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,SAAS;AACb;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,UAAU;IACV,cAAc;IACd,uBAAuB;IACvB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,yBAAyB;IACzB,aAAa;IACb,kBAAkB;IAClB,qCAAqC;IACrC,uBAAuB;IACvB,eAAe;IACf,oBAAoB;IACpB,6BAA6B;IAC7B,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,aAAa;IACb,uBAAuB;IACvB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,eAAe;IACf,wCAAwC;EAC1C;;EAEA;IACE;EACF;;EAEA;IACE,kBAAkB;IAClB,aAAa;IACb,MAAM;IACN,OAAO;IACP,WAAW;IACX,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,gBAAgB;EAClB;;EAEA,gDAAgD;EAChD;IACE,WAAW;IACX,kBAAkB;IAClB,MAAM;IACN,OAAO;IACP,WAAW;IACX,YAAY;IACZ,yDAAuD;IACvD,sBAAsB;IACtB,4BAA4B;IAC5B,2BAA2B;IAC3B,iCAAiC;IACjC,UAAU;EACZ;;;EAGA;IACE,kBAAkB;IAClB,iBAAiB;IACjB,4BAA4B;IAC5B,YAAY;IACZ,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,UAAU;EACZ","sourcesContent":["body {\n    margin: 0;\n}\n\n#map {\n    width: 100%;\n    height: 100vh;\n}\n\n#info {\n    position: absolute;\n    top: 10px;\n    left: 50px;\n    font-size: 2em;\n    background-color: white;\n    opacity: 0.7;\n}\n\n.ol-popup {\n    position: absolute;\n    width: fit-content;\n    min-width: 300px;\n    height: fit-content;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color: #fefefe;\n    padding: 1rem;\n    border-radius: 8px;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.3);\n    font-family: sans-serif;\n    font-size: 14px;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n    z-index: 2;\n}\n\n.map-btn {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    z-index: 1000;\n    background-color: white;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    padding: 8px 12px;\n    cursor: pointer;\n    font-size: 14px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n  }\n  \n  .map-btn:hover {\n    background-color: #fefefe\n  }\n\n  #start-overlay {\n    position: absolute;\n    z-index: 9999;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n  }\n  \n  /* ::before creates a blurred background image */\n  #start-overlay::before {\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-image: url(./assets/img/map-placeholder.jpg);\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    filter: blur(5px) brightness(0.8);\n    z-index: 1;\n  }\n  \n  \n  #start-button {\n    padding: 1rem 2rem;\n    font-size: 1.5rem;\n    background-color: dodgerblue;\n    color: white;\n    border: none;\n    border-radius: 8px;\n    cursor: pointer;\n    z-index: 2;\n  }"],"sourceRoot":""}]);
+.map-btn:hover {
+  background-color: #fefefe
+}
+
+#start-overlay {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ::before creates a blurred background image */
+#start-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(5px) brightness(0.8);
+  z-index: 1;
+}
+
+
+#start-button {
+  font-size: 2em;
+  padding: 1em 2em;
+  background-color: rgb(92, 109, 93);
+  width: fit-content;
+  border: none;
+  border-radius: 1em;
+  text-decoration: none;
+  color: rgb(215, 221, 199);
+  cursor: pointer;
+  z-index: 2;
+}
+
+#start-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* POI Modal Styles */
+#poi-modal {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  padding: 20px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.modal-content button#modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.quiz-container ul {
+  list-style: none;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.quiz-container li {
+  margin-bottom: 10px;
+}
+
+.quiz-container button#submit-answer {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#quiz-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-feedback {
+  margin-top: 10px;
+  font-weight: bold;
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,SAAS;AACX;;AAEA;EACE,WAAW;EACX,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,UAAU;EACV,cAAc;EACd,uBAAuB;EACvB,YAAY;AACd;;;AAGA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,wCAAwC;AAC1C;;AAEA;EACE;AACF;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;AAClB;;AAEA,gDAAgD;AAChD;EACE,WAAW;EACX,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,yDAAuD;EACvD,sBAAsB;EACtB,4BAA4B;EAC5B,2BAA2B;EAC3B,iCAAiC;EACjC,UAAU;AACZ;;;AAGA;EACE,cAAc;EACd,gBAAgB;EAChB,kCAAkC;EAClC,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;EACrB,yBAAyB;EACzB,eAAe;EACf,UAAU;AACZ;;AAEA;EACE,2BAA2B;AAC7B;;;AAGA,qBAAqB;AACrB;EACE,eAAe;EACf,QAAQ;EACR,SAAS;EACT,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,aAAa;EACb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,aAAa;EACb,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,gBAAgB;EAChB,YAAY;EACZ,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;EAChB,UAAU;AACZ;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,kBAAkB;EAClB,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;AACnB","sourcesContent":["body {\n  margin: 0;\n}\n\n#map {\n  width: 100%;\n  height: 100vh;\n}\n\n#info {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  font-size: 2em;\n  background-color: white;\n  opacity: 0.7;\n}\n\n\n.map-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  z-index: 1000;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  padding: 8px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n}\n\n.map-btn:hover {\n  background-color: #fefefe\n}\n\n#start-overlay {\n  position: absolute;\n  z-index: 9999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n/* ::before creates a blurred background image */\n#start-overlay::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(./assets/img/map-placeholder.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  filter: blur(5px) brightness(0.8);\n  z-index: 1;\n}\n\n\n#start-button {\n  font-size: 2em;\n  padding: 1em 2em;\n  background-color: rgb(92, 109, 93);\n  width: fit-content;\n  border: none;\n  border-radius: 1em;\n  text-decoration: none;\n  color: rgb(215, 221, 199);\n  cursor: pointer;\n  z-index: 2;\n}\n\n#start-button:hover {\n  transform: translateY(-2px);\n}\n\n\n/* POI Modal Styles */\n#poi-modal {\n  position: fixed;\n  top: 5vh;\n  left: 5vw;\n  width: 90vw;\n  height: 90vh;\n  background-color: #f4f4f4;\n  border-radius: 10px;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);\n  overflow-y: auto;\n  z-index: 9998;\n  display: flex;\n  flex-direction: column;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.modal-content {\n  padding: 20px;\n  position: relative;\n  flex-grow: 1;\n}\n\n.modal-content button#modal-close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 30px;\n  cursor: pointer;\n}\n\n.quiz-container ul {\n  list-style: none;\n  margin-top: 15px;\n  padding: 0;\n}\n\n.quiz-container li {\n  margin-bottom: 10px;\n}\n\n.quiz-container button#submit-answer {\n  background-color: #4CAF50;\n  color: #fff;\n  border: none;\n  padding: 10px 20px;\n  font-size: 16px;\n  border-radius: 5px;\n  cursor: pointer;\n  margin-top: 15px;\n}\n\n#quiz-form {\n  display: flex;\n  flex-direction: column;\n}\n\n.quiz-feedback {\n  margin-top: 10px;\n  font-weight: bold;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6496,608 +6551,6 @@ function unByKey(key) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Observable);
-
-
-/***/ }),
-
-/***/ "./node_modules/ol/Overlay.js":
-/*!************************************!*\
-  !*** ./node_modules/ol/Overlay.js ***!
-  \************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _MapEventType_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MapEventType.js */ "./node_modules/ol/MapEventType.js");
-/* harmony import */ var _Object_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Object.js */ "./node_modules/ol/Object.js");
-/* harmony import */ var _css_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css.js */ "./node_modules/ol/css.js");
-/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom.js */ "./node_modules/ol/dom.js");
-/* harmony import */ var _events_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events.js */ "./node_modules/ol/events.js");
-/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./extent.js */ "./node_modules/ol/extent.js");
-/**
- * @module ol/Overlay
- */
-
-
-
-
-
-
-
-/**
- * @typedef {'bottom-left' | 'bottom-center' | 'bottom-right' | 'center-left' | 'center-center' | 'center-right' | 'top-left' | 'top-center' | 'top-right'} Positioning
- * The overlay position: `'bottom-left'`, `'bottom-center'`,  `'bottom-right'`,
- * `'center-left'`, `'center-center'`, `'center-right'`, `'top-left'`,
- * `'top-center'`, or `'top-right'`.
- */
-
-/**
- * @typedef {Object} Options
- * @property {number|string} [id] Set the overlay id. The overlay id can be used
- * with the {@link module:ol/Map~Map#getOverlayById} method.
- * @property {HTMLElement} [element] The overlay element.
- * @property {Array<number>} [offset=[0, 0]] Offsets in pixels used when positioning
- * the overlay. The first element in the
- * array is the horizontal offset. A positive value shifts the overlay right.
- * The second element in the array is the vertical offset. A positive value
- * shifts the overlay down.
- * @property {import("./coordinate.js").Coordinate} [position] The overlay position
- * in map projection.
- * @property {Positioning} [positioning='top-left'] Defines how
- * the overlay is actually positioned with respect to its `position` property.
- * Possible values are `'bottom-left'`, `'bottom-center'`, `'bottom-right'`,
- * `'center-left'`, `'center-center'`, `'center-right'`, `'top-left'`,
- * `'top-center'`, and `'top-right'`.
- * @property {boolean} [stopEvent=true] Whether event propagation to the map
- * viewport should be stopped. If `true` the overlay is placed in the same
- * container as that of the controls (CSS class name
- * `ol-overlaycontainer-stopevent`); if `false` it is placed in the container
- * with CSS class name specified by the `className` property.
- * @property {boolean} [insertFirst=true] Whether the overlay is inserted first
- * in the overlay container, or appended. If the overlay is placed in the same
- * container as that of the controls (see the `stopEvent` option) you will
- * probably set `insertFirst` to `true` so the overlay is displayed below the
- * controls.
- * @property {PanIntoViewOptions|boolean} [autoPan=false] Pan the map when calling
- * `setPosition`, so that the overlay is entirely visible in the current viewport.
- * @property {string} [className='ol-overlay-container ol-selectable'] CSS class
- * name.
- */
-
-/**
- * @typedef {Object} PanOptions
- * @property {number} [duration=1000] The duration of the animation in
- * milliseconds.
- * @property {function(number):number} [easing] The easing function to use. Can
- * be one from {@link module:ol/easing} or a custom function.
- * Default is {@link module:ol/easing.inAndOut}.
- */
-
-/**
- * @typedef {Object} PanIntoViewOptions
- * @property {PanOptions} [animation={}] The animation parameters for the pan
- * @property {number} [margin=20] The margin (in pixels) between the
- * overlay and the borders of the map when panning into view.
- */
-
-/**
- * @enum {string}
- * @protected
- */
-const Property = {
-  ELEMENT: 'element',
-  MAP: 'map',
-  OFFSET: 'offset',
-  POSITION: 'position',
-  POSITIONING: 'positioning',
-};
-
-/**
- * @typedef {import("./ObjectEventType").Types|'change:element'|'change:map'|'change:offset'|'change:position'|
- *   'change:positioning'} OverlayObjectEventTypes
- */
-
-/***
- * @template Return
- * @typedef {import("./Observable").OnSignature<import("./Observable").EventTypes, import("./events/Event.js").default, Return> &
- *   import("./Observable").OnSignature<OverlayObjectEventTypes, import("./Object").ObjectEvent, Return> &
- *   import("./Observable").CombinedOnSignature<import("./Observable").EventTypes|OverlayObjectEventTypes, Return>} OverlayOnSignature
- */
-
-/**
- * @classdesc
- * An element to be displayed over the map and attached to a single map
- * location.  Like {@link module:ol/control/Control~Control}, Overlays are
- * visible widgets. Unlike Controls, they are not in a fixed position on the
- * screen, but are tied to a geographical coordinate, so panning the map will
- * move an Overlay but not a Control.
- *
- * Example:
- *
- *     import Overlay from 'ol/Overlay.js';
- *
- *     // ...
- *     const popup = new Overlay({
- *       element: document.getElementById('popup'),
- *     });
- *     popup.setPosition(coordinate);
- *     map.addOverlay(popup);
- *
- * @api
- */
-class Overlay extends _Object_js__WEBPACK_IMPORTED_MODULE_0__["default"] {
-  /**
-   * @param {Options} options Overlay options.
-   */
-  constructor(options) {
-    super();
-
-    /***
-     * @type {OverlayOnSignature<import("./events").EventsKey>}
-     */
-    this.on;
-
-    /***
-     * @type {OverlayOnSignature<import("./events").EventsKey>}
-     */
-    this.once;
-
-    /***
-     * @type {OverlayOnSignature<void>}
-     */
-    this.un;
-
-    /**
-     * @protected
-     * @type {Options}
-     */
-    this.options = options;
-
-    /**
-     * @protected
-     * @type {number|string|undefined}
-     */
-    this.id = options.id;
-
-    /**
-     * @protected
-     * @type {boolean}
-     */
-    this.insertFirst =
-      options.insertFirst !== undefined ? options.insertFirst : true;
-
-    /**
-     * @protected
-     * @type {boolean}
-     */
-    this.stopEvent = options.stopEvent !== undefined ? options.stopEvent : true;
-
-    /**
-     * @protected
-     * @type {HTMLElement}
-     */
-    this.element = document.createElement('div');
-    this.element.className =
-      options.className !== undefined
-        ? options.className
-        : 'ol-overlay-container ' + _css_js__WEBPACK_IMPORTED_MODULE_1__.CLASS_SELECTABLE;
-    this.element.style.position = 'absolute';
-    this.element.style.pointerEvents = 'auto';
-
-    /**
-     * @protected
-     * @type {PanIntoViewOptions|undefined}
-     */
-    this.autoPan = options.autoPan === true ? {} : options.autoPan || undefined;
-
-    /**
-     * @protected
-     * @type {{transform_: string,
-     *         visible: boolean}}
-     */
-    this.rendered = {
-      transform_: '',
-      visible: true,
-    };
-
-    /**
-     * @protected
-     * @type {?import("./events.js").EventsKey}
-     */
-    this.mapPostrenderListenerKey = null;
-
-    this.addChangeListener(Property.ELEMENT, this.handleElementChanged);
-    this.addChangeListener(Property.MAP, this.handleMapChanged);
-    this.addChangeListener(Property.OFFSET, this.handleOffsetChanged);
-    this.addChangeListener(Property.POSITION, this.handlePositionChanged);
-    this.addChangeListener(Property.POSITIONING, this.handlePositioningChanged);
-
-    if (options.element !== undefined) {
-      this.setElement(options.element);
-    }
-
-    this.setOffset(options.offset !== undefined ? options.offset : [0, 0]);
-
-    this.setPositioning(options.positioning || 'top-left');
-
-    if (options.position !== undefined) {
-      this.setPosition(options.position);
-    }
-  }
-
-  /**
-   * Get the DOM element of this overlay.
-   * @return {HTMLElement|undefined} The Element containing the overlay.
-   * @observable
-   * @api
-   */
-  getElement() {
-    return /** @type {HTMLElement|undefined} */ (this.get(Property.ELEMENT));
-  }
-
-  /**
-   * Get the overlay identifier which is set on constructor.
-   * @return {number|string|undefined} Id.
-   * @api
-   */
-  getId() {
-    return this.id;
-  }
-
-  /**
-   * Get the map associated with this overlay.
-   * @return {import("./Map.js").default|null} The map that the
-   * overlay is part of.
-   * @observable
-   * @api
-   */
-  getMap() {
-    return /** @type {import("./Map.js").default|null} */ (
-      this.get(Property.MAP) || null
-    );
-  }
-
-  /**
-   * Get the offset of this overlay.
-   * @return {Array<number>} The offset.
-   * @observable
-   * @api
-   */
-  getOffset() {
-    return /** @type {Array<number>} */ (this.get(Property.OFFSET));
-  }
-
-  /**
-   * Get the current position of this overlay.
-   * @return {import("./coordinate.js").Coordinate|undefined} The spatial point that the overlay is
-   *     anchored at.
-   * @observable
-   * @api
-   */
-  getPosition() {
-    return /** @type {import("./coordinate.js").Coordinate|undefined} */ (
-      this.get(Property.POSITION)
-    );
-  }
-
-  /**
-   * Get the current positioning of this overlay.
-   * @return {Positioning} How the overlay is positioned
-   *     relative to its point on the map.
-   * @observable
-   * @api
-   */
-  getPositioning() {
-    return /** @type {Positioning} */ (this.get(Property.POSITIONING));
-  }
-
-  /**
-   * @protected
-   */
-  handleElementChanged() {
-    (0,_dom_js__WEBPACK_IMPORTED_MODULE_2__.removeChildren)(this.element);
-    const element = this.getElement();
-    if (element) {
-      this.element.appendChild(element);
-    }
-  }
-
-  /**
-   * @protected
-   */
-  handleMapChanged() {
-    if (this.mapPostrenderListenerKey) {
-      this.element?.remove();
-      (0,_events_js__WEBPACK_IMPORTED_MODULE_3__.unlistenByKey)(this.mapPostrenderListenerKey);
-      this.mapPostrenderListenerKey = null;
-    }
-    const map = this.getMap();
-    if (map) {
-      this.mapPostrenderListenerKey = (0,_events_js__WEBPACK_IMPORTED_MODULE_3__.listen)(
-        map,
-        _MapEventType_js__WEBPACK_IMPORTED_MODULE_4__["default"].POSTRENDER,
-        this.render,
-        this,
-      );
-      this.updatePixelPosition();
-      const container = this.stopEvent
-        ? map.getOverlayContainerStopEvent()
-        : map.getOverlayContainer();
-      if (this.insertFirst) {
-        container.insertBefore(this.element, container.childNodes[0] || null);
-      } else {
-        container.appendChild(this.element);
-      }
-      this.performAutoPan();
-    }
-  }
-
-  /**
-   * @protected
-   */
-  render() {
-    this.updatePixelPosition();
-  }
-
-  /**
-   * @protected
-   */
-  handleOffsetChanged() {
-    this.updatePixelPosition();
-  }
-
-  /**
-   * @protected
-   */
-  handlePositionChanged() {
-    this.updatePixelPosition();
-    this.performAutoPan();
-  }
-
-  /**
-   * @protected
-   */
-  handlePositioningChanged() {
-    this.updatePixelPosition();
-  }
-
-  /**
-   * Set the DOM element to be associated with this overlay.
-   * @param {HTMLElement|undefined} element The Element containing the overlay.
-   * @observable
-   * @api
-   */
-  setElement(element) {
-    this.set(Property.ELEMENT, element);
-  }
-
-  /**
-   * Set the map to be associated with this overlay.
-   * @param {import("./Map.js").default|null} map The map that the
-   * overlay is part of. Pass `null` to just remove the overlay from the current map.
-   * @observable
-   * @api
-   */
-  setMap(map) {
-    this.set(Property.MAP, map);
-  }
-
-  /**
-   * Set the offset for this overlay.
-   * @param {Array<number>} offset Offset.
-   * @observable
-   * @api
-   */
-  setOffset(offset) {
-    this.set(Property.OFFSET, offset);
-  }
-
-  /**
-   * Set the position for this overlay. If the position is `undefined` the
-   * overlay is hidden.
-   * @param {import("./coordinate.js").Coordinate|undefined} position The spatial point that the overlay
-   *     is anchored at.
-   * @observable
-   * @api
-   */
-  setPosition(position) {
-    this.set(Property.POSITION, position);
-  }
-
-  /**
-   * Pan the map so that the overlay is entirely visible in the current viewport
-   * (if necessary) using the configured autoPan parameters
-   * @protected
-   */
-  performAutoPan() {
-    if (this.autoPan) {
-      this.panIntoView(this.autoPan);
-    }
-  }
-
-  /**
-   * Pan the map so that the overlay is entirely visible in the current viewport
-   * (if necessary).
-   * @param {PanIntoViewOptions} [panIntoViewOptions] Options for the pan action
-   * @api
-   */
-  panIntoView(panIntoViewOptions) {
-    const map = this.getMap();
-
-    if (!map || !map.getTargetElement() || !this.get(Property.POSITION)) {
-      return;
-    }
-
-    const mapRect = this.getRect(map.getTargetElement(), map.getSize());
-    const element = this.getElement();
-    const overlayRect = this.getRect(element, [
-      (0,_dom_js__WEBPACK_IMPORTED_MODULE_2__.outerWidth)(element),
-      (0,_dom_js__WEBPACK_IMPORTED_MODULE_2__.outerHeight)(element),
-    ]);
-
-    panIntoViewOptions = panIntoViewOptions || {};
-
-    const myMargin =
-      panIntoViewOptions.margin === undefined ? 20 : panIntoViewOptions.margin;
-    if (!(0,_extent_js__WEBPACK_IMPORTED_MODULE_5__.containsExtent)(mapRect, overlayRect)) {
-      // the overlay is not completely inside the viewport, so pan the map
-      const offsetLeft = overlayRect[0] - mapRect[0];
-      const offsetRight = mapRect[2] - overlayRect[2];
-      const offsetTop = overlayRect[1] - mapRect[1];
-      const offsetBottom = mapRect[3] - overlayRect[3];
-
-      const delta = [0, 0];
-      if (offsetLeft < 0) {
-        // move map to the left
-        delta[0] = offsetLeft - myMargin;
-      } else if (offsetRight < 0) {
-        // move map to the right
-        delta[0] = Math.abs(offsetRight) + myMargin;
-      }
-      if (offsetTop < 0) {
-        // move map up
-        delta[1] = offsetTop - myMargin;
-      } else if (offsetBottom < 0) {
-        // move map down
-        delta[1] = Math.abs(offsetBottom) + myMargin;
-      }
-
-      if (delta[0] !== 0 || delta[1] !== 0) {
-        const center = /** @type {import("./coordinate.js").Coordinate} */ (
-          map.getView().getCenterInternal()
-        );
-        const centerPx = map.getPixelFromCoordinateInternal(center);
-        if (!centerPx) {
-          return;
-        }
-        const newCenterPx = [centerPx[0] + delta[0], centerPx[1] + delta[1]];
-
-        const panOptions = panIntoViewOptions.animation || {};
-        map.getView().animateInternal({
-          center: map.getCoordinateFromPixelInternal(newCenterPx),
-          duration: panOptions.duration,
-          easing: panOptions.easing,
-        });
-      }
-    }
-  }
-
-  /**
-   * Get the extent of an element relative to the document
-   * @param {HTMLElement} element The element.
-   * @param {import("./size.js").Size} size The size of the element.
-   * @return {import("./extent.js").Extent} The extent.
-   * @protected
-   */
-  getRect(element, size) {
-    const box = element.getBoundingClientRect();
-    const offsetX = box.left + window.pageXOffset;
-    const offsetY = box.top + window.pageYOffset;
-    return [offsetX, offsetY, offsetX + size[0], offsetY + size[1]];
-  }
-
-  /**
-   * Set the positioning for this overlay.
-   * @param {Positioning} positioning how the overlay is
-   *     positioned relative to its point on the map.
-   * @observable
-   * @api
-   */
-  setPositioning(positioning) {
-    this.set(Property.POSITIONING, positioning);
-  }
-
-  /**
-   * Modify the visibility of the element.
-   * @param {boolean} visible Element visibility.
-   * @protected
-   */
-  setVisible(visible) {
-    if (this.rendered.visible !== visible) {
-      this.element.style.display = visible ? '' : 'none';
-      this.rendered.visible = visible;
-    }
-  }
-
-  /**
-   * Update pixel position.
-   * @protected
-   */
-  updatePixelPosition() {
-    const map = this.getMap();
-    const position = this.getPosition();
-    if (!map || !map.isRendered() || !position) {
-      this.setVisible(false);
-      return;
-    }
-
-    const pixel = map.getPixelFromCoordinate(position);
-    const mapSize = map.getSize();
-    this.updateRenderedPosition(pixel, mapSize);
-  }
-
-  /**
-   * @param {import("./pixel.js").Pixel} pixel The pixel location.
-   * @param {import("./size.js").Size|undefined} mapSize The map size.
-   * @protected
-   */
-  updateRenderedPosition(pixel, mapSize) {
-    const style = this.element.style;
-    const offset = this.getOffset();
-
-    const positioning = this.getPositioning();
-
-    this.setVisible(true);
-
-    const x = Math.round(pixel[0] + offset[0]) + 'px';
-    const y = Math.round(pixel[1] + offset[1]) + 'px';
-    let posX = '0%';
-    let posY = '0%';
-    if (
-      positioning == 'bottom-right' ||
-      positioning == 'center-right' ||
-      positioning == 'top-right'
-    ) {
-      posX = '-100%';
-    } else if (
-      positioning == 'bottom-center' ||
-      positioning == 'center-center' ||
-      positioning == 'top-center'
-    ) {
-      posX = '-50%';
-    }
-    if (
-      positioning == 'bottom-left' ||
-      positioning == 'bottom-center' ||
-      positioning == 'bottom-right'
-    ) {
-      posY = '-100%';
-    } else if (
-      positioning == 'center-left' ||
-      positioning == 'center-center' ||
-      positioning == 'center-right'
-    ) {
-      posY = '-50%';
-    }
-    const transform = `translate(${posX}, ${posY}) translate(${x}, ${y})`;
-    if (this.rendered.transform_ != transform) {
-      this.rendered.transform_ = transform;
-      style.transform = transform;
-    }
-  }
-
-  /**
-   * returns the options this Overlay has been created with
-   * @return {Options} overlay options
-   */
-  getOptions() {
-    return this.options;
-  }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overlay);
 
 
 /***/ }),
@@ -54568,7 +54021,7 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.134193, 52.080148], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', 'Amsterdam testing location', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__), true);
+        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', '', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
 
         // Amelis Weerd POIS
         const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));
@@ -54805,6 +54258,7 @@ class POI {
     }
 
     setFound(isFound) {
+        console.log('POI FOUND');
         this.isFound = isFound;
         this.updateStyle();
     }
@@ -54827,7 +54281,7 @@ class POI {
     }
 
     getContent() {
-        return this.poiContent.getContent();
+        return this.poiContent;
     }
 
     getAudio() {
@@ -54848,23 +54302,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ POIContent)
 /* harmony export */ });
 class POIContent {
-    constructor(name, content, audioFile) {
+    constructor(name, content, audioFile, question = null, options = [], correctAnswer = null) {
         this.name = name;
         this.content = content;
         this.audio = new Audio(audioFile);
+        this.question = question;
+        this.options = options;
+        this.correctAnswer = correctAnswer;
     }
 
-    getContent(){
-        return `
-        <h2>${this.name}</h2>
-        <span>${this.content}</span>
-        `
+    getTitle() {
+        return this.name;
+    }
+
+    getQuestion() {
+        return this.question;
+    }
+
+    getAnswerOptions() {
+        return this.options;
+    }
+
+    getCorrectAnswer() {
+        return this.correctAnswer;
     }
 
     getAudio() {
         return this.audio;
     }
 }
+
+/***/ }),
+
+/***/ "./src/QuizOverlay.js":
+/*!****************************!*\
+  !*** ./src/QuizOverlay.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ QuizOverlay)
+/* harmony export */ });
+class QuizOverlay {
+    constructor(updateAreaCallback) {
+        this.updateAreaCallback = updateAreaCallback;
+        this.poi = null;
+    }
+
+    setPoi(poi) {
+        this.poi = poi;
+    }
+
+    show() {
+        if(!this.poi) {
+            console.error('Cant show quiz overlay: no poi set');
+        }
+
+        const content = this.poi.getContent();
+
+        const modal = document.getElementById('poi-modal');
+        const titleElement = document.getElementById('poi-title');
+        const descriptionElement = document.getElementById('poi-description');
+
+        titleElement.textContent = content.getTitle();
+        descriptionElement.innerHTML = this.getQuizFormHtml();
+        modal.classList.remove('hidden');
+
+        this.handleQuizSubmission();
+    }
+
+    hide() {
+        const modal = document.getElementById('poi-modal');
+        modal.classList.add('hidden');
+    }
+
+    getQuizFormHtml() {
+        const content = this.poi.getContent();
+
+        // Only show quiz if a question is provided
+        if (!content.getQuestion() || content.getAnswerOptions().length === 0) return '';
+
+        const optionsHtml = content.getAnswerOptions()
+            .map((option, index) => `
+                <label class="quiz-option">
+                    <input type="radio" name="quiz-option" value="${index}">
+                    ${option}
+                </label>
+            `)
+            .join('');
+
+        return `
+            <div class="quiz-container">
+                <h3>${content.getQuestion()}</h3>
+                <form id="quiz-form">
+                    ${optionsHtml}
+                    <button type="button" id="submit-answer">Submit</button>
+                </form>
+                <p id="quiz-feedback" class="quiz-feedback"></p>
+            </div>
+        `;
+    }
+
+    handleQuizSubmission() {
+        const form = document.getElementById('quiz-form');
+        const feedbackElement = document.getElementById('quiz-feedback');
+
+        if (!form || !this.poi) return;
+
+        const content = this.poi.getContent();
+        const correctIndex = content.getCorrectAnswer();
+
+        form.addEventListener('click', (event) => {
+            if (event.target.id === 'submit-answer') {
+                const selectedOption = form.querySelector('input[name="quiz-option"]:checked');
+
+                if (selectedOption) {
+                    const selectedIndex = parseInt(selectedOption.value, 10);
+                    const isCorrect = selectedIndex === correctIndex;
+
+                    feedbackElement.textContent = isCorrect 
+                        ? '✅ Correct! Well done!' 
+                        : '❌ Incorrect, try again.';
+
+                    feedbackElement.classList.toggle('correct', isCorrect);
+                    feedbackElement.classList.toggle('incorrect', !isCorrect);
+
+                    if(isCorrect) {
+                        this.poi.setFound(true);
+                        this.updateAreaCallback(this.poi);
+                    }
+                } else {
+                    feedbackElement.textContent = '⚠️ Please select an option before submitting.';
+                    feedbackElement.classList.remove('correct', 'incorrect');
+                }
+            }
+        });
+    }
+};
 
 /***/ }),
 
@@ -55208,17 +54783,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ol_ol_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/ol.css */ "./node_modules/ol/ol.css");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
-/* harmony import */ var ol_Overlay__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/Overlay */ "./node_modules/ol/Overlay.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
 /* harmony import */ var _geoHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./geoHandler */ "./src/geoHandler.js");
 /* harmony import */ var _MapHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MapHandler */ "./src/MapHandler.js");
 /* harmony import */ var _AreaHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AreaHandler */ "./src/AreaHandler.js");
 /* harmony import */ var _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/icons/navigation.png */ "./src/assets/icons/navigation.png");
+/* harmony import */ var _QuizOverlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./QuizOverlay */ "./src/QuizOverlay.js");
+
 
 
 
@@ -55235,17 +54811,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // GLOBAL VARIABLES
+let quizOverlay;
 let geoHandler;
 let areaHandler;
 let mapHandler;
-let popupElement;
-let popupOverlay;
 let firstLocationUpdate = true;
 let lastCoords = null;
 
 // Create a vector source to store the user's location
-const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]();
-const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]({ source: userLocationSource });
+const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]();
+const userLocationLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_9__["default"]({ source: userLocationSource });
 
 
 // -- GEO UPDATE CALLBACK --
@@ -55253,12 +54828,12 @@ function updateUserLocation(coords, heading) {
     lastCoords = coords;
     userLocationSource.clear();
 
-    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_9__["default"]({
-        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_10__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
+    const userLocation = new ol_Feature__WEBPACK_IMPORTED_MODULE_10__["default"]({
+        geometry: new ol_geom_Point__WEBPACK_IMPORTED_MODULE_11__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(coords))
     });
 
-    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_11__["default"]({
-        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_12__["default"]({
+    userLocation.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_12__["default"]({
+        image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_13__["default"]({
             src: _assets_icons_navigation_png__WEBPACK_IMPORTED_MODULE_6__,
             scale: 0.08,
             rotation: heading,
@@ -55308,27 +54883,18 @@ function updateUserLocation(coords, heading) {
             }
 
             if (distance <= poi.getRadius() * 0.5) {
-                // POI FOUND
-                poi.setFound(true);
-
-                // force area layer to update
-                const parentArea = areaHandler.getAreas().find(area => area.getPois().includes(poi));
-                if (parentArea) {
-                    parentArea.updateStyle();
-                }
-
                 // show popup
-                popupElement.innerHTML = poi.getContent();
-                popupOverlay.setPosition((0,ol_proj__WEBPACK_IMPORTED_MODULE_2__.fromLonLat)(poi.getCoords()));
+                quizOverlay.setPoi(poi);
+                quizOverlay.show();
+
                 break;
             } else {
-                // Hide popup when out of range
-                popupOverlay.setPosition(undefined);
+                quizOverlay.hide();
             }
 
             break;
         } else {
-            popupOverlay.setPosition(undefined);
+            quizOverlay.hide();
 
             const audio = poi.getAudio();
             if (audio && !audio.paused) {
@@ -55339,26 +54905,33 @@ function updateUserLocation(coords, heading) {
     }
 }
 
+function updateAreaCallback(poi) {
+    // force area layer to update
+    const parentArea = areaHandler.getAreas().find(area => area.getPois().includes(poi));
+    if (parentArea) {
+        parentArea.updateStyle();
+    }
+}
+
 
 // SETUP
 function setup() {
-    // --- POPUP SETUP ---
-    popupElement = document.createElement('div');
-    popupElement.className = 'ol-popup';
-
-    popupOverlay = new ol_Overlay__WEBPACK_IMPORTED_MODULE_13__["default"]({
-        element: popupElement,
-        positioning: 'bottom-center',
-        stopEvent: false,
-        offset: [0, -25],
-    });
+    // --- UI SETUP ---
+    quizOverlay = new _QuizOverlay__WEBPACK_IMPORTED_MODULE_7__["default"](updateAreaCallback);
+    // Close event listeners
+        document.getElementById('modal-close').addEventListener('click', quizOverlay.hide.bind(quizOverlay));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                quizOverlay.hide();
+            }
+        });
 
     // --- MAP AND GEO SETUP ---
     geoHandler = new _geoHandler__WEBPACK_IMPORTED_MODULE_3__["default"](updateUserLocation);
     areaHandler = new _AreaHandler__WEBPACK_IMPORTED_MODULE_5__["default"]();
 
     const layers = [userLocationLayer];
-    const overlays = [popupOverlay];
+    const overlays = [];
 
     mapHandler = new _MapHandler__WEBPACK_IMPORTED_MODULE_4__["default"](geoHandler, layers, overlays, areaHandler.getAreas());
 }
@@ -55366,6 +54939,7 @@ function setup() {
 
 // MAIN PROGRAM
 function main() {
+    quizOverlay.hide();
     // Add event listener to recenter button
     document.getElementById('recenterBtn').addEventListener('click', () => {
         if (lastCoords) {
@@ -55387,7 +54961,6 @@ document.getElementById('start-button').addEventListener('click', () => {
     setup();
     main();
 });
-
 })();
 
 /******/ })()
