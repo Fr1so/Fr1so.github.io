@@ -54817,6 +54817,7 @@ let areaHandler;
 let mapHandler;
 let firstLocationUpdate = true;
 let lastCoords = null;
+let currentPoi = null;
 
 // Create a vector source to store the user's location
 const userLocationSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_8__["default"]();
@@ -54863,43 +54864,64 @@ function updateUserLocation(coords, heading) {
     // display location based info on the map
     document.getElementById('info').innerHTML = `<span>coords: ${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}</span>`
 
-    // Check distance to POI
-    const pois = areaHandler.getPois();
 
-    for (let i = 0; i < pois.length; i++) {
-        const poi = pois[i];
-        const distance = geoHandler.getDistanceMeters(coords, poi.getCoords());
-    
-        if (distance <= poi.getRadius()) {
-            // IN AUDIBLE RANGE OF POI
-            const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
-            const audio = poi.getAudio();
-    
-            if (audio) {
-                audio.volume = volume; // set volume
-                if (audio.paused) {
-                    audio.play();
-                }
+    // IF INSIDE POI ALREADY
+    if(currentPoi != null) {
+        const distance = geoHandler.getDistanceMeters(coords, currentPoi.getCoords());
+
+        // IN AUDIBLE RANGE OF POI
+        const volume = Math.max(0, 1 - distance / currentPoi.getRadius()); // 1 at center, 0 at edge
+        const audio = currentPoi.getAudio();
+        
+        if (audio) {
+            audio.volume = volume; // set volume
+            if (audio.paused) {
+                audio.play();
             }
+        }
 
-            if (distance <= poi.getRadius() * 0.5) {
-                // show popup
-                quizOverlay.setPoi(poi);
-                quizOverlay.show();
+        // check if user left POI radius
+        if (distance >= currentPoi.getRadius() * 0.5) {
+            quizOverlay.hide();
+            quizOverlay.setPoi(null);
+            currentPoi = null;
+        }
+    } else {
+        // Check distance to all POIS if not inside POI already
+        const pois = areaHandler.getPois();
+
+        for (let i = 0; i < pois.length; i++) {
+            const poi = pois[i];
+            const distance = geoHandler.getDistanceMeters(coords, poi.getCoords());
+        
+            if (distance <= poi.getRadius()) {
+                // IN AUDIBLE RANGE OF POI
+                const volume = Math.max(0, 1 - distance / poi.getRadius()); // 1 at center, 0 at edge
+                const audio = poi.getAudio();
+        
+                if (audio) {
+                    audio.volume = volume; // set volume
+                    if (audio.paused) {
+                        audio.play();
+                    }
+                }
+
+                if (distance <= poi.getRadius() * 0.5) {
+                    currentPoi = poi;
+                    // show popup
+                    quizOverlay.setPoi(poi);
+                    quizOverlay.show();
+                
+                    break;
+                }
 
                 break;
             } else {
-                quizOverlay.hide();
-            }
-
-            break;
-        } else {
-            quizOverlay.hide();
-
-            const audio = poi.getAudio();
-            if (audio && !audio.paused) {
-                audio.pause();
-                audio.currentTime = 0;
+                const audio = poi.getAudio();
+                if (audio && !audio.paused) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
             }
         }
     }
