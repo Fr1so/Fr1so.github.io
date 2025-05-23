@@ -54021,7 +54021,7 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', '', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
+        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', '', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
 
         // Amelis Weerd POIS
         const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));

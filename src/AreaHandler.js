@@ -11,7 +11,7 @@ import amelisweerdSound5 from './assets/audio/amelisweerd5.mp3';
 export default class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdamPoi1 = new POI([4.887620, 52.373366], 20, new POIContent('Amsterdam 1', '', amsterdamSound, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
+        const amsterdamPoi1 = new POI([4.887620, 52.373366], 80, new POIContent('Amsterdam 1', '', amsterdamSound, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
 
         // Amelis Weerd POIS
         const amelisWeerdPoi1 = new POI([5.169642143598895, 52.068005992977746], 20, new POIContent('Amelis Weerd 1', 'Congrats! You found point 1/5', amelisweerdSound1));
