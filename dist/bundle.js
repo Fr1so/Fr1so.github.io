@@ -54242,14 +54242,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ POI)
 /* harmony export */ });
-/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/geom/Circle */ "./node_modules/ol/geom/Circle.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
+/* harmony import */ var ol_geom_Circle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/geom/Circle */ "./node_modules/ol/geom/Circle.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_style_Style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
-/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
+/* harmony import */ var ol_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style */ "./node_modules/ol/style/Style.js");
+/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
+/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
+/* harmony import */ var _assets_icons_poi_icon_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/icons/poi_icon.png */ "./src/assets/icons/poi_icon.png");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+
+
+
+
 
 
 
@@ -54265,20 +54272,33 @@ class POI {
         this.coords = coords;
         this.poiContent = poiContent;
         this.isFound = isFound;
+        this.userInside = false;
 
         // Convert center to map projection
         const projectedCenter = (0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords);
 
         // Create a circle geometry
-        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            geometry: new ol_geom_Circle__WEBPACK_IMPORTED_MODULE_2__["default"](projectedCenter, this.radius)
+        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
+            geometry: new ol_geom_Circle__WEBPACK_IMPORTED_MODULE_3__["default"](projectedCenter, this.radius)
         });
 
-        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_3__["default"]({
-            features: [this.poiFeature]
+        this.poiMarker = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
+            geometry: null,
+            poiReference: this
         });
 
-        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_4__["default"]({
+        this.poiMarker.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_4__["default"]({
+            image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_5__["default"]({
+                src: _assets_icons_poi_icon_png__WEBPACK_IMPORTED_MODULE_1__,
+                scale: 0.8
+            })
+        }));
+
+        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
+            features: [this.poiFeature, this.poiMarker]
+        });
+
+        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]({
             source: this.poiSource
         });
 
@@ -54294,19 +54314,29 @@ class POI {
     }
 
     setFound(isFound) {
-        console.log('POI FOUND');
         this.isFound = isFound;
+        this.updateMarkerVisibility();
+
+        // SHOW RADIUS
         this.updateStyle();
+    }
+
+    updateMarkerVisibility() {
+        if (this.isFound || this.userInside) {
+            this.poiMarker.setGeometry(new ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords)));
+        } else {
+            this.poiMarker.setGeometry(null);
+        }
     }
 
     updateStyle() {
         const opacity = this.isFound ? 0.3 : 0.0;
-        this.poiFeature.setStyle(new ol_style_Style__WEBPACK_IMPORTED_MODULE_5__["default"]({
-            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_6__["default"]({
+        this.poiFeature.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_4__["default"]({
+            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_9__["default"]({
                 color: `rgba(0, 0, 255, ${opacity * 3})`,
                 width: 2
             }),
-            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_7__["default"]({
+            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_10__["default"]({
                 color: `rgba(30, 144, 255, ${opacity})`
             })
         }));
@@ -54445,7 +54475,7 @@ class QuizOverlay {
                 <h3>${content.getQuestion()}</h3>
                 <form id="quiz-form">
                     ${optionsHtml}
-                    <button type="button" id="submit-answer">Submit</button>
+                    <button type="button" id="submit-answer">Controleer</button>
                 </form>
                 <p id="quiz-feedback" class="quiz-feedback"></p>
             </div>
@@ -54558,6 +54588,16 @@ module.exports = __webpack_require__.p + "80401f79cc2137eb5152.mp3";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
+
+/***/ }),
+
+/***/ "./src/assets/icons/poi_icon.png":
+/*!***************************************!*\
+  !*** ./src/assets/icons/poi_icon.png ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "83c1d8c476943e124d69.png";
 
 /***/ }),
 
@@ -54943,6 +54983,10 @@ function updateUserLocation(coords, heading) {
             quizOverlay.hide();
             quizOverlay.setPoi(null);
             currentPoi = null;
+
+            // hide marker
+            poi.userInside = false;
+            poi.updateMarkerVisibility();
         }
     } else {
         // Check distance to all POIS if not inside POI already
@@ -54969,6 +55013,10 @@ function updateUserLocation(coords, heading) {
                     // show popup
                     quizOverlay.setPoi(poi);
                     quizOverlay.show();
+
+                    // show marker on the map
+                    poi.userInside = true;
+                    poi.updateMarkerVisibility();
                 
                     break;
                 }
@@ -55014,6 +55062,16 @@ function setup() {
     const overlays = [];
 
     mapHandler = new _MapHandler__WEBPACK_IMPORTED_MODULE_4__["default"](geoHandler, layers, overlays, areaHandler.getAreas());
+    mapHandler.getMap().on('singleclick', function (event) {
+        mapHandler.getMap().forEachFeatureAtPixel(event.pixel, function (feature) {
+            if (feature.get('poiReference')) {
+                const poi = feature.get('poiReference');
+                currentPoi = poi;
+                quizOverlay.setPoi(poi);
+                quizOverlay.show();
+            }
+        });
+    });
 }
 
 

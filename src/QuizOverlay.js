@@ -54,7 +54,7 @@ export default class QuizOverlay {
                 <h3>${content.getQuestion()}</h3>
                 <form id="quiz-form">
                     ${optionsHtml}
-                    <button type="button" id="submit-answer">Submit</button>
+                    <button type="button" id="submit-answer">Controleer</button>
                 </form>
                 <p id="quiz-feedback" class="quiz-feedback"></p>
             </div>

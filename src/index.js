@@ -89,6 +89,10 @@ function updateUserLocation(coords, heading) {
             quizOverlay.hide();
             quizOverlay.setPoi(null);
             currentPoi = null;
+
+            // hide marker
+            poi.userInside = false;
+            poi.updateMarkerVisibility();
         }
     } else {
         // Check distance to all POIS if not inside POI already
@@ -115,6 +119,10 @@ function updateUserLocation(coords, heading) {
                     // show popup
                     quizOverlay.setPoi(poi);
                     quizOverlay.show();
+
+                    // show marker on the map
+                    poi.userInside = true;
+                    poi.updateMarkerVisibility();
                 
                     break;
                 }
@@ -160,6 +168,16 @@ function setup() {
     const overlays = [];
 
     mapHandler = new MapHandler(geoHandler, layers, overlays, areaHandler.getAreas());
+    mapHandler.getMap().on('singleclick', function (event) {
+        mapHandler.getMap().forEachFeatureAtPixel(event.pixel, function (feature) {
+            if (feature.get('poiReference')) {
+                const poi = feature.get('poiReference');
+                currentPoi = poi;
+                quizOverlay.setPoi(poi);
+                quizOverlay.show();
+            }
+        });
+    });
 }
 
 
