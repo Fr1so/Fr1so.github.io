@@ -124,6 +124,11 @@ function updateUserLocation(coords, heading) {
                     poi.userInside = true;
                     poi.updateMarkerVisibility();
                 
+                    // Vibrate if supported
+                    if (navigator.vibrate) {
+                        navigator.vibrate(200);
+                    }
+                    
                     break;
                 }
 
