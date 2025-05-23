@@ -17,9 +17,12 @@ export default class QuizOverlay {
 
         const modal = document.getElementById('poi-modal');
         const titleElement = document.getElementById('poi-title');
+        const imageElement = document.getElementById('modal-banner');
         const descriptionElement = document.getElementById('poi-description');
 
         titleElement.textContent = content.getTitle();
+        imageElement.src = content.getImage();
+        imageElement.alt = content.getTitle();
         descriptionElement.innerHTML = this.getQuizFormHtml();
         modal.classList.remove('hidden');
 
@@ -75,9 +78,9 @@ export default class QuizOverlay {
                     const selectedIndex = parseInt(selectedOption.value, 10);
                     const isCorrect = selectedIndex === correctIndex;
 
-                    feedbackElement.textContent = isCorrect 
-                        ? '✅ Correct! Well done!' 
-                        : '❌ Incorrect, try again.';
+                    feedbackElement.innerHTML = isCorrect 
+                        ? `✅ Juist! Goed gedaan!<br><br>${content.getFunFact()}`
+                        : '❌ Onjuist, probeer het opnieuw.';
 
                     feedbackElement.classList.toggle('correct', isCorrect);
                     feedbackElement.classList.toggle('incorrect', !isCorrect);

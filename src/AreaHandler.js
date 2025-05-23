@@ -7,11 +7,12 @@ import amelisweerdSound2 from './assets/audio/amelisweerd2.mp3';
 import amelisweerdSound3 from './assets/audio/amelisweerd3.mp3';
 import amelisweerdSound4 from './assets/audio/amelisweerd4.mp3';
 import amelisweerdSound5 from './assets/audio/amelisweerd5.mp3';
+import birdhouse from './assets/img/birdhouse.png';
 
 export default class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdamPoi1 = new POI([4.887620, 52.373366], 80, new POIContent('Amsterdam 1', '', amsterdamSound, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
+        const amsterdamPoi1 = new POI([4.887620, 52.373366], 80, new POIContent('Vogelhuisje', amsterdamSound, birdhouse, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
 
         // Amelis Weerd POIS
         const amelisWeerdPoi1 = new POI([5.169642143598895, 52.068005992977746], 20, new POIContent('Amelis Weerd 1', 'Congrats! You found point 1/5', amelisweerdSound1));

@@ -1,15 +1,20 @@
 export default class POIContent {
-    constructor(name, content, audioFile, question = null, options = [], correctAnswer = null) {
+    constructor(name, audioFile, image, question = null, options = [], correctAnswer, funFact) {
         this.name = name;
-        this.content = content;
         this.audio = new Audio(audioFile);
+        this.image = image;
         this.question = question;
         this.options = options;
         this.correctAnswer = correctAnswer;
+        this.funFact = funFact;
     }
 
     getTitle() {
         return this.name;
+    }
+
+    getImage() {
+        return this.image;
     }
 
     getQuestion() {
@@ -22,6 +27,10 @@ export default class POIContent {
 
     getCorrectAnswer() {
         return this.correctAnswer;
+    }
+
+    getFunFact() {
+        return this.funFact;
     }
 
     getAudio() {
