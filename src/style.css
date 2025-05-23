@@ -89,7 +89,7 @@ body {
 /* POI Modal Styles */
 #poi-modal {
   position: fixed;
-  top: 10vh;
+  top: 4vh;
   left: 5vw;
   width: 90vw;
   height: 80vh;
