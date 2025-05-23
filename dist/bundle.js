@@ -1252,6 +1252,8 @@ var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_g
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
   margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: rgb(52, 49, 47);
 }
 
 #map {
@@ -1323,7 +1325,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   background-color: rgb(92, 109, 93);
   width: fit-content;
   border: none;
-  border-radius: 1em;
+  border-radius: 5px;
   text-decoration: none;
   color: rgb(215, 221, 199);
   cursor: pointer;
@@ -1333,6 +1335,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 #start-button:hover {
   transform: translateY(-2px);
 }
+
 
 
 /* POI Modal Styles */
@@ -1356,9 +1359,23 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 }
 
 .modal-content {
-  padding: 20px;
+  padding: 4em;
   position: relative;
   flex-grow: 1;
+}
+
+#modal-banner {
+    width: 100%;
+    max-height: 16vh;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+#poi-title {
+  font-size: 3em;
+  margin: 0;
 }
 
 .modal-content button#modal-close {
@@ -1367,26 +1384,34 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   right: 10px;
   background: none;
   border: none;
-  font-size: 30px;
+  font-size: 4em;
   cursor: pointer;
 }
 
-.quiz-container ul {
-  list-style: none;
-  margin-top: 15px;
-  padding: 0;
+.quiz-container h3 {
+  font-size: 3em;
+  font-weight: 400;
+  margin-bottom: 0px;
 }
 
-.quiz-container li {
-  margin-bottom: 10px;
+.quiz-option {
+  font-size: 3em;
+  list-style: none;
+  padding: 0.5em;
+}
+
+input[type=radio] {
+    border: 0px;
+    height: 2.5em;
+    width: 2.5em;
 }
 
 .quiz-container button#submit-answer {
-  background-color: #4CAF50;
-  color: #fff;
+  background-color: rgb(92, 109, 93);
+  font-size: 2em;
+  color: rgb(215, 221, 199);
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 1em 2em;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 15px;
@@ -1398,9 +1423,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 }
 
 .quiz-feedback {
-  margin-top: 10px;
-  font-weight: bold;
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,SAAS;AACX;;AAEA;EACE,WAAW;EACX,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,UAAU;EACV,cAAc;EACd,uBAAuB;EACvB,YAAY;AACd;;;AAGA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,wCAAwC;AAC1C;;AAEA;EACE;AACF;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;AAClB;;AAEA,gDAAgD;AAChD;EACE,WAAW;EACX,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,yDAAuD;EACvD,sBAAsB;EACtB,4BAA4B;EAC5B,2BAA2B;EAC3B,iCAAiC;EACjC,UAAU;AACZ;;;AAGA;EACE,cAAc;EACd,gBAAgB;EAChB,kCAAkC;EAClC,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;EACrB,yBAAyB;EACzB,eAAe;EACf,UAAU;AACZ;;AAEA;EACE,2BAA2B;AAC7B;;;AAGA,qBAAqB;AACrB;EACE,eAAe;EACf,QAAQ;EACR,SAAS;EACT,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,aAAa;EACb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,aAAa;EACb,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,gBAAgB;EAChB,YAAY;EACZ,eAAe;EACf,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;EAChB,UAAU;AACZ;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,kBAAkB;EAClB,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;AACnB","sourcesContent":["body {\n  margin: 0;\n}\n\n#map {\n  width: 100%;\n  height: 100vh;\n}\n\n#info {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  font-size: 2em;\n  background-color: white;\n  opacity: 0.7;\n}\n\n\n.map-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  z-index: 1000;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  padding: 8px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n}\n\n.map-btn:hover {\n  background-color: #fefefe\n}\n\n#start-overlay {\n  position: absolute;\n  z-index: 9999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n/* ::before creates a blurred background image */\n#start-overlay::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(./assets/img/map-placeholder.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  filter: blur(5px) brightness(0.8);\n  z-index: 1;\n}\n\n\n#start-button {\n  font-size: 2em;\n  padding: 1em 2em;\n  background-color: rgb(92, 109, 93);\n  width: fit-content;\n  border: none;\n  border-radius: 1em;\n  text-decoration: none;\n  color: rgb(215, 221, 199);\n  cursor: pointer;\n  z-index: 2;\n}\n\n#start-button:hover {\n  transform: translateY(-2px);\n}\n\n\n/* POI Modal Styles */\n#poi-modal {\n  position: fixed;\n  top: 5vh;\n  left: 5vw;\n  width: 90vw;\n  height: 90vh;\n  background-color: #f4f4f4;\n  border-radius: 10px;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);\n  overflow-y: auto;\n  z-index: 9998;\n  display: flex;\n  flex-direction: column;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.modal-content {\n  padding: 20px;\n  position: relative;\n  flex-grow: 1;\n}\n\n.modal-content button#modal-close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 30px;\n  cursor: pointer;\n}\n\n.quiz-container ul {\n  list-style: none;\n  margin-top: 15px;\n  padding: 0;\n}\n\n.quiz-container li {\n  margin-bottom: 10px;\n}\n\n.quiz-container button#submit-answer {\n  background-color: #4CAF50;\n  color: #fff;\n  border: none;\n  padding: 10px 20px;\n  font-size: 16px;\n  border-radius: 5px;\n  cursor: pointer;\n  margin-top: 15px;\n}\n\n#quiz-form {\n  display: flex;\n  flex-direction: column;\n}\n\n.quiz-feedback {\n  margin-top: 10px;\n  font-weight: bold;\n}"],"sourceRoot":""}]);
+  font-size: 2.5em;
+}
+
+.quiz-feedback::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(219, 214, 210);
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,gCAAgC;EAChC,sBAAsB;AACxB;;AAEA;EACE,WAAW;EACX,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,UAAU;EACV,cAAc;EACd,uBAAuB;EACvB,YAAY;AACd;;;AAGA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,wCAAwC;AAC1C;;AAEA;EACE;AACF;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;AAClB;;AAEA,gDAAgD;AAChD;EACE,WAAW;EACX,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,yDAAuD;EACvD,sBAAsB;EACtB,4BAA4B;EAC5B,2BAA2B;EAC3B,iCAAiC;EACjC,UAAU;AACZ;;;AAGA;EACE,cAAc;EACd,gBAAgB;EAChB,kCAAkC;EAClC,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;EACrB,yBAAyB;EACzB,eAAe;EACf,UAAU;AACZ;;AAEA;EACE,2BAA2B;AAC7B;;;;AAIA,qBAAqB;AACrB;EACE,eAAe;EACf,QAAQ;EACR,SAAS;EACT,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,aAAa;EACb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,YAAY;EACZ,kBAAkB;EAClB,YAAY;AACd;;AAEA;IACI,WAAW;IACX,gBAAgB;IAChB,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;EACE,cAAc;EACd,SAAS;AACX;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,gBAAgB;EAChB,YAAY;EACZ,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,cAAc;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,YAAY;AAChB;;AAEA;EACE,kCAAkC;EAClC,cAAc;EACd,yBAAyB;EACzB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW;EACX,WAAW;EACX,oCAAoC;EACpC,iBAAiB;EACjB,oBAAoB;AACtB","sourcesContent":["body {\n  margin: 0;\n  font-family: 'Inter', sans-serif;\n  color: rgb(52, 49, 47);\n}\n\n#map {\n  width: 100%;\n  height: 100vh;\n}\n\n#info {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  font-size: 2em;\n  background-color: white;\n  opacity: 0.7;\n}\n\n\n.map-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  z-index: 1000;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  padding: 8px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n}\n\n.map-btn:hover {\n  background-color: #fefefe\n}\n\n#start-overlay {\n  position: absolute;\n  z-index: 9999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n/* ::before creates a blurred background image */\n#start-overlay::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(./assets/img/map-placeholder.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  filter: blur(5px) brightness(0.8);\n  z-index: 1;\n}\n\n\n#start-button {\n  font-size: 2em;\n  padding: 1em 2em;\n  background-color: rgb(92, 109, 93);\n  width: fit-content;\n  border: none;\n  border-radius: 5px;\n  text-decoration: none;\n  color: rgb(215, 221, 199);\n  cursor: pointer;\n  z-index: 2;\n}\n\n#start-button:hover {\n  transform: translateY(-2px);\n}\n\n\n\n/* POI Modal Styles */\n#poi-modal {\n  position: fixed;\n  top: 5vh;\n  left: 5vw;\n  width: 90vw;\n  height: 90vh;\n  background-color: #f4f4f4;\n  border-radius: 10px;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);\n  overflow-y: auto;\n  z-index: 9998;\n  display: flex;\n  flex-direction: column;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.modal-content {\n  padding: 4em;\n  position: relative;\n  flex-grow: 1;\n}\n\n#modal-banner {\n    width: 100%;\n    max-height: 16vh;\n    object-fit: cover;\n    border-radius: 8px;\n    margin-bottom: 1rem;\n    margin-top: 1rem;\n}\n\n#poi-title {\n  font-size: 3em;\n  margin: 0;\n}\n\n.modal-content button#modal-close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 4em;\n  cursor: pointer;\n}\n\n.quiz-container h3 {\n  font-size: 3em;\n  font-weight: 400;\n  margin-bottom: 0px;\n}\n\n.quiz-option {\n  font-size: 3em;\n  list-style: none;\n  padding: 0.5em;\n}\n\ninput[type=radio] {\n    border: 0px;\n    height: 2.5em;\n    width: 2.5em;\n}\n\n.quiz-container button#submit-answer {\n  background-color: rgb(92, 109, 93);\n  font-size: 2em;\n  color: rgb(215, 221, 199);\n  border: none;\n  padding: 1em 2em;\n  border-radius: 5px;\n  cursor: pointer;\n  margin-top: 15px;\n}\n\n#quiz-form {\n  display: flex;\n  flex-direction: column;\n}\n\n.quiz-feedback {\n  font-size: 2.5em;\n}\n\n.quiz-feedback::before {\n  content: \"\";\n  display: block;\n  width: 100%;\n  height: 2px;\n  background-color: rgb(219, 214, 210);\n  margin-top: 1.2em;\n  margin-bottom: 1.2em;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -54008,6 +54042,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/audio/amelisweerd3.mp3 */ "./src/assets/audio/amelisweerd3.mp3");
 /* harmony import */ var _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/audio/amelisweerd4.mp3 */ "./src/assets/audio/amelisweerd4.mp3");
 /* harmony import */ var _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/audio/amelisweerd5.mp3 */ "./src/assets/audio/amelisweerd5.mp3");
+/* harmony import */ var _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/birdhouse.png */ "./src/assets/img/birdhouse.png");
+
 
 
 
@@ -54021,7 +54057,7 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amsterdam 1', '', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__, 'Test question?', ['Option 1', 'Option 2', 'Option 3'], 1));
+        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_9__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
 
         // Amelis Weerd POIS
         const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));
@@ -54302,17 +54338,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ POIContent)
 /* harmony export */ });
 class POIContent {
-    constructor(name, content, audioFile, question = null, options = [], correctAnswer = null) {
+    constructor(name, audioFile, image, question = null, options = [], correctAnswer, funFact) {
         this.name = name;
-        this.content = content;
         this.audio = new Audio(audioFile);
+        this.image = image;
         this.question = question;
         this.options = options;
         this.correctAnswer = correctAnswer;
+        this.funFact = funFact;
     }
 
     getTitle() {
         return this.name;
+    }
+
+    getImage() {
+        return this.image;
     }
 
     getQuestion() {
@@ -54325,6 +54366,10 @@ class POIContent {
 
     getCorrectAnswer() {
         return this.correctAnswer;
+    }
+
+    getFunFact() {
+        return this.funFact;
     }
 
     getAudio() {
@@ -54363,9 +54408,12 @@ class QuizOverlay {
 
         const modal = document.getElementById('poi-modal');
         const titleElement = document.getElementById('poi-title');
+        const imageElement = document.getElementById('modal-banner');
         const descriptionElement = document.getElementById('poi-description');
 
         titleElement.textContent = content.getTitle();
+        imageElement.src = content.getImage();
+        imageElement.alt = content.getTitle();
         descriptionElement.innerHTML = this.getQuizFormHtml();
         modal.classList.remove('hidden');
 
@@ -54421,9 +54469,9 @@ class QuizOverlay {
                     const selectedIndex = parseInt(selectedOption.value, 10);
                     const isCorrect = selectedIndex === correctIndex;
 
-                    feedbackElement.textContent = isCorrect 
-                        ? '✅ Correct! Well done!' 
-                        : '❌ Incorrect, try again.';
+                    feedbackElement.innerHTML = isCorrect 
+                        ? `✅ Juist! Goed gedaan!<br><br>${content.getFunFact()}`
+                        : '❌ Onjuist, probeer het opnieuw.';
 
                     feedbackElement.classList.toggle('correct', isCorrect);
                     feedbackElement.classList.toggle('incorrect', !isCorrect);
@@ -54510,6 +54558,16 @@ module.exports = __webpack_require__.p + "80401f79cc2137eb5152.mp3";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
+
+/***/ }),
+
+/***/ "./src/assets/img/birdhouse.png":
+/*!**************************************!*\
+  !*** ./src/assets/img/birdhouse.png ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "b18ae016099900e3caa6.png";
 
 /***/ }),
 
