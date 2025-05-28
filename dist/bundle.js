@@ -54036,13 +54036,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _POI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./POI */ "./src/POI.js");
 /* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
 /* harmony import */ var _Area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Area */ "./src/Area.js");
-/* harmony import */ var _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/amsterdam_street_testing.mp3 */ "./src/assets/audio/amsterdam_street_testing.mp3");
-/* harmony import */ var _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/audio/amelisweerd1.mp3 */ "./src/assets/audio/amelisweerd1.mp3");
-/* harmony import */ var _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/audio/amelisweerd2.mp3 */ "./src/assets/audio/amelisweerd2.mp3");
-/* harmony import */ var _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/audio/amelisweerd3.mp3 */ "./src/assets/audio/amelisweerd3.mp3");
-/* harmony import */ var _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/audio/amelisweerd4.mp3 */ "./src/assets/audio/amelisweerd4.mp3");
-/* harmony import */ var _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/audio/amelisweerd5.mp3 */ "./src/assets/audio/amelisweerd5.mp3");
-/* harmony import */ var _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/birdhouse.png */ "./src/assets/img/birdhouse.png");
+/* harmony import */ var _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/amelisweerd1.mp3 */ "./src/assets/audio/amelisweerd1.mp3");
+/* harmony import */ var _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/audio/amelisweerd2.mp3 */ "./src/assets/audio/amelisweerd2.mp3");
+/* harmony import */ var _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/audio/amelisweerd3.mp3 */ "./src/assets/audio/amelisweerd3.mp3");
+/* harmony import */ var _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/audio/amelisweerd4.mp3 */ "./src/assets/audio/amelisweerd4.mp3");
+/* harmony import */ var _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/audio/amelisweerd5.mp3 */ "./src/assets/audio/amelisweerd5.mp3");
+/* harmony import */ var _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/img/birdhouse.png */ "./src/assets/img/birdhouse.png");
+/* harmony import */ var _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/chessboard.jpeg */ "./src/assets/img/chessboard.jpeg");
+/* harmony import */ var _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/img/magnifying_glass.jpeg */ "./src/assets/img/magnifying_glass.jpeg");
+/* harmony import */ var _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/img/wood_thingy.jpeg */ "./src/assets/img/wood_thingy.jpeg");
+
+
 
 
 
@@ -54057,20 +54061,15 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdamPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_9__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
+        const amsterdam1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_8__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
 
-        // Amelis Weerd POIS
-        const amelisWeerdPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169642143598895, 52.068005992977746], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 1', 'Congrats! You found point 1/5', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));
-        const amelisWeerdPoi2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169405256008835, 52.06722847589258], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 2', 'Congrats! You found point 2/5', _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__));
-        const amelisWeerdPoi3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169252184001826, 52.06814756590774], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 3', 'Congrats! You found point 3/5', _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__));
-        const amelisWeerdPoi4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1700515416997375, 52.06728206086768], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 4', 'Congrats! You found point 4/5', _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_7__));
-        const amelisWeerdPoi5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.169959040341838, 52.068197756130914], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Amelis Weerd 5', 'Congrats! You found point 5/5', _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_8__));
-
-        const finlandPoi1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([25.310620, 60.630724], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Finland Test', 'Testing point 1', _assets_audio_amsterdam_street_testing_mp3__WEBPACK_IMPORTED_MODULE_3__));
-
-        const griftPark1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127110, 52.100298], 40 , new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Beelden Griftpark', '', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_4__));
-        const griftPark2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128639, 52.101224], 40, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Speeltuin Griftsteede', '', _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_5__));
-        const griftPark3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127680, 52.098828], 40, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Skatepark', '', _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_6__));
+        // Griftsteede POIS
+        const griftsteede1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128442, 52.101841], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_8__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
+        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_9__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', ['Rups 1', 'Rups 2', 'Rups 3', 'Rups 4'], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
+        const griftsteede3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129093, 52.101391], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vergrootglas', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_10__, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
+        const griftsteede4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129072 , 52.101826], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Houten huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
+        // TODO!! Multiple choice + picture
+        const griftsteede5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128988 , 52.100962], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Gele huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], 0, 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -54081,66 +54080,56 @@ class AreaHandler {
             [4.888518, 52.373351]
         ];
 
-        const amelisWeerdCoords = [
-            [5.168812, 52.067038],
-            [5.168461, 52.068208],
-            [5.170350, 52.068254],
-            [5.170438, 52.067280],
-            [5.168812, 52.067038]
+        const griftsteedeCoords = [
+            [5.129724, 52.102086],
+            [5.128947, 52.100142],
+            [5.128228, 52.100046],
+            [5.127960, 52.100923],
+            [5.128001, 52.101242],
+            [5.127621, 52.101633],
+            [5.128260, 52.101938],
+            [5.128255, 52.102270],
+            [5.129113, 52.102204],
+            [5.129724, 52.102086]
         ];
 
-        const finlandCoords = [
-            [25.289142, 60.626276],
-            [25.296987, 60.624724],
-            [25.329634, 60.617337],
-            [25.326534, 60.633909],
-            [25.301416, 60.637415],
-            [25.289142, 60.626276]
+        const griftparkWestCoords = [
+            [5.127521, 52.101704],
+            [5.127421, 52.101775],
+            [5.126226, 52.101867],
+            [5.126096, 52.101340],
+            [5.125652, 52.101278],
+            [5.125632, 52.100909],
+            [5.125441, 52.099226],
+            [5.125926, 52.099243],
+            [5.126855, 52.099449],
+            [5.127706, 52.099655],
+            [5.128247, 52.099809],
+            [5.128201, 52.100055],
+            [5.127925, 52.100924],
+            [5.127968, 52.101244],
+            [5.127521, 52.101704]
         ];
 
-        const griftparkCoords = [
-            [5.127653, 52.098138],
-            [5.127491, 52.098499],
-            [5.127161, 52.098780],
-            [5.127049, 52.098760],
-            [5.126412, 52.099210],
-            [5.125540, 52.098955],
-            [5.125433, 52.099117],
-            [5.124611, 52.098880],
-            [5.124622, 52.098997],
-            [5.124824, 52.099777],
-            [5.124766, 52.099781],
-            [5.124819, 52.100090],
-            [5.124539, 52.100108],
-            [5.124608, 52.100568],
-            [5.123776, 52.100629],
-            [5.123883, 52.101181],
-            [5.125141, 52.101228],
-            [5.125102, 52.101684],
-            [5.126158, 52.101613],
-            [5.126290, 52.102183],
-            [5.127113, 52.102276],
-            [5.128159, 52.102234],
-            [5.128288, 52.102278],
-            [5.129114, 52.102215],
-            [5.129728, 52.102090],
-            [5.129336, 52.101028],
-            [5.129254, 52.100914],
-            [5.128968, 52.100167],
-            [5.128912, 52.100005],
-            [5.129028, 52.098996],
-            [5.129147, 52.098604],
-            [5.129114, 52.098418],
-            [5.129012, 52.098314],
-            [5.128810, 52.098249],
-            [5.127653, 52.098138]
+        const griftparkSouthCoords = [
+            [5.128308, 52.099768],
+            [5.126416, 52.099241],
+            [5.127245, 52.098726],
+            [5.127487, 52.098471],
+            [5.127645, 52.098145],
+            [5.128675, 52.098234],
+            [5.128568, 52.098711],
+            [5.128413, 52.099471],
+            [5.128308, 52.099768]
         ];
+
+        
 
         this.areas = [
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('amsterdam', amsterdamCoords, [amsterdamPoi1]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Amelisweerd', amelisWeerdCoords, [amelisWeerdPoi1, amelisWeerdPoi2, amelisWeerdPoi3, amelisWeerdPoi4, amelisWeerdPoi5]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Finland', finlandCoords, [finlandPoi1]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark', griftparkCoords, [griftPark1, griftPark2, griftPark3])
+            // new Area('amsterdam', amsterdamCoords, [amsterdam1]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark West', griftparkWestCoords, []),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark Zuid', griftparkSouthCoords, [])
         ];
     }
 
@@ -54271,7 +54260,6 @@ class POI {
         this.radius = radius; // In meters
         this.coords = coords;
         this.poiContent = poiContent;
-        this.isFound = isFound;
         this.userInside = false;
 
         // Convert center to map projection
@@ -54302,7 +54290,7 @@ class POI {
             source: this.poiSource
         });
 
-        this.updateStyle();
+        this.setFound(isFound);
     }
 
     getCoords() {
@@ -54571,16 +54559,6 @@ module.exports = __webpack_require__.p + "94b33986b16b5383e9ad.mp3";
 
 /***/ }),
 
-/***/ "./src/assets/audio/amsterdam_street_testing.mp3":
-/*!*******************************************************!*\
-  !*** ./src/assets/audio/amsterdam_street_testing.mp3 ***!
-  \*******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "80401f79cc2137eb5152.mp3";
-
-/***/ }),
-
 /***/ "./src/assets/icons/navigation.png":
 /*!*****************************************!*\
   !*** ./src/assets/icons/navigation.png ***!
@@ -54611,6 +54589,26 @@ module.exports = __webpack_require__.p + "b18ae016099900e3caa6.png";
 
 /***/ }),
 
+/***/ "./src/assets/img/chessboard.jpeg":
+/*!****************************************!*\
+  !*** ./src/assets/img/chessboard.jpeg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "a599b68f57efe50497c3.jpeg";
+
+/***/ }),
+
+/***/ "./src/assets/img/magnifying_glass.jpeg":
+/*!**********************************************!*\
+  !*** ./src/assets/img/magnifying_glass.jpeg ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "bbaae0afadd464666d5d.jpeg";
+
+/***/ }),
+
 /***/ "./src/assets/img/map-placeholder.jpg":
 /*!********************************************!*\
   !*** ./src/assets/img/map-placeholder.jpg ***!
@@ -54618,6 +54616,16 @@ module.exports = __webpack_require__.p + "b18ae016099900e3caa6.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "10840811ad38d149b7ad.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/img/wood_thingy.jpeg":
+/*!*****************************************!*\
+  !*** ./src/assets/img/wood_thingy.jpeg ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "7270981e205d789666c7.jpeg";
 
 /***/ }),
 

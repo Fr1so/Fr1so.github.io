@@ -16,7 +16,6 @@ export default class POI {
         this.radius = radius; // In meters
         this.coords = coords;
         this.poiContent = poiContent;
-        this.isFound = isFound;
         this.userInside = false;
 
         // Convert center to map projection
@@ -47,7 +46,7 @@ export default class POI {
             source: this.poiSource
         });
 
-        this.updateStyle();
+        this.setFound(isFound);
     }
 
     getCoords() {
