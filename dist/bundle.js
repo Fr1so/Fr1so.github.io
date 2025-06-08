@@ -54045,6 +54045,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/grove_den.jpeg */ "./src/assets/img/grove_den.jpeg");
 /* harmony import */ var _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/img/waterlelies.jpeg */ "./src/assets/img/waterlelies.jpeg");
 /* harmony import */ var _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/img/zwarte_vlier.jpeg */ "./src/assets/img/zwarte_vlier.jpeg");
+/* harmony import */ var _assets_img_stone_wall_jpeg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./assets/img/stone_wall.jpeg */ "./src/assets/img/stone_wall.jpeg");
+/* harmony import */ var _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./assets/img/zwarte_els.jpeg */ "./src/assets/img/zwarte_els.jpeg");
+/* harmony import */ var _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./assets/img/kleinbladige_linde.jpeg */ "./src/assets/img/kleinbladige_linde.jpeg");
+/* harmony import */ var _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./assets/img/esdoorn.jpeg */ "./src/assets/img/esdoorn.jpeg");
+
+
+
+
 
 
 
@@ -54075,6 +54083,12 @@ class AreaHandler {
         const griftparkWest1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127361, 52.101611], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Grove Den', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_9__, 'Welke feiten over de grove den zijn onjuist?', ['De boom heeft mannelijke en vrouwelijke bloemen', 'De kegels openen zich als het regent', 'De zaden rijpen in de kegels gedurende twee jaar', 'Hars van dennen werd ooit gebruikt om kauwgom te maken'], 1, 'De grove den is een van de weinige inheemse naaldbomen. De dennenappels zijn natuurlijke weersindicatoren: ze openen zich bij droog weer en sluiten zich bij regen. Dit zorgt ervoor dat de zaden in de dennenappels alleen bij droog weer vrijkomen en eerder door de wind worden meegevoerd.'), true);
         const griftparkWest2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126332, 52.101158], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Waterlelies', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_10__, 'Welke voordelen hebben waterlelies voor hun ecosysteem?', ['Ze bieden vissen beschutting tegen roofdieren', 'Ze voorkomen algengroei', 'Ze filteren zout water', 'De kleur van hun bloemen geeft de gezondheid van de vijver aan'], [0, 1], 'Naast het bieden van beschutting aan dieren, bieden waterlelies ook schaduw tegen de zon voor het water eronder. Dit verlaagt de watertemperatuur en helpt algengroei te voorkomen.'), true);
         const griftparkWest3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126660, 52.100431], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Zwarte Vlier', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Welke delen van deze struik zijn eetbaar?', ['Bladeren', 'Bessen (na het koken)', 'Bloemen', 'Wortels'], [1, 2], 'De vlierbloesem struik wordt al honderden jaren gekweekt als kook- en medicinale plant. In de middeleeuwen werd hij zelfs als heilig beschouwd, omdat hij het kwaad zou afweren. Tegenwoordig wordt hij nog steeds gebruikt om siroop van de bloemen te maken (vlierbloesemsiroop) en om de bessen te gebruiken bij het bakken of om wijn te maken (vlierbessenwijn).'), true);
+        const griftparkWest4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1281634, 52.0998669], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Stenen Muur', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_stone_wall_jpeg__WEBPACK_IMPORTED_MODULE_12__, 'Deze plant is hier in de muur te vinden, wat is het?', ['Klokjesbloem', 'Muurleeuwenbek', 'Spoorbloem', 'Ganzerik'], 0, 'Deze bloemenmuur bevat meer dan 130 verschillende planten, die in 2000 voor het eerst werden geplant op initiatief van Rudolf de Bos Kuil. De muur is de afgelopen jaren onderhouden door buurtbewoners en vrijwilligers, die het ongewenste groen verwijderen en nieuwe planten in de muur planten. Wil je ook bijdragen? Kijk op buurtnatuur030.nl voor de aankomende data!'), true);
+
+        // Griftpark South POIS
+        const griftparkSouth1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127430, 52.099501], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Klein Boompje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_13__, 'Wat voor soort boom is dit?', ['Beuk', 'Hazelnoot', 'Linde', 'Els'], 3, 'Dit is een els, of beter gezegd een zwarte els. Deze bomen groeien het liefst in vochtige gebieden, of, zoals hier, zelfs in het water. Dit is mogelijk dankzij een symbiose met een bacterie die in hun wortels leeft en stikstof uit de lucht bindt. Hierdoor kan de els zelfs op voedselarme plekken overleven. Hij biedt beschutting aan dieren zoals de zwarte ooievaar en de glanskop.'), true);
+        const griftparkSouth2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1280447, 52.0994194], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Kleinbladige Linde', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_14__, 'Deze kleinbladige linde is nog jong. Hoe oud is de oudste linde van Nederland ongeveer?', ['125 jaar', '420 jaar', '800 jaar', '2000 jaar'], 1, 'De oudste bekende lindeboom in Nederland is de Sambeeklinde (gemeente Boxmeer). De leeftijd wordt geschat op 400 tot 800 jaar, maar hij is waarschijnlijk rond 420 jaar oud. En hij is in alle opzichten groot: de stamomtrek is bijna 8 meter!'), true);
+        const griftparkSouth3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1277825, 52.0990538], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Esdoorn', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_15__, 'Hoe kunnen esdoornzaden grote afstanden afleggen vanaf de moederboom?', ['Ze kunnen drijven en door water worden vervoerd', 'Eekhoorns nemen ze mee en verspreiden de zaden', 'Ze hebben speciale vleugels', 'Ze worden uit de boom geschoten als ze rijp zijn'], 2, 'De esdoornzaden hebben vleugels waarmee ze kunnen draaien en door de lucht kunnen zweven. Zo kunnen ze door de wind worden opgepikt en meer dan 1 kilometer afleggen. Dit vleugelontwerp is zelfs de inspiratie geweest voor de bouw van helikopters!'), true);
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -54133,8 +54147,8 @@ class AreaHandler {
         this.areas = [
             // new Area('amsterdam', amsterdamCoords, [amsterdam1]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark Zuid', griftparkSouthCoords, [])
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3, griftparkWest4]),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark Zuid', griftparkSouthCoords, [griftparkSouth1, griftparkSouth2, griftparkSouth3])
         ];
     }
 
@@ -54578,6 +54592,16 @@ module.exports = __webpack_require__.p + "80c13257344fa11373c4.jpeg";
 
 /***/ }),
 
+/***/ "./src/assets/img/esdoorn.jpeg":
+/*!*************************************!*\
+  !*** ./src/assets/img/esdoorn.jpeg ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "754802e48b4011916204.jpeg";
+
+/***/ }),
+
 /***/ "./src/assets/img/grove_den.jpeg":
 /*!***************************************!*\
   !*** ./src/assets/img/grove_den.jpeg ***!
@@ -54585,6 +54609,16 @@ module.exports = __webpack_require__.p + "80c13257344fa11373c4.jpeg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "3319454ba0889b27156e.jpeg";
+
+/***/ }),
+
+/***/ "./src/assets/img/kleinbladige_linde.jpeg":
+/*!************************************************!*\
+  !*** ./src/assets/img/kleinbladige_linde.jpeg ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "333c3d54b272f1ab8d82.jpeg";
 
 /***/ }),
 
@@ -54605,6 +54639,16 @@ module.exports = __webpack_require__.p + "415c0754c6810671a822.jpeg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "10840811ad38d149b7ad.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/img/stone_wall.jpeg":
+/*!****************************************!*\
+  !*** ./src/assets/img/stone_wall.jpeg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "f9bb94c39a8063a8b15b.jpeg";
 
 /***/ }),
 
@@ -54635,6 +54679,16 @@ module.exports = __webpack_require__.p + "70102f2bf4c1f7373b55.jpeg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "b1fbc390ddce343736ff.jpeg";
+
+/***/ }),
+
+/***/ "./src/assets/img/zwarte_els.jpeg":
+/*!****************************************!*\
+  !*** ./src/assets/img/zwarte_els.jpeg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "800314fe4433ef4a3caf.jpeg";
 
 /***/ }),
 
