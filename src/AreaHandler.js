@@ -14,7 +14,6 @@ import zwarte_vlier from './assets/img/zwarte_vlier.jpeg';
 export default class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdam1 = new POI([4.887620, 52.373366], 80, new POIContent('Vogelhuisje', amelisweerdSound1, birdhouse, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
 
         // Griftsteede POIS
         // TODO!! IMAGE ANSWERS
