@@ -183,3 +183,23 @@ input[type=radio] {
   margin-top: 1.2em;
   margin-bottom: 1.2em;
 }
+
+.quiz-option {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.quiz-image-option {
+    display: block;
+    margin-left: 10%;
+    width: 80%;
+    height: auto;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border 0.2s ease;
+}
+
+.quiz-option input[type="radio"]:checked + img,
+.quiz-option input[type="checkbox"]:checked + img {
+    border-color: #007BFF;
+}

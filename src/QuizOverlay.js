@@ -36,18 +36,25 @@ export default class QuizOverlay {
 
     getQuizFormHtml() {
         const content = this.poi.getContent();
-        const isMultiple = Array.isArray(content.getCorrectAnswer());
+        const isMultiple = content.isMultipleChoice();
+        const isImageQuiz = content.hasImageOptions();
 
         if (!content.getQuestion() || content.getAnswerOptions().length === 0) return '';
 
         const optionsHtml = content.getAnswerOptions()
-            .map((option, index) => `
-                <label class="quiz-option">
-                    <input type="${isMultiple ? 'checkbox' : 'radio'}" name="quiz-option" value="${index}">
-                    ${option}
-                </label>
-            `)
-            .join('');
+            .map((option, index) => {
+                const value = isImageQuiz ? JSON.stringify(option) : option;
+                const inputType = isMultiple ? 'checkbox' : 'radio';
+
+                return `
+                    <label class="quiz-option image-option">
+                        <input type="${inputType}" name="quiz-option" value="${index}">
+                        ${typeof option === 'object' && option.image 
+                            ? `<img src="${option.image}" alt="${option.alt || ''}" class="quiz-image-option">`
+                            : option}
+                    </label>
+                `;
+            }).join('');
 
         return `
             <div class="quiz-container">

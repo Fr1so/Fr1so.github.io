@@ -33,6 +33,10 @@ export default class POIContent {
         return Array.isArray(this.correctAnswer);
     }
 
+    hasImageOptions() {
+        return this.options.some(opt => typeof opt === 'object' && opt.image);
+    }
+
     getFunFact() {
         return this.funFact;
     }

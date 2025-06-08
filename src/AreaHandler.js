@@ -14,16 +14,20 @@ import stone_wall from './assets/img/stone_wall.jpeg';
 import zwarte_els from './assets/img/zwarte_els.jpeg';
 import kleinbladige_linde from './assets/img/kleinbladige_linde.jpeg';
 import esdoorn from './assets/img/esdoorn.jpeg';
+import rups1 from './assets/img/rups1.jpg';
+import rups2 from './assets/img/rups2.jpg';
+import rups3 from './assets/img/rups3.jpg';
+import rups4 from './assets/img/rups4.jpg';
 
 export default class AreaHandler {
     constructor() {
-        // create pois here with coords and content
-        const amsterdam1 = new POI([4.887620, 52.373366], 80, new POIContent('Vogelhuisje', amelisweerdSound1, birdhouse, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
-
         // Griftsteede POIS
         // TODO!! IMAGE ANSWERS
         const griftsteede1 = new POI([5.128442, 52.101841], 20, new POIContent('Vogelhuisje', amelisweerdSound1, birdhouse, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
-        const griftsteede2 = new POI([5.129285, 52.102039], 20, new POIContent('Schaakbord', amelisweerdSound1, chessboard, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', ['Rups 1', 'Rups 2', 'Rups 3', 'Rups 4'], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
+
+        const griftsteede2 = new POI([5.129285, 52.102039], 20, new POIContent('Schaakbord', amelisweerdSound1, chessboard, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', [{ image: rups1, alt: 'Rups 1' }, { image: rups2, alt: 'Rups 2' }, { image: rups3, alt: 'Rups 3' }, { image: rups4, alt: 'Rups 4' }], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
+
+
         const griftsteede3 = new POI([5.129093, 52.101391], 20, new POIContent('Vergrootglas', amelisweerdSound1, magnifying_glass, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
         const griftsteede4 = new POI([5.129072 , 52.101826], 20, new POIContent('Houten huisje', amelisweerdSound1, wood_thingy, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
         const griftsteede5 = new POI([5.128988 , 52.100962], 20, new POIContent('Gele huisje', amelisweerdSound1, yellow_house, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], [0, 1, 2, 3], 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
@@ -40,14 +44,6 @@ export default class AreaHandler {
         const griftparkSouth3 = new POI([5.1277825, 52.0990538], 20, new POIContent('Esdoorn', amelisweerdSound1, esdoorn, 'Hoe kunnen esdoornzaden grote afstanden afleggen vanaf de moederboom?', ['Ze kunnen drijven en door water worden vervoerd', 'Eekhoorns nemen ze mee en verspreiden de zaden', 'Ze hebben speciale vleugels', 'Ze worden uit de boom geschoten als ze rijp zijn'], 2, 'De esdoornzaden hebben vleugels waarmee ze kunnen draaien en door de lucht kunnen zweven. Zo kunnen ze door de wind worden opgepikt en meer dan 1 kilometer afleggen. Dit vleugelontwerp is zelfs de inspiratie geweest voor de bouw van helikopters!'), true);
 
         // create area's here with coords (outline polygon) and pois
-        const amsterdamCoords = [
-            [4.888518, 52.373351],
-            [4.888449, 52.373207],
-            [4.887358, 52.373314],
-            [4.887379, 52.373454],
-            [4.888518, 52.373351]
-        ];
-
         const griftsteedeCoords = [
             [5.129724, 52.102086],
             [5.128947, 52.100142],
@@ -91,10 +87,7 @@ export default class AreaHandler {
             [5.128308, 52.099768]
         ];
 
-        
-
         this.areas = [
-            // new Area('amsterdam', amsterdamCoords, [amsterdam1]),
             new Area('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
             new Area('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3, griftparkWest4]),
             new Area('Griftpark Zuid', griftparkSouthCoords, [griftparkSouth1, griftparkSouth2, griftparkSouth3])

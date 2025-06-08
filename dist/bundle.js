@@ -1434,7 +1434,27 @@ input[type=radio] {
   background-color: rgb(219, 214, 210);
   margin-top: 1.2em;
   margin-bottom: 1.2em;
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,gCAAgC;EAChC,sBAAsB;AACxB;;AAEA;EACE,WAAW;EACX,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,UAAU;EACV,cAAc;EACd,uBAAuB;EACvB,YAAY;AACd;;;AAGA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,wCAAwC;AAC1C;;AAEA;EACE;AACF;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;AAClB;;AAEA,gDAAgD;AAChD;EACE,WAAW;EACX,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,yDAAuD;EACvD,sBAAsB;EACtB,4BAA4B;EAC5B,2BAA2B;EAC3B,iCAAiC;EACjC,UAAU;AACZ;;;AAGA;EACE,cAAc;EACd,gBAAgB;EAChB,kCAAkC;EAClC,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;EACrB,yBAAyB;EACzB,eAAe;EACf,UAAU;AACZ;;AAEA;EACE,2BAA2B;AAC7B;;;;AAIA,qBAAqB;AACrB;EACE,eAAe;EACf,QAAQ;EACR,SAAS;EACT,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,aAAa;EACb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,YAAY;EACZ,kBAAkB;EAClB,YAAY;AACd;;AAEA;IACI,WAAW;IACX,gBAAgB;IAChB,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;EACE,cAAc;EACd,SAAS;AACX;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,gBAAgB;EAChB,YAAY;EACZ,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,cAAc;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,YAAY;AAChB;;AAEA;EACE,kCAAkC;EAClC,cAAc;EACd,yBAAyB;EACzB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW;EACX,WAAW;EACX,oCAAoC;EACpC,iBAAiB;EACjB,oBAAoB;AACtB","sourcesContent":["body {\n  margin: 0;\n  font-family: 'Inter', sans-serif;\n  color: rgb(52, 49, 47);\n}\n\n#map {\n  width: 100%;\n  height: 100vh;\n}\n\n#info {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  font-size: 2em;\n  background-color: white;\n  opacity: 0.7;\n}\n\n\n.map-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  z-index: 1000;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  padding: 8px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n}\n\n.map-btn:hover {\n  background-color: #fefefe\n}\n\n#start-overlay {\n  position: absolute;\n  z-index: 9999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n/* ::before creates a blurred background image */\n#start-overlay::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(./assets/img/map-placeholder.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  filter: blur(5px) brightness(0.8);\n  z-index: 1;\n}\n\n\n#start-button {\n  font-size: 2em;\n  padding: 1em 2em;\n  background-color: rgb(92, 109, 93);\n  width: fit-content;\n  border: none;\n  border-radius: 5px;\n  text-decoration: none;\n  color: rgb(215, 221, 199);\n  cursor: pointer;\n  z-index: 2;\n}\n\n#start-button:hover {\n  transform: translateY(-2px);\n}\n\n\n\n/* POI Modal Styles */\n#poi-modal {\n  position: fixed;\n  top: 4vh;\n  left: 5vw;\n  width: 90vw;\n  height: 80vh;\n  background-color: #f4f4f4;\n  border-radius: 10px;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);\n  overflow-y: auto;\n  z-index: 9998;\n  display: flex;\n  flex-direction: column;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.modal-content {\n  padding: 4em;\n  position: relative;\n  flex-grow: 1;\n}\n\n#modal-banner {\n    width: 100%;\n    max-height: 16vh;\n    object-fit: cover;\n    border-radius: 8px;\n    margin-bottom: 1rem;\n    margin-top: 1rem;\n}\n\n#poi-title {\n  font-size: 3em;\n  margin: 0;\n}\n\n.modal-content button#modal-close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 4em;\n  cursor: pointer;\n}\n\n.quiz-container h3 {\n  font-size: 3em;\n  font-weight: 400;\n  margin-bottom: 0px;\n}\n\n.quiz-option {\n  font-size: 3em;\n  list-style: none;\n  padding: 0.5em;\n}\n\ninput[type=radio] {\n    border: 0px;\n    height: 2.5em;\n    width: 2.5em;\n}\n\n.quiz-container button#submit-answer {\n  background-color: rgb(92, 109, 93);\n  font-size: 2em;\n  color: rgb(215, 221, 199);\n  border: none;\n  padding: 1em 2em;\n  border-radius: 5px;\n  cursor: pointer;\n  margin-top: 15px;\n}\n\n#quiz-form {\n  display: flex;\n  flex-direction: column;\n}\n\n.quiz-feedback {\n  font-size: 2.5em;\n}\n\n.quiz-feedback::before {\n  content: \"\";\n  display: block;\n  width: 100%;\n  height: 2px;\n  background-color: rgb(219, 214, 210);\n  margin-top: 1.2em;\n  margin-bottom: 1.2em;\n}"],"sourceRoot":""}]);
+}
+
+.quiz-option {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.quiz-image-option {
+    display: block;
+    margin-left: 10%;
+    width: 80%;
+    height: auto;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border 0.2s ease;
+}
+
+.quiz-option input[type="radio"]:checked + img,
+.quiz-option input[type="checkbox"]:checked + img {
+    border-color: #007BFF;
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,gCAAgC;EAChC,sBAAsB;AACxB;;AAEA;EACE,WAAW;EACX,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,UAAU;EACV,cAAc;EACd,uBAAuB;EACvB,YAAY;AACd;;;AAGA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,sBAAsB;EACtB,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,wCAAwC;AAC1C;;AAEA;EACE;AACF;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;AAClB;;AAEA,gDAAgD;AAChD;EACE,WAAW;EACX,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,yDAAuD;EACvD,sBAAsB;EACtB,4BAA4B;EAC5B,2BAA2B;EAC3B,iCAAiC;EACjC,UAAU;AACZ;;;AAGA;EACE,cAAc;EACd,gBAAgB;EAChB,kCAAkC;EAClC,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;EACrB,yBAAyB;EACzB,eAAe;EACf,UAAU;AACZ;;AAEA;EACE,2BAA2B;AAC7B;;;;AAIA,qBAAqB;AACrB;EACE,eAAe;EACf,QAAQ;EACR,SAAS;EACT,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,mBAAmB;EACnB,0CAA0C;EAC1C,gBAAgB;EAChB,aAAa;EACb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,YAAY;EACZ,kBAAkB;EAClB,YAAY;AACd;;AAEA;IACI,WAAW;IACX,gBAAgB;IAChB,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;EACE,cAAc;EACd,SAAS;AACX;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,gBAAgB;EAChB,YAAY;EACZ,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,gBAAgB;EAChB,cAAc;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,YAAY;AAChB;;AAEA;EACE,kCAAkC;EAClC,cAAc;EACd,yBAAyB;EACzB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW;EACX,WAAW;EACX,oCAAoC;EACpC,iBAAiB;EACjB,oBAAoB;AACtB;;AAEA;IACI,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,cAAc;IACd,gBAAgB;IAChB,UAAU;IACV,YAAY;IACZ,6BAA6B;IAC7B,kBAAkB;IAClB,4BAA4B;AAChC;;AAEA;;IAEI,qBAAqB;AACzB","sourcesContent":["body {\n  margin: 0;\n  font-family: 'Inter', sans-serif;\n  color: rgb(52, 49, 47);\n}\n\n#map {\n  width: 100%;\n  height: 100vh;\n}\n\n#info {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  font-size: 2em;\n  background-color: white;\n  opacity: 0.7;\n}\n\n\n.map-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  z-index: 1000;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  padding: 8px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n}\n\n.map-btn:hover {\n  background-color: #fefefe\n}\n\n#start-overlay {\n  position: absolute;\n  z-index: 9999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n/* ::before creates a blurred background image */\n#start-overlay::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(./assets/img/map-placeholder.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  filter: blur(5px) brightness(0.8);\n  z-index: 1;\n}\n\n\n#start-button {\n  font-size: 2em;\n  padding: 1em 2em;\n  background-color: rgb(92, 109, 93);\n  width: fit-content;\n  border: none;\n  border-radius: 5px;\n  text-decoration: none;\n  color: rgb(215, 221, 199);\n  cursor: pointer;\n  z-index: 2;\n}\n\n#start-button:hover {\n  transform: translateY(-2px);\n}\n\n\n\n/* POI Modal Styles */\n#poi-modal {\n  position: fixed;\n  top: 4vh;\n  left: 5vw;\n  width: 90vw;\n  height: 80vh;\n  background-color: #f4f4f4;\n  border-radius: 10px;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);\n  overflow-y: auto;\n  z-index: 9998;\n  display: flex;\n  flex-direction: column;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.modal-content {\n  padding: 4em;\n  position: relative;\n  flex-grow: 1;\n}\n\n#modal-banner {\n    width: 100%;\n    max-height: 16vh;\n    object-fit: cover;\n    border-radius: 8px;\n    margin-bottom: 1rem;\n    margin-top: 1rem;\n}\n\n#poi-title {\n  font-size: 3em;\n  margin: 0;\n}\n\n.modal-content button#modal-close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 4em;\n  cursor: pointer;\n}\n\n.quiz-container h3 {\n  font-size: 3em;\n  font-weight: 400;\n  margin-bottom: 0px;\n}\n\n.quiz-option {\n  font-size: 3em;\n  list-style: none;\n  padding: 0.5em;\n}\n\ninput[type=radio] {\n    border: 0px;\n    height: 2.5em;\n    width: 2.5em;\n}\n\n.quiz-container button#submit-answer {\n  background-color: rgb(92, 109, 93);\n  font-size: 2em;\n  color: rgb(215, 221, 199);\n  border: none;\n  padding: 1em 2em;\n  border-radius: 5px;\n  cursor: pointer;\n  margin-top: 15px;\n}\n\n#quiz-form {\n  display: flex;\n  flex-direction: column;\n}\n\n.quiz-feedback {\n  font-size: 2.5em;\n}\n\n.quiz-feedback::before {\n  content: \"\";\n  display: block;\n  width: 100%;\n  height: 2px;\n  background-color: rgb(219, 214, 210);\n  margin-top: 1.2em;\n  margin-bottom: 1.2em;\n}\n\n.quiz-option {\n    display: inline-block;\n    cursor: pointer;\n}\n\n.quiz-image-option {\n    display: block;\n    margin-left: 10%;\n    width: 80%;\n    height: auto;\n    border: 2px solid transparent;\n    border-radius: 8px;\n    transition: border 0.2s ease;\n}\n\n.quiz-option input[type=\"radio\"]:checked + img,\n.quiz-option input[type=\"checkbox\"]:checked + img {\n    border-color: #007BFF;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -54049,6 +54069,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./assets/img/zwarte_els.jpeg */ "./src/assets/img/zwarte_els.jpeg");
 /* harmony import */ var _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./assets/img/kleinbladige_linde.jpeg */ "./src/assets/img/kleinbladige_linde.jpeg");
 /* harmony import */ var _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./assets/img/esdoorn.jpeg */ "./src/assets/img/esdoorn.jpeg");
+/* harmony import */ var _assets_img_rups1_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./assets/img/rups1.jpg */ "./src/assets/img/rups1.jpg");
+/* harmony import */ var _assets_img_rups2_jpg__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./assets/img/rups2.jpg */ "./src/assets/img/rups2.jpg");
+/* harmony import */ var _assets_img_rups3_jpg__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assets/img/rups3.jpg */ "./src/assets/img/rups3.jpg");
+/* harmony import */ var _assets_img_rups4_jpg__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assets/img/rups4.jpg */ "./src/assets/img/rups4.jpg");
+
+
+
+
 
 
 
@@ -54068,13 +54096,13 @@ __webpack_require__.r(__webpack_exports__);
 
 class AreaHandler {
     constructor() {
-        // create pois here with coords and content
-        const amsterdam1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
-
         // Griftsteede POIS
         // TODO!! IMAGE ANSWERS
         const griftsteede1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128442, 52.101841], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
-        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_5__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', ['Rups 1', 'Rups 2', 'Rups 3', 'Rups 4'], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
+
+        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_5__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', [{ image: _assets_img_rups1_jpg__WEBPACK_IMPORTED_MODULE_16__, alt: 'Rups 1' }, { image: _assets_img_rups2_jpg__WEBPACK_IMPORTED_MODULE_17__, alt: 'Rups 2' }, { image: _assets_img_rups3_jpg__WEBPACK_IMPORTED_MODULE_18__, alt: 'Rups 3' }, { image: _assets_img_rups4_jpg__WEBPACK_IMPORTED_MODULE_19__, alt: 'Rups 4' }], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
+
+
         const griftsteede3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129093, 52.101391], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vergrootglas', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_6__, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
         const griftsteede4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129072 , 52.101826], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Houten huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_7__, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
         const griftsteede5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128988 , 52.100962], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Gele huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_8__, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], [0, 1, 2, 3], 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
@@ -54091,14 +54119,6 @@ class AreaHandler {
         const griftparkSouth3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1277825, 52.0990538], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Esdoorn', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_15__, 'Hoe kunnen esdoornzaden grote afstanden afleggen vanaf de moederboom?', ['Ze kunnen drijven en door water worden vervoerd', 'Eekhoorns nemen ze mee en verspreiden de zaden', 'Ze hebben speciale vleugels', 'Ze worden uit de boom geschoten als ze rijp zijn'], 2, 'De esdoornzaden hebben vleugels waarmee ze kunnen draaien en door de lucht kunnen zweven. Zo kunnen ze door de wind worden opgepikt en meer dan 1 kilometer afleggen. Dit vleugelontwerp is zelfs de inspiratie geweest voor de bouw van helikopters!'), true);
 
         // create area's here with coords (outline polygon) and pois
-        const amsterdamCoords = [
-            [4.888518, 52.373351],
-            [4.888449, 52.373207],
-            [4.887358, 52.373314],
-            [4.887379, 52.373454],
-            [4.888518, 52.373351]
-        ];
-
         const griftsteedeCoords = [
             [5.129724, 52.102086],
             [5.128947, 52.100142],
@@ -54142,10 +54162,7 @@ class AreaHandler {
             [5.128308, 52.099768]
         ];
 
-        
-
         this.areas = [
-            // new Area('amsterdam', amsterdamCoords, [amsterdam1]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3, griftparkWest4]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark Zuid', griftparkSouthCoords, [griftparkSouth1, griftparkSouth2, griftparkSouth3])
@@ -54409,6 +54426,10 @@ class POIContent {
         return Array.isArray(this.correctAnswer);
     }
 
+    hasImageOptions() {
+        return this.options.some(opt => typeof opt === 'object' && opt.image);
+    }
+
     getFunFact() {
         return this.funFact;
     }
@@ -54468,18 +54489,25 @@ class QuizOverlay {
 
     getQuizFormHtml() {
         const content = this.poi.getContent();
-        const isMultiple = Array.isArray(content.getCorrectAnswer());
+        const isMultiple = content.isMultipleChoice();
+        const isImageQuiz = content.hasImageOptions();
 
         if (!content.getQuestion() || content.getAnswerOptions().length === 0) return '';
 
         const optionsHtml = content.getAnswerOptions()
-            .map((option, index) => `
-                <label class="quiz-option">
-                    <input type="${isMultiple ? 'checkbox' : 'radio'}" name="quiz-option" value="${index}">
-                    ${option}
-                </label>
-            `)
-            .join('');
+            .map((option, index) => {
+                const value = isImageQuiz ? JSON.stringify(option) : option;
+                const inputType = isMultiple ? 'checkbox' : 'radio';
+
+                return `
+                    <label class="quiz-option image-option">
+                        <input type="${inputType}" name="quiz-option" value="${index}">
+                        ${typeof option === 'object' && option.image 
+                            ? `<img src="${option.image}" alt="${option.alt || ''}" class="quiz-image-option">`
+                            : option}
+                    </label>
+                `;
+            }).join('');
 
         return `
             <div class="quiz-container">
@@ -54639,6 +54667,46 @@ module.exports = __webpack_require__.p + "415c0754c6810671a822.jpeg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "10840811ad38d149b7ad.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/img/rups1.jpg":
+/*!**********************************!*\
+  !*** ./src/assets/img/rups1.jpg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "3d8a3e533fbe7b2d0dcc.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/img/rups2.jpg":
+/*!**********************************!*\
+  !*** ./src/assets/img/rups2.jpg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "0b74950b61ab27c4b9b1.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/img/rups3.jpg":
+/*!**********************************!*\
+  !*** ./src/assets/img/rups3.jpg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "3aeb05ef5c827e9c35ac.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/img/rups4.jpg":
+/*!**********************************!*\
+  !*** ./src/assets/img/rups4.jpg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "24eb57db2c056d794897.jpg";
 
 /***/ }),
 
