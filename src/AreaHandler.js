@@ -2,14 +2,14 @@ import POI from './POI'
 import POIContent from './POIContent';
 import Area from './Area';
 import amelisweerdSound1 from './assets/audio/amelisweerd1.mp3';
-import amelisweerdSound2 from './assets/audio/amelisweerd2.mp3';
-import amelisweerdSound3 from './assets/audio/amelisweerd3.mp3';
-import amelisweerdSound4 from './assets/audio/amelisweerd4.mp3';
-import amelisweerdSound5 from './assets/audio/amelisweerd5.mp3';
-import birdhouse from './assets/img/birdhouse.png';
+import birdhouse from './assets/img/birdhouse.jpeg';
 import chessboard from './assets/img/chessboard.jpeg';
 import magnifying_glass from './assets/img/magnifying_glass.jpeg';
 import wood_thingy from './assets/img/wood_thingy.jpeg';
+import yellow_house from './assets/img/yellow_house.jpeg';
+import grove_den from './assets/img/grove_den.jpeg';
+import waterlelies from './assets/img/waterlelies.jpeg';
+import zwarte_vlier from './assets/img/zwarte_vlier.jpeg';
 
 export default class AreaHandler {
     constructor() {
@@ -17,12 +17,17 @@ export default class AreaHandler {
         const amsterdam1 = new POI([4.887620, 52.373366], 80, new POIContent('Vogelhuisje', amelisweerdSound1, birdhouse, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
 
         // Griftsteede POIS
+        // TODO!! IMAGE ANSWERS
         const griftsteede1 = new POI([5.128442, 52.101841], 20, new POIContent('Vogelhuisje', amelisweerdSound1, birdhouse, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
         const griftsteede2 = new POI([5.129285, 52.102039], 20, new POIContent('Schaakbord', amelisweerdSound1, chessboard, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', ['Rups 1', 'Rups 2', 'Rups 3', 'Rups 4'], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
         const griftsteede3 = new POI([5.129093, 52.101391], 20, new POIContent('Vergrootglas', amelisweerdSound1, magnifying_glass, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
         const griftsteede4 = new POI([5.129072 , 52.101826], 20, new POIContent('Houten huisje', amelisweerdSound1, wood_thingy, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
-        // TODO!! Multiple choice + picture
-        const griftsteede5 = new POI([5.128988 , 52.100962], 20, new POIContent('Gele huisje', amelisweerdSound1, wood_thingy, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], 0, 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
+        const griftsteede5 = new POI([5.128988 , 52.100962], 20, new POIContent('Gele huisje', amelisweerdSound1, yellow_house, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], [0, 1, 2, 3], 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
+
+        // Griftpark West POIS
+        const griftparkWest1 = new POI([5.127361, 52.101611], 20, new POIContent('Grove Den', amelisweerdSound1, grove_den, 'Welke feiten over de grove den zijn onjuist?', ['De boom heeft mannelijke en vrouwelijke bloemen', 'De kegels openen zich als het regent', 'De zaden rijpen in de kegels gedurende twee jaar', 'Hars van dennen werd ooit gebruikt om kauwgom te maken'], 1, 'De grove den is een van de weinige inheemse naaldbomen. De dennenappels zijn natuurlijke weersindicatoren: ze openen zich bij droog weer en sluiten zich bij regen. Dit zorgt ervoor dat de zaden in de dennenappels alleen bij droog weer vrijkomen en eerder door de wind worden meegevoerd.'), true);
+        const griftparkWest2 = new POI([5.126332, 52.101158], 20, new POIContent('Waterlelies', amelisweerdSound1, waterlelies, 'Welke voordelen hebben waterlelies voor hun ecosysteem?', ['Ze bieden vissen beschutting tegen roofdieren', 'Ze voorkomen algengroei', 'Ze filteren zout water', 'De kleur van hun bloemen geeft de gezondheid van de vijver aan'], [0, 1], 'Naast het bieden van beschutting aan dieren, bieden waterlelies ook schaduw tegen de zon voor het water eronder. Dit verlaagt de watertemperatuur en helpt algengroei te voorkomen.'), true);
+        const griftparkWest3 = new POI([5.126660, 52.100431], 20, new POIContent('Zwarte Vlier', amelisweerdSound1, zwarte_vlier, 'Welke delen van deze struik zijn eetbaar?', ['Bladeren', 'Bessen (na het koken)', 'Bloemen', 'Wortels'], [1, 2], 'De vlierbloesem struik wordt al honderden jaren gekweekt als kook- en medicinale plant. In de middeleeuwen werd hij zelfs als heilig beschouwd, omdat hij het kwaad zou afweren. Tegenwoordig wordt hij nog steeds gebruikt om siroop van de bloemen te maken (vlierbloesemsiroop) en om de bessen te gebruiken bij het bakken of om wijn te maken (vlierbessenwijn).'), true);
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -81,7 +86,7 @@ export default class AreaHandler {
         this.areas = [
             // new Area('amsterdam', amsterdamCoords, [amsterdam1]),
             new Area('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
-            new Area('Griftpark West', griftparkWestCoords, []),
+            new Area('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3]),
             new Area('Griftpark Zuid', griftparkSouthCoords, [])
         ];
     }

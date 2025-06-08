@@ -29,6 +29,10 @@ export default class POIContent {
         return this.correctAnswer;
     }
 
+    isMultipleChoice() {
+        return Array.isArray(this.correctAnswer);
+    }
+
     getFunFact() {
         return this.funFact;
     }

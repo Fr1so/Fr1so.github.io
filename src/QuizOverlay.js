@@ -36,14 +36,14 @@ export default class QuizOverlay {
 
     getQuizFormHtml() {
         const content = this.poi.getContent();
+        const isMultiple = Array.isArray(content.getCorrectAnswer());
 
-        // Only show quiz if a question is provided
         if (!content.getQuestion() || content.getAnswerOptions().length === 0) return '';
 
         const optionsHtml = content.getAnswerOptions()
             .map((option, index) => `
                 <label class="quiz-option">
-                    <input type="radio" name="quiz-option" value="${index}">
+                    <input type="${isMultiple ? 'checkbox' : 'radio'}" name="quiz-option" value="${index}">
                     ${option}
                 </label>
             `)
@@ -68,15 +68,25 @@ export default class QuizOverlay {
         if (!form || !this.poi) return;
 
         const content = this.poi.getContent();
-        const correctIndex = content.getCorrectAnswer();
+        const correctAnswer = content.getCorrectAnswer();
+        const isMultiple = Array.isArray(correctAnswer);
 
         form.addEventListener('click', (event) => {
             if (event.target.id === 'submit-answer') {
-                const selectedOption = form.querySelector('input[name="quiz-option"]:checked');
+                const selectedInputs = form.querySelectorAll('input[name="quiz-option"]:checked');
 
-                if (selectedOption) {
-                    const selectedIndex = parseInt(selectedOption.value, 10);
-                    const isCorrect = selectedIndex === correctIndex;
+                if (selectedInputs.length > 0) {
+                    const selectedIndexes = Array.from(selectedInputs).map(input => parseInt(input.value, 10));
+
+                    let isCorrect = false;
+
+                    if (isMultiple) {
+                        const sortedSelected = selectedIndexes.slice().sort();
+                        const sortedCorrect = correctAnswer.slice().sort();
+                        isCorrect = JSON.stringify(sortedSelected) === JSON.stringify(sortedCorrect);
+                    } else {
+                        isCorrect = selectedIndexes[0] === correctAnswer;
+                    }
 
                     feedbackElement.innerHTML = isCorrect 
                         ? `✅ Juist! Goed gedaan!<br><br>${content.getFunFact()}`
@@ -85,12 +95,12 @@ export default class QuizOverlay {
                     feedbackElement.classList.toggle('correct', isCorrect);
                     feedbackElement.classList.toggle('incorrect', !isCorrect);
 
-                    if(isCorrect) {
+                    if (isCorrect) {
                         this.poi.setFound(true);
                         this.updateAreaCallback(this.poi);
                     }
                 } else {
-                    feedbackElement.textContent = '⚠️ Please select an option before submitting.';
+                    feedbackElement.textContent = '⚠️ Selecteer een antwoord voordat je controleert.';
                     feedbackElement.classList.remove('correct', 'incorrect');
                 }
             }

@@ -54037,14 +54037,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
 /* harmony import */ var _Area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Area */ "./src/Area.js");
 /* harmony import */ var _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/amelisweerd1.mp3 */ "./src/assets/audio/amelisweerd1.mp3");
-/* harmony import */ var _assets_audio_amelisweerd2_mp3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/audio/amelisweerd2.mp3 */ "./src/assets/audio/amelisweerd2.mp3");
-/* harmony import */ var _assets_audio_amelisweerd3_mp3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/audio/amelisweerd3.mp3 */ "./src/assets/audio/amelisweerd3.mp3");
-/* harmony import */ var _assets_audio_amelisweerd4_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/audio/amelisweerd4.mp3 */ "./src/assets/audio/amelisweerd4.mp3");
-/* harmony import */ var _assets_audio_amelisweerd5_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/audio/amelisweerd5.mp3 */ "./src/assets/audio/amelisweerd5.mp3");
-/* harmony import */ var _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/img/birdhouse.png */ "./src/assets/img/birdhouse.png");
-/* harmony import */ var _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/chessboard.jpeg */ "./src/assets/img/chessboard.jpeg");
-/* harmony import */ var _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/img/magnifying_glass.jpeg */ "./src/assets/img/magnifying_glass.jpeg");
-/* harmony import */ var _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/img/wood_thingy.jpeg */ "./src/assets/img/wood_thingy.jpeg");
+/* harmony import */ var _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/img/birdhouse.jpeg */ "./src/assets/img/birdhouse.jpeg");
+/* harmony import */ var _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/img/chessboard.jpeg */ "./src/assets/img/chessboard.jpeg");
+/* harmony import */ var _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/img/magnifying_glass.jpeg */ "./src/assets/img/magnifying_glass.jpeg");
+/* harmony import */ var _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/img/wood_thingy.jpeg */ "./src/assets/img/wood_thingy.jpeg");
+/* harmony import */ var _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/img/yellow_house.jpeg */ "./src/assets/img/yellow_house.jpeg");
+/* harmony import */ var _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/grove_den.jpeg */ "./src/assets/img/grove_den.jpeg");
+/* harmony import */ var _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/img/waterlelies.jpeg */ "./src/assets/img/waterlelies.jpeg");
+/* harmony import */ var _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/img/zwarte_vlier.jpeg */ "./src/assets/img/zwarte_vlier.jpeg");
 
 
 
@@ -54061,15 +54061,20 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // create pois here with coords and content
-        const amsterdam1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_8__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
+        const amsterdam1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([4.887620, 52.373366], 80, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
 
         // Griftsteede POIS
-        const griftsteede1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128442, 52.101841], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_png__WEBPACK_IMPORTED_MODULE_8__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
-        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_9__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', ['Rups 1', 'Rups 2', 'Rups 3', 'Rups 4'], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
-        const griftsteede3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129093, 52.101391], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vergrootglas', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_10__, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
-        const griftsteede4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129072 , 52.101826], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Houten huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
-        // TODO!! Multiple choice + picture
-        const griftsteede5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128988 , 52.100962], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Gele huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], 0, 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
+        // TODO!! IMAGE ANSWERS
+        const griftsteede1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128442, 52.101841], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
+        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_5__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', ['Rups 1', 'Rups 2', 'Rups 3', 'Rups 4'], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
+        const griftsteede3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129093, 52.101391], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vergrootglas', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_6__, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
+        const griftsteede4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129072 , 52.101826], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Houten huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_7__, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
+        const griftsteede5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128988 , 52.100962], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Gele huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_8__, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], [0, 1, 2, 3], 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
+
+        // Griftpark West POIS
+        const griftparkWest1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127361, 52.101611], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Grove Den', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_9__, 'Welke feiten over de grove den zijn onjuist?', ['De boom heeft mannelijke en vrouwelijke bloemen', 'De kegels openen zich als het regent', 'De zaden rijpen in de kegels gedurende twee jaar', 'Hars van dennen werd ooit gebruikt om kauwgom te maken'], 1, 'De grove den is een van de weinige inheemse naaldbomen. De dennenappels zijn natuurlijke weersindicatoren: ze openen zich bij droog weer en sluiten zich bij regen. Dit zorgt ervoor dat de zaden in de dennenappels alleen bij droog weer vrijkomen en eerder door de wind worden meegevoerd.'), true);
+        const griftparkWest2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126332, 52.101158], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Waterlelies', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_10__, 'Welke voordelen hebben waterlelies voor hun ecosysteem?', ['Ze bieden vissen beschutting tegen roofdieren', 'Ze voorkomen algengroei', 'Ze filteren zout water', 'De kleur van hun bloemen geeft de gezondheid van de vijver aan'], [0, 1], 'Naast het bieden van beschutting aan dieren, bieden waterlelies ook schaduw tegen de zon voor het water eronder. Dit verlaagt de watertemperatuur en helpt algengroei te voorkomen.'), true);
+        const griftparkWest3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126660, 52.100431], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Zwarte Vlier', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Welke delen van deze struik zijn eetbaar?', ['Bladeren', 'Bessen (na het koken)', 'Bloemen', 'Wortels'], [1, 2], 'De vlierbloesem struik wordt al honderden jaren gekweekt als kook- en medicinale plant. In de middeleeuwen werd hij zelfs als heilig beschouwd, omdat hij het kwaad zou afweren. Tegenwoordig wordt hij nog steeds gebruikt om siroop van de bloemen te maken (vlierbloesemsiroop) en om de bessen te gebruiken bij het bakken of om wijn te maken (vlierbessenwijn).'), true);
 
         // create area's here with coords (outline polygon) and pois
         const amsterdamCoords = [
@@ -54128,7 +54133,7 @@ class AreaHandler {
         this.areas = [
             // new Area('amsterdam', amsterdamCoords, [amsterdam1]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
-            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark West', griftparkWestCoords, []),
+            new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3]),
             new _Area__WEBPACK_IMPORTED_MODULE_2__["default"]('Griftpark Zuid', griftparkSouthCoords, [])
         ];
     }
@@ -54386,6 +54391,10 @@ class POIContent {
         return this.correctAnswer;
     }
 
+    isMultipleChoice() {
+        return Array.isArray(this.correctAnswer);
+    }
+
     getFunFact() {
         return this.funFact;
     }
@@ -54445,14 +54454,14 @@ class QuizOverlay {
 
     getQuizFormHtml() {
         const content = this.poi.getContent();
+        const isMultiple = Array.isArray(content.getCorrectAnswer());
 
-        // Only show quiz if a question is provided
         if (!content.getQuestion() || content.getAnswerOptions().length === 0) return '';
 
         const optionsHtml = content.getAnswerOptions()
             .map((option, index) => `
                 <label class="quiz-option">
-                    <input type="radio" name="quiz-option" value="${index}">
+                    <input type="${isMultiple ? 'checkbox' : 'radio'}" name="quiz-option" value="${index}">
                     ${option}
                 </label>
             `)
@@ -54477,15 +54486,25 @@ class QuizOverlay {
         if (!form || !this.poi) return;
 
         const content = this.poi.getContent();
-        const correctIndex = content.getCorrectAnswer();
+        const correctAnswer = content.getCorrectAnswer();
+        const isMultiple = Array.isArray(correctAnswer);
 
         form.addEventListener('click', (event) => {
             if (event.target.id === 'submit-answer') {
-                const selectedOption = form.querySelector('input[name="quiz-option"]:checked');
+                const selectedInputs = form.querySelectorAll('input[name="quiz-option"]:checked');
 
-                if (selectedOption) {
-                    const selectedIndex = parseInt(selectedOption.value, 10);
-                    const isCorrect = selectedIndex === correctIndex;
+                if (selectedInputs.length > 0) {
+                    const selectedIndexes = Array.from(selectedInputs).map(input => parseInt(input.value, 10));
+
+                    let isCorrect = false;
+
+                    if (isMultiple) {
+                        const sortedSelected = selectedIndexes.slice().sort();
+                        const sortedCorrect = correctAnswer.slice().sort();
+                        isCorrect = JSON.stringify(sortedSelected) === JSON.stringify(sortedCorrect);
+                    } else {
+                        isCorrect = selectedIndexes[0] === correctAnswer;
+                    }
 
                     feedbackElement.innerHTML = isCorrect 
                         ? `✅ Juist! Goed gedaan!<br><br>${content.getFunFact()}`
@@ -54494,12 +54513,12 @@ class QuizOverlay {
                     feedbackElement.classList.toggle('correct', isCorrect);
                     feedbackElement.classList.toggle('incorrect', !isCorrect);
 
-                    if(isCorrect) {
+                    if (isCorrect) {
                         this.poi.setFound(true);
                         this.updateAreaCallback(this.poi);
                     }
                 } else {
-                    feedbackElement.textContent = '⚠️ Please select an option before submitting.';
+                    feedbackElement.textContent = '⚠️ Selecteer een antwoord voordat je controleert.';
                     feedbackElement.classList.remove('correct', 'incorrect');
                 }
             }
@@ -54516,46 +54535,6 @@ class QuizOverlay {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "d0279d5c5b0c8d5c9b91.mp3";
-
-/***/ }),
-
-/***/ "./src/assets/audio/amelisweerd2.mp3":
-/*!*******************************************!*\
-  !*** ./src/assets/audio/amelisweerd2.mp3 ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "1de6ce1e3b0159b1d40a.mp3";
-
-/***/ }),
-
-/***/ "./src/assets/audio/amelisweerd3.mp3":
-/*!*******************************************!*\
-  !*** ./src/assets/audio/amelisweerd3.mp3 ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "cce20b35207c4150f131.mp3";
-
-/***/ }),
-
-/***/ "./src/assets/audio/amelisweerd4.mp3":
-/*!*******************************************!*\
-  !*** ./src/assets/audio/amelisweerd4.mp3 ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "037a9adb3d6aad5fcbcc.mp3";
-
-/***/ }),
-
-/***/ "./src/assets/audio/amelisweerd5.mp3":
-/*!*******************************************!*\
-  !*** ./src/assets/audio/amelisweerd5.mp3 ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "94b33986b16b5383e9ad.mp3";
 
 /***/ }),
 
@@ -54579,13 +54558,13 @@ module.exports = __webpack_require__.p + "83c1d8c476943e124d69.png";
 
 /***/ }),
 
-/***/ "./src/assets/img/birdhouse.png":
-/*!**************************************!*\
-  !*** ./src/assets/img/birdhouse.png ***!
-  \**************************************/
+/***/ "./src/assets/img/birdhouse.jpeg":
+/*!***************************************!*\
+  !*** ./src/assets/img/birdhouse.jpeg ***!
+  \***************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "b18ae016099900e3caa6.png";
+module.exports = __webpack_require__.p + "af35d9cb89e0afb0efae.jpeg";
 
 /***/ }),
 
@@ -54595,7 +54574,17 @@ module.exports = __webpack_require__.p + "b18ae016099900e3caa6.png";
   \****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "a599b68f57efe50497c3.jpeg";
+module.exports = __webpack_require__.p + "80c13257344fa11373c4.jpeg";
+
+/***/ }),
+
+/***/ "./src/assets/img/grove_den.jpeg":
+/*!***************************************!*\
+  !*** ./src/assets/img/grove_den.jpeg ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "3319454ba0889b27156e.jpeg";
 
 /***/ }),
 
@@ -54605,7 +54594,7 @@ module.exports = __webpack_require__.p + "a599b68f57efe50497c3.jpeg";
   \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "bbaae0afadd464666d5d.jpeg";
+module.exports = __webpack_require__.p + "415c0754c6810671a822.jpeg";
 
 /***/ }),
 
@@ -54619,13 +54608,43 @@ module.exports = __webpack_require__.p + "10840811ad38d149b7ad.jpg";
 
 /***/ }),
 
+/***/ "./src/assets/img/waterlelies.jpeg":
+/*!*****************************************!*\
+  !*** ./src/assets/img/waterlelies.jpeg ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "3247320a80b27ef79735.jpeg";
+
+/***/ }),
+
 /***/ "./src/assets/img/wood_thingy.jpeg":
 /*!*****************************************!*\
   !*** ./src/assets/img/wood_thingy.jpeg ***!
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "7270981e205d789666c7.jpeg";
+module.exports = __webpack_require__.p + "70102f2bf4c1f7373b55.jpeg";
+
+/***/ }),
+
+/***/ "./src/assets/img/yellow_house.jpeg":
+/*!******************************************!*\
+  !*** ./src/assets/img/yellow_house.jpeg ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "b1fbc390ddce343736ff.jpeg";
+
+/***/ }),
+
+/***/ "./src/assets/img/zwarte_vlier.jpeg":
+/*!******************************************!*\
+  !*** ./src/assets/img/zwarte_vlier.jpeg ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "ac37c4ebcd583fa54e06.jpeg";
 
 /***/ }),
 
