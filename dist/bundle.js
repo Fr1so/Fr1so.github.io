@@ -54934,7 +54934,7 @@ function updateUserLocation(coords, heading) {
         }
 
         // check if user left POI radius
-        if (distance >= currentPoi.getRadius() * 0.5) {
+        if (distance >= currentPoi.getRadius() * 0.66) {
             quizOverlay.hide();
             quizOverlay.setPoi(null);
             currentPoi = null;
@@ -54963,7 +54963,7 @@ function updateUserLocation(coords, heading) {
                     }
                 }
 
-                if (distance <= poi.getRadius() * 0.5) {
+                if (distance <= poi.getRadius() * 0.3) {
                     currentPoi = poi;
                     // show popup
                     quizOverlay.setPoi(poi);
