@@ -54151,6 +54151,7 @@ class QuizOverlay {
     constructor(updateAreaCallback) {
         this.updateAreaCallback = updateAreaCallback;
         this.poi = null;
+        this.active = false;
     }
 
     setPoi(poi) {
@@ -54161,6 +54162,8 @@ class QuizOverlay {
         if(!this.poi) {
             console.error('Cant show quiz overlay: no poi set');
         }
+
+        this.active = true;
 
         const content = this.poi.getContent();
 
@@ -54179,6 +54182,7 @@ class QuizOverlay {
     }
 
     hide() {
+        this.active = false;
         const modal = document.getElementById('poi-modal');
         modal.classList.add('hidden');
     }
@@ -54967,7 +54971,11 @@ function updateUserLocation(coords, heading) {
                     currentPoi = poi;
                     // show popup
                     quizOverlay.setPoi(poi);
-                    quizOverlay.show();
+                    if(!quizOverlay.Active)
+                    {
+                        quizOverlay.show();
+                    }
+                    
 
                     // show marker on the map
                     poi.userInside = true;

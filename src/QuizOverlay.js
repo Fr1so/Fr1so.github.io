@@ -2,6 +2,7 @@ export default class QuizOverlay {
     constructor(updateAreaCallback) {
         this.updateAreaCallback = updateAreaCallback;
         this.poi = null;
+        this.active = false;
     }
 
     setPoi(poi) {
@@ -12,6 +13,8 @@ export default class QuizOverlay {
         if(!this.poi) {
             console.error('Cant show quiz overlay: no poi set');
         }
+
+        this.active = true;
 
         const content = this.poi.getContent();
 
@@ -30,6 +33,7 @@ export default class QuizOverlay {
     }
 
     hide() {
+        this.active = false;
         const modal = document.getElementById('poi-modal');
         modal.classList.add('hidden');
     }

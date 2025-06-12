@@ -118,7 +118,11 @@ function updateUserLocation(coords, heading) {
                     currentPoi = poi;
                     // show popup
                     quizOverlay.setPoi(poi);
-                    quizOverlay.show();
+                    if(!quizOverlay.Active)
+                    {
+                        quizOverlay.show();
+                    }
+                    
 
                     // show marker on the map
                     poi.userInside = true;
