@@ -54938,10 +54938,13 @@ function updateUserLocation(coords, heading) {
         }
 
         // check if user left POI radius
-        if (distance >= currentPoi.getRadius()) {
+        if (distance >= currentPoi.getRadius() * 0.66) {
+            // hide quiz overlay
             // quizOverlay.hide();
             // quizOverlay.setPoi(null);
-            // currentPoi = null;
+
+            // set current poi to null to user can find new pois
+            currentPoi = null;
 
             // hide marker
             poi.userInside = false;
