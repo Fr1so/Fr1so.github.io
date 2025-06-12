@@ -16118,302 +16118,6 @@ function toPromise(getter) {
 
 /***/ }),
 
-/***/ "./node_modules/ol/geom/Circle.js":
-/*!****************************************!*\
-  !*** ./node_modules/ol/geom/Circle.js ***!
-  \****************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _extent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../extent.js */ "./node_modules/ol/extent.js");
-/* harmony import */ var _SimpleGeometry_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SimpleGeometry.js */ "./node_modules/ol/geom/SimpleGeometry.js");
-/* harmony import */ var _flat_deflate_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./flat/deflate.js */ "./node_modules/ol/geom/flat/deflate.js");
-/* harmony import */ var _flat_transform_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./flat/transform.js */ "./node_modules/ol/geom/flat/transform.js");
-/**
- * @module ol/geom/Circle
- */
-
-
-
-
-
-/**
- * @classdesc
- * Circle geometry.
- *
- * @api
- */
-class Circle extends _SimpleGeometry_js__WEBPACK_IMPORTED_MODULE_0__["default"] {
-  /**
-   * @param {!import("../coordinate.js").Coordinate} center Center.
-   *     For internal use, flat coordinates in combination with `layout` and no
-   *     `radius` are also accepted.
-   * @param {number} [radius] Radius in units of the projection.
-   * @param {import("./Geometry.js").GeometryLayout} [layout] Layout.
-   */
-  constructor(center, radius, layout) {
-    super();
-    if (layout !== undefined && radius === undefined) {
-      this.setFlatCoordinates(layout, center);
-    } else {
-      radius = radius ? radius : 0;
-      this.setCenterAndRadius(center, radius, layout);
-    }
-  }
-
-  /**
-   * Make a complete copy of the geometry.
-   * @return {!Circle} Clone.
-   * @api
-   * @override
-   */
-  clone() {
-    const circle = new Circle(
-      this.flatCoordinates.slice(),
-      undefined,
-      this.layout,
-    );
-    circle.applyProperties(this);
-    return circle;
-  }
-
-  /**
-   * @param {number} x X.
-   * @param {number} y Y.
-   * @param {import("../coordinate.js").Coordinate} closestPoint Closest point.
-   * @param {number} minSquaredDistance Minimum squared distance.
-   * @return {number} Minimum squared distance.
-   * @override
-   */
-  closestPointXY(x, y, closestPoint, minSquaredDistance) {
-    const flatCoordinates = this.flatCoordinates;
-    const dx = x - flatCoordinates[0];
-    const dy = y - flatCoordinates[1];
-    const squaredDistance = dx * dx + dy * dy;
-    if (squaredDistance < minSquaredDistance) {
-      if (squaredDistance === 0) {
-        for (let i = 0; i < this.stride; ++i) {
-          closestPoint[i] = flatCoordinates[i];
-        }
-      } else {
-        const delta = this.getRadius() / Math.sqrt(squaredDistance);
-        closestPoint[0] = flatCoordinates[0] + delta * dx;
-        closestPoint[1] = flatCoordinates[1] + delta * dy;
-        for (let i = 2; i < this.stride; ++i) {
-          closestPoint[i] = flatCoordinates[i];
-        }
-      }
-      closestPoint.length = this.stride;
-      return squaredDistance;
-    }
-    return minSquaredDistance;
-  }
-
-  /**
-   * @param {number} x X.
-   * @param {number} y Y.
-   * @return {boolean} Contains (x, y).
-   * @override
-   */
-  containsXY(x, y) {
-    const flatCoordinates = this.flatCoordinates;
-    const dx = x - flatCoordinates[0];
-    const dy = y - flatCoordinates[1];
-    return dx * dx + dy * dy <= this.getRadiusSquared_();
-  }
-
-  /**
-   * Return the center of the circle as {@link module:ol/coordinate~Coordinate coordinate}.
-   * @return {import("../coordinate.js").Coordinate} Center.
-   * @api
-   */
-  getCenter() {
-    return this.flatCoordinates.slice(0, this.stride);
-  }
-
-  /**
-   * @param {import("../extent.js").Extent} extent Extent.
-   * @protected
-   * @return {import("../extent.js").Extent} extent Extent.
-   * @override
-   */
-  computeExtent(extent) {
-    const flatCoordinates = this.flatCoordinates;
-    const radius = flatCoordinates[this.stride] - flatCoordinates[0];
-    return (0,_extent_js__WEBPACK_IMPORTED_MODULE_1__.createOrUpdate)(
-      flatCoordinates[0] - radius,
-      flatCoordinates[1] - radius,
-      flatCoordinates[0] + radius,
-      flatCoordinates[1] + radius,
-      extent,
-    );
-  }
-
-  /**
-   * Return the radius of the circle.
-   * @return {number} Radius.
-   * @api
-   */
-  getRadius() {
-    return Math.sqrt(this.getRadiusSquared_());
-  }
-
-  /**
-   * @private
-   * @return {number} Radius squared.
-   */
-  getRadiusSquared_() {
-    const dx = this.flatCoordinates[this.stride] - this.flatCoordinates[0];
-    const dy = this.flatCoordinates[this.stride + 1] - this.flatCoordinates[1];
-    return dx * dx + dy * dy;
-  }
-
-  /**
-   * Get the type of this geometry.
-   * @return {import("./Geometry.js").Type} Geometry type.
-   * @api
-   * @override
-   */
-  getType() {
-    return 'Circle';
-  }
-
-  /**
-   * Test if the geometry and the passed extent intersect.
-   * @param {import("../extent.js").Extent} extent Extent.
-   * @return {boolean} `true` if the geometry and the extent intersect.
-   * @api
-   * @override
-   */
-  intersectsExtent(extent) {
-    const circleExtent = this.getExtent();
-    if ((0,_extent_js__WEBPACK_IMPORTED_MODULE_1__.intersects)(extent, circleExtent)) {
-      const center = this.getCenter();
-
-      if (extent[0] <= center[0] && extent[2] >= center[0]) {
-        return true;
-      }
-      if (extent[1] <= center[1] && extent[3] >= center[1]) {
-        return true;
-      }
-
-      return (0,_extent_js__WEBPACK_IMPORTED_MODULE_1__.forEachCorner)(extent, this.intersectsCoordinate.bind(this));
-    }
-    return false;
-  }
-
-  /**
-   * Set the center of the circle as {@link module:ol/coordinate~Coordinate coordinate}.
-   * @param {import("../coordinate.js").Coordinate} center Center.
-   * @api
-   */
-  setCenter(center) {
-    const stride = this.stride;
-    const radius = this.flatCoordinates[stride] - this.flatCoordinates[0];
-    const flatCoordinates = center.slice();
-    flatCoordinates[stride] = flatCoordinates[0] + radius;
-    for (let i = 1; i < stride; ++i) {
-      flatCoordinates[stride + i] = center[i];
-    }
-    this.setFlatCoordinates(this.layout, flatCoordinates);
-    this.changed();
-  }
-
-  /**
-   * Set the center (as {@link module:ol/coordinate~Coordinate coordinate}) and the radius (as
-   * number) of the circle.
-   * @param {!import("../coordinate.js").Coordinate} center Center.
-   * @param {number} radius Radius.
-   * @param {import("./Geometry.js").GeometryLayout} [layout] Layout.
-   * @api
-   */
-  setCenterAndRadius(center, radius, layout) {
-    this.setLayout(layout, center, 0);
-    if (!this.flatCoordinates) {
-      this.flatCoordinates = [];
-    }
-    /** @type {Array<number>} */
-    const flatCoordinates = this.flatCoordinates;
-    let offset = (0,_flat_deflate_js__WEBPACK_IMPORTED_MODULE_2__.deflateCoordinate)(flatCoordinates, 0, center, this.stride);
-    flatCoordinates[offset++] = flatCoordinates[0] + radius;
-    for (let i = 1, ii = this.stride; i < ii; ++i) {
-      flatCoordinates[offset++] = flatCoordinates[i];
-    }
-    flatCoordinates.length = offset;
-    this.changed();
-  }
-
-  /**
-   * @override
-   */
-  getCoordinates() {
-    return null;
-  }
-
-  /**
-   * @override
-   */
-  setCoordinates(coordinates, layout) {}
-
-  /**
-   * Set the radius of the circle. The radius is in the units of the projection.
-   * @param {number} radius Radius.
-   * @api
-   */
-  setRadius(radius) {
-    this.flatCoordinates[this.stride] = this.flatCoordinates[0] + radius;
-    this.changed();
-  }
-
-  /**
-   * Rotate the geometry around a given coordinate. This modifies the geometry
-   * coordinates in place.
-   * @param {number} angle Rotation angle in counter-clockwise radians.
-   * @param {import("../coordinate.js").Coordinate} anchor The rotation center.
-   * @api
-   * @override
-   */
-  rotate(angle, anchor) {
-    const center = this.getCenter();
-    const stride = this.getStride();
-    this.setCenter(
-      (0,_flat_transform_js__WEBPACK_IMPORTED_MODULE_3__.rotate)(center, 0, center.length, stride, angle, anchor, center),
-    );
-    this.changed();
-  }
-}
-
-/**
- * Transform each coordinate of the circle from one coordinate reference system
- * to another. The geometry is modified in place.
- * If you do not want the geometry modified in place, first clone() it and
- * then use this function on the clone.
- *
- * Internally a circle is currently represented by two points: the center of
- * the circle `[cx, cy]`, and the point to the right of the circle
- * `[cx + r, cy]`. This `transform` function just transforms these two points.
- * So the resulting geometry is also a circle, and that circle does not
- * correspond to the shape that would be obtained by transforming every point
- * of the original circle.
- *
- * @param {import("../proj.js").ProjectionLike} source The current projection.  Can be a
- *     string identifier or a {@link module:ol/proj/Projection~Projection} object.
- * @param {import("../proj.js").ProjectionLike} destination The desired projection.  Can be a
- *     string identifier or a {@link module:ol/proj/Projection~Projection} object.
- * @return {Circle} This geometry.  Note that original geometry is
- *     modified in place.
- * @function
- * @api
- */
-Circle.prototype.transform;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Circle);
-
-
-/***/ }),
-
 /***/ "./node_modules/ol/geom/Geometry.js":
 /*!******************************************!*\
   !*** ./node_modules/ol/geom/Geometry.js ***!
@@ -54056,23 +53760,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _POI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./POI */ "./src/POI.js");
 /* harmony import */ var _POIContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./POIContent */ "./src/POIContent.js");
 /* harmony import */ var _Area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Area */ "./src/Area.js");
-/* harmony import */ var _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/amelisweerd1.mp3 */ "./src/assets/audio/amelisweerd1.mp3");
-/* harmony import */ var _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/img/birdhouse.jpeg */ "./src/assets/img/birdhouse.jpeg");
-/* harmony import */ var _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/img/chessboard.jpeg */ "./src/assets/img/chessboard.jpeg");
-/* harmony import */ var _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/img/magnifying_glass.jpeg */ "./src/assets/img/magnifying_glass.jpeg");
-/* harmony import */ var _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/img/wood_thingy.jpeg */ "./src/assets/img/wood_thingy.jpeg");
-/* harmony import */ var _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/img/yellow_house.jpeg */ "./src/assets/img/yellow_house.jpeg");
-/* harmony import */ var _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/grove_den.jpeg */ "./src/assets/img/grove_den.jpeg");
-/* harmony import */ var _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/img/waterlelies.jpeg */ "./src/assets/img/waterlelies.jpeg");
-/* harmony import */ var _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/img/zwarte_vlier.jpeg */ "./src/assets/img/zwarte_vlier.jpeg");
-/* harmony import */ var _assets_img_stone_wall_jpeg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./assets/img/stone_wall.jpeg */ "./src/assets/img/stone_wall.jpeg");
-/* harmony import */ var _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./assets/img/zwarte_els.jpeg */ "./src/assets/img/zwarte_els.jpeg");
-/* harmony import */ var _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./assets/img/kleinbladige_linde.jpeg */ "./src/assets/img/kleinbladige_linde.jpeg");
-/* harmony import */ var _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./assets/img/esdoorn.jpeg */ "./src/assets/img/esdoorn.jpeg");
-/* harmony import */ var _assets_img_rups1_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./assets/img/rups1.jpg */ "./src/assets/img/rups1.jpg");
-/* harmony import */ var _assets_img_rups2_jpg__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./assets/img/rups2.jpg */ "./src/assets/img/rups2.jpg");
-/* harmony import */ var _assets_img_rups3_jpg__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assets/img/rups3.jpg */ "./src/assets/img/rups3.jpg");
-/* harmony import */ var _assets_img_rups4_jpg__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assets/img/rups4.jpg */ "./src/assets/img/rups4.jpg");
+/* harmony import */ var _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/img/birdhouse.jpeg */ "./src/assets/img/birdhouse.jpeg");
+/* harmony import */ var _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/img/chessboard.jpeg */ "./src/assets/img/chessboard.jpeg");
+/* harmony import */ var _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/img/magnifying_glass.jpeg */ "./src/assets/img/magnifying_glass.jpeg");
+/* harmony import */ var _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/img/wood_thingy.jpeg */ "./src/assets/img/wood_thingy.jpeg");
+/* harmony import */ var _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/img/yellow_house.jpeg */ "./src/assets/img/yellow_house.jpeg");
+/* harmony import */ var _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/img/grove_den.jpeg */ "./src/assets/img/grove_den.jpeg");
+/* harmony import */ var _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/img/waterlelies.jpeg */ "./src/assets/img/waterlelies.jpeg");
+/* harmony import */ var _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/img/zwarte_vlier.jpeg */ "./src/assets/img/zwarte_vlier.jpeg");
+/* harmony import */ var _assets_img_stone_wall_jpeg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/img/stone_wall.jpeg */ "./src/assets/img/stone_wall.jpeg");
+/* harmony import */ var _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./assets/img/zwarte_els.jpeg */ "./src/assets/img/zwarte_els.jpeg");
+/* harmony import */ var _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./assets/img/kleinbladige_linde.jpeg */ "./src/assets/img/kleinbladige_linde.jpeg");
+/* harmony import */ var _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./assets/img/esdoorn.jpeg */ "./src/assets/img/esdoorn.jpeg");
+/* harmony import */ var _assets_img_rups1_jpg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./assets/img/rups1.jpg */ "./src/assets/img/rups1.jpg");
+/* harmony import */ var _assets_img_rups2_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./assets/img/rups2.jpg */ "./src/assets/img/rups2.jpg");
+/* harmony import */ var _assets_img_rups3_jpg__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./assets/img/rups3.jpg */ "./src/assets/img/rups3.jpg");
+/* harmony import */ var _assets_img_rups4_jpg__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assets/img/rups4.jpg */ "./src/assets/img/rups4.jpg");
+/* harmony import */ var _assets_audio_Audio_Stop_1_mp3__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_1.mp3 */ "./src/assets/audio/Audio_Stop_1.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_2_mp3__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_2.mp3 */ "./src/assets/audio/Audio_Stop_2.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_3_mp3__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_3.mp3 */ "./src/assets/audio/Audio_Stop_3.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_4_mp3__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_4.mp3 */ "./src/assets/audio/Audio_Stop_4.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_5_mp3__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_5.mp3 */ "./src/assets/audio/Audio_Stop_5.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_6_mp3__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_6.mp3 */ "./src/assets/audio/Audio_Stop_6.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_7_mp3__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_7.mp3 */ "./src/assets/audio/Audio_Stop_7.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_8_mp3__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_8.mp3 */ "./src/assets/audio/Audio_Stop_8.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_9_mp3__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_9.mp3 */ "./src/assets/audio/Audio_Stop_9.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_10_mp3__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_10.mp3 */ "./src/assets/audio/Audio_Stop_10.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_11_mp3__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_11.mp3 */ "./src/assets/audio/Audio_Stop_11.mp3");
+/* harmony import */ var _assets_audio_Audio_Stop_12_mp3__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./assets/audio/Audio_Stop_12.mp3 */ "./src/assets/audio/Audio_Stop_12.mp3");
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -54097,26 +53824,22 @@ __webpack_require__.r(__webpack_exports__);
 class AreaHandler {
     constructor() {
         // Griftsteede POIS
-        // TODO!! IMAGE ANSWERS
-        const griftsteede1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128442, 52.101841], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_4__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'), true);
-
-        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_5__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', [{ image: _assets_img_rups1_jpg__WEBPACK_IMPORTED_MODULE_16__, alt: 'Rups 1' }, { image: _assets_img_rups2_jpg__WEBPACK_IMPORTED_MODULE_17__, alt: 'Rups 2' }, { image: _assets_img_rups3_jpg__WEBPACK_IMPORTED_MODULE_18__, alt: 'Rups 3' }, { image: _assets_img_rups4_jpg__WEBPACK_IMPORTED_MODULE_19__, alt: 'Rups 4' }], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'), true);
-
-
-        const griftsteede3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129093, 52.101391], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vergrootglas', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_6__, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'), true);
-        const griftsteede4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129072 , 52.101826], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Houten huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_7__, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'), true);
-        const griftsteede5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128988 , 52.100962], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Gele huisje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_8__, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], [0, 1, 2, 3], 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'), true);
+        const griftsteede1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128442, 52.101841], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vogelhuisje', _assets_audio_Audio_Stop_1_mp3__WEBPACK_IMPORTED_MODULE_19__, _assets_img_birdhouse_jpeg__WEBPACK_IMPORTED_MODULE_3__, 'Welk dier leeft hier?', ['Uil', 'Mees', 'Merel', 'Muis'], 1, 'Vogelpotten zoals deze worden al sinds de 16e eeuw gebruikt. Kleine vogels zoals mezen en mussen kunnen hier nestelen of schuilen tegen slecht weer.'));
+        const griftsteede2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129285, 52.102039], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Schaakbord', _assets_audio_Audio_Stop_2_mp3__WEBPACK_IMPORTED_MODULE_20__, _assets_img_chessboard_jpeg__WEBPACK_IMPORTED_MODULE_4__, 'Welke van deze rupsen zal op een dag uitgroeien tot de bekende dagpauwoog?', [{ image: _assets_img_rups1_jpg__WEBPACK_IMPORTED_MODULE_15__, alt: 'Rups 1' }, { image: _assets_img_rups2_jpg__WEBPACK_IMPORTED_MODULE_16__, alt: 'Rups 2' }, { image: _assets_img_rups3_jpg__WEBPACK_IMPORTED_MODULE_17__, alt: 'Rups 3' }, { image: _assets_img_rups4_jpg__WEBPACK_IMPORTED_MODULE_18__, alt: 'Rups 4' }], 3, 'Als rups voeden deze vlinders zich bijna uitsluitend met brandnetels. De grote valse ogen aan de binnenkant van hun vleugels dienen om roofdieren af te schrikken. De andere kant van hun vleugels is echter totaal anders: als ze hun vleugels inklappen, vormen ze met hun grijsbruine kleur een uitstekende camouflage.'));
+        const griftsteede3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129093, 52.101391], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Vergrootglas', _assets_audio_Audio_Stop_4_mp3__WEBPACK_IMPORTED_MODULE_22__, _assets_img_magnifying_glass_jpeg__WEBPACK_IMPORTED_MODULE_5__, 'Hoe maken krekels geluid?', ['door twee lichaamsdelen tegen elkaar te schuren', 'door heel snel met hun vleugels te slaan', 'door te schreeuwen', 'door hun vleugels over een stuk hout te wrijven'], 0, 'Krekels maken hun kenmerkende geluid door twee geribbelde delen van hun lichaam tegen elkaar te wrijven. Hoe warmer de temperatuur, hoe sneller ze kunnen bewegen, waardoor het tsjirpen luider wordt. Ze zijn ook nachtdieren. Daarom associëren we hun geluid met warme zomernachten.'));
+        const griftsteede4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.129072 , 52.101826], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Houten huisje', _assets_audio_Audio_Stop_3_mp3__WEBPACK_IMPORTED_MODULE_21__, _assets_img_wood_thingy_jpeg__WEBPACK_IMPORTED_MODULE_6__, 'Welke soort bestuiver zou in een insectenhotel leven?', ['honigbij', 'hommel', 'solitaire bij', 'papierswesp'], 2, 'Bijenhotels zijn een geweldige manier om solitaire (of wilde) bijen te helpen, omdat veel van hun natuurlijke nestgelegenheden verloren zijn gegaan. Wilde bijen leven niet in kolonies zoals honingbijen, maar leven alleen. De meeste van de meer dan 300 bijensoorten in Nederland zijn solitaire bijen. Andere bijen, zoals honingbijen of hommels, geven de voorkeur aan andere nestplaatsen en worden niet aangetrokken door bijenhotels.'));
+        const griftsteede5 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.128988 , 52.100962], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Gele huisje', _assets_audio_Audio_Stop_5_mp3__WEBPACK_IMPORTED_MODULE_23__, _assets_img_yellow_house_jpeg__WEBPACK_IMPORTED_MODULE_7__, 'Wat zou dit gele huisje kunnen zijn?', ['een plek waar de natuur aan zichzelf wordt overgelaten', 'het is bedoeld om je aan het denken te zetten', 'het is kunst', 'het beschermt de natuur binnenin'], [0, 1, 2, 3], 'Deze gele huisjes, natuurvrijplaatsen, zijn een kunstwerk van Marieke Vromans, die de natuur in Utrecht symbolisch een thuis geven door de binnenkant onaangeroerd te laten. De binnenkant van deze huisjes kan interessante vragen oproepen over hoe we naar de natuur kijken: Kan de natuur alleen zichzelf zijn als we haar mooi of nuttig vinden? Kan de natuur ook gewoon bestaan ​​zonder een doel te dienen?'));
 
         // Griftpark West POIS
-        const griftparkWest1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127361, 52.101611], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Grove Den', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_9__, 'Welke feiten over de grove den zijn onjuist?', ['De boom heeft mannelijke en vrouwelijke bloemen', 'De kegels openen zich als het regent', 'De zaden rijpen in de kegels gedurende twee jaar', 'Hars van dennen werd ooit gebruikt om kauwgom te maken'], 1, 'De grove den is een van de weinige inheemse naaldbomen. De dennenappels zijn natuurlijke weersindicatoren: ze openen zich bij droog weer en sluiten zich bij regen. Dit zorgt ervoor dat de zaden in de dennenappels alleen bij droog weer vrijkomen en eerder door de wind worden meegevoerd.'), true);
-        const griftparkWest2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126332, 52.101158], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Waterlelies', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_10__, 'Welke voordelen hebben waterlelies voor hun ecosysteem?', ['Ze bieden vissen beschutting tegen roofdieren', 'Ze voorkomen algengroei', 'Ze filteren zout water', 'De kleur van hun bloemen geeft de gezondheid van de vijver aan'], [0, 1], 'Naast het bieden van beschutting aan dieren, bieden waterlelies ook schaduw tegen de zon voor het water eronder. Dit verlaagt de watertemperatuur en helpt algengroei te voorkomen.'), true);
-        const griftparkWest3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126660, 52.100431], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Zwarte Vlier', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Welke delen van deze struik zijn eetbaar?', ['Bladeren', 'Bessen (na het koken)', 'Bloemen', 'Wortels'], [1, 2], 'De vlierbloesem struik wordt al honderden jaren gekweekt als kook- en medicinale plant. In de middeleeuwen werd hij zelfs als heilig beschouwd, omdat hij het kwaad zou afweren. Tegenwoordig wordt hij nog steeds gebruikt om siroop van de bloemen te maken (vlierbloesemsiroop) en om de bessen te gebruiken bij het bakken of om wijn te maken (vlierbessenwijn).'), true);
-        const griftparkWest4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1281634, 52.0998669], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Stenen Muur', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_stone_wall_jpeg__WEBPACK_IMPORTED_MODULE_12__, 'Deze plant is hier in de muur te vinden, wat is het?', ['Klokjesbloem', 'Muurleeuwenbek', 'Spoorbloem', 'Ganzerik'], 0, 'Deze bloemenmuur bevat meer dan 130 verschillende planten, die in 2000 voor het eerst werden geplant op initiatief van Rudolf de Bos Kuil. De muur is de afgelopen jaren onderhouden door buurtbewoners en vrijwilligers, die het ongewenste groen verwijderen en nieuwe planten in de muur planten. Wil je ook bijdragen? Kijk op buurtnatuur030.nl voor de aankomende data!'), true);
+        const griftparkWest1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127361, 52.101611], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Grove Den', _assets_audio_Audio_Stop_12_mp3__WEBPACK_IMPORTED_MODULE_30__, _assets_img_grove_den_jpeg__WEBPACK_IMPORTED_MODULE_8__, 'Welke feiten over de grove den zijn onjuist?', ['De boom heeft mannelijke en vrouwelijke bloemen', 'De kegels openen zich als het regent', 'De zaden rijpen in de kegels gedurende twee jaar', 'Hars van dennen werd ooit gebruikt om kauwgom te maken'], 1, 'De grove den is een van de weinige inheemse naaldbomen. De dennenappels zijn natuurlijke weersindicatoren: ze openen zich bij droog weer en sluiten zich bij regen. Dit zorgt ervoor dat de zaden in de dennenappels alleen bij droog weer vrijkomen en eerder door de wind worden meegevoerd.'));
+        const griftparkWest2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126332, 52.101158], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Waterlelies', _assets_audio_Audio_Stop_11_mp3__WEBPACK_IMPORTED_MODULE_29__, _assets_img_waterlelies_jpeg__WEBPACK_IMPORTED_MODULE_9__, 'Welke voordelen hebben waterlelies voor hun ecosysteem?', ['Ze bieden vissen beschutting tegen roofdieren', 'Ze voorkomen algengroei', 'Ze filteren zout water', 'De kleur van hun bloemen geeft de gezondheid van de vijver aan'], [0, 1], 'Naast het bieden van beschutting aan dieren, bieden waterlelies ook schaduw tegen de zon voor het water eronder. Dit verlaagt de watertemperatuur en helpt algengroei te voorkomen.'));
+        const griftparkWest3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.126660, 52.100431], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Zwarte Vlier', _assets_audio_Audio_Stop_10_mp3__WEBPACK_IMPORTED_MODULE_28__, _assets_img_zwarte_vlier_jpeg__WEBPACK_IMPORTED_MODULE_10__, 'Welke delen van deze struik zijn eetbaar?', ['Bladeren', 'Bessen (na het koken)', 'Bloemen', 'Wortels'], [1, 2], 'De vlierbloesem struik wordt al honderden jaren gekweekt als kook- en medicinale plant. In de middeleeuwen werd hij zelfs als heilig beschouwd, omdat hij het kwaad zou afweren. Tegenwoordig wordt hij nog steeds gebruikt om siroop van de bloemen te maken (vlierbloesemsiroop) en om de bessen te gebruiken bij het bakken of om wijn te maken (vlierbessenwijn).'));
+        const griftparkWest4 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1281634, 52.0998669], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Stenen Muur', _assets_audio_Audio_Stop_6_mp3__WEBPACK_IMPORTED_MODULE_24__, _assets_img_stone_wall_jpeg__WEBPACK_IMPORTED_MODULE_11__, 'Deze plant is hier in de muur te vinden, wat is het?', ['Klokjesbloem', 'Muurleeuwenbek', 'Spoorbloem', 'Ganzerik'], 0, 'Deze bloemenmuur bevat meer dan 130 verschillende planten, die in 2000 voor het eerst werden geplant op initiatief van Rudolf de Bos Kuil. De muur is de afgelopen jaren onderhouden door buurtbewoners en vrijwilligers, die het ongewenste groen verwijderen en nieuwe planten in de muur planten. Wil je ook bijdragen? Kijk op buurtnatuur030.nl voor de aankomende data!'));
 
         // Griftpark South POIS
-        const griftparkSouth1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127430, 52.099501], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Klein Boompje', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_13__, 'Wat voor soort boom is dit?', ['Beuk', 'Hazelnoot', 'Linde', 'Els'], 3, 'Dit is een els, of beter gezegd een zwarte els. Deze bomen groeien het liefst in vochtige gebieden, of, zoals hier, zelfs in het water. Dit is mogelijk dankzij een symbiose met een bacterie die in hun wortels leeft en stikstof uit de lucht bindt. Hierdoor kan de els zelfs op voedselarme plekken overleven. Hij biedt beschutting aan dieren zoals de zwarte ooievaar en de glanskop.'), true);
-        const griftparkSouth2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1280447, 52.0994194], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Kleinbladige Linde', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_14__, 'Deze kleinbladige linde is nog jong. Hoe oud is de oudste linde van Nederland ongeveer?', ['125 jaar', '420 jaar', '800 jaar', '2000 jaar'], 1, 'De oudste bekende lindeboom in Nederland is de Sambeeklinde (gemeente Boxmeer). De leeftijd wordt geschat op 400 tot 800 jaar, maar hij is waarschijnlijk rond 420 jaar oud. En hij is in alle opzichten groot: de stamomtrek is bijna 8 meter!'), true);
-        const griftparkSouth3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1277825, 52.0990538], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Esdoorn', _assets_audio_amelisweerd1_mp3__WEBPACK_IMPORTED_MODULE_3__, _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_15__, 'Hoe kunnen esdoornzaden grote afstanden afleggen vanaf de moederboom?', ['Ze kunnen drijven en door water worden vervoerd', 'Eekhoorns nemen ze mee en verspreiden de zaden', 'Ze hebben speciale vleugels', 'Ze worden uit de boom geschoten als ze rijp zijn'], 2, 'De esdoornzaden hebben vleugels waarmee ze kunnen draaien en door de lucht kunnen zweven. Zo kunnen ze door de wind worden opgepikt en meer dan 1 kilometer afleggen. Dit vleugelontwerp is zelfs de inspiratie geweest voor de bouw van helikopters!'), true);
+        const griftparkSouth1 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.127430, 52.099501], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Klein Boompje', _assets_audio_Audio_Stop_9_mp3__WEBPACK_IMPORTED_MODULE_27__, _assets_img_zwarte_els_jpeg__WEBPACK_IMPORTED_MODULE_12__, 'Wat voor soort boom is dit?', ['Beuk', 'Hazelnoot', 'Linde', 'Els'], 3, 'Dit is een els, of beter gezegd een zwarte els. Deze bomen groeien het liefst in vochtige gebieden, of, zoals hier, zelfs in het water. Dit is mogelijk dankzij een symbiose met een bacterie die in hun wortels leeft en stikstof uit de lucht bindt. Hierdoor kan de els zelfs op voedselarme plekken overleven. Hij biedt beschutting aan dieren zoals de zwarte ooievaar en de glanskop.'));
+        const griftparkSouth2 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1280447, 52.0994194], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Kleinbladige Linde', _assets_audio_Audio_Stop_7_mp3__WEBPACK_IMPORTED_MODULE_25__, _assets_img_kleinbladige_linde_jpeg__WEBPACK_IMPORTED_MODULE_13__, 'Deze kleinbladige linde is nog jong. Hoe oud is de oudste linde van Nederland ongeveer?', ['125 jaar', '420 jaar', '800 jaar', '2000 jaar'], 1, 'De oudste bekende lindeboom in Nederland is de Sambeeklinde (gemeente Boxmeer). De leeftijd wordt geschat op 400 tot 800 jaar, maar hij is waarschijnlijk rond 420 jaar oud. En hij is in alle opzichten groot: de stamomtrek is bijna 8 meter!'));
+        const griftparkSouth3 = new _POI__WEBPACK_IMPORTED_MODULE_0__["default"]([5.1277825, 52.0990538], 20, new _POIContent__WEBPACK_IMPORTED_MODULE_1__["default"]('Esdoorn', _assets_audio_Audio_Stop_8_mp3__WEBPACK_IMPORTED_MODULE_26__, _assets_img_esdoorn_jpeg__WEBPACK_IMPORTED_MODULE_14__, 'Hoe kunnen esdoornzaden grote afstanden afleggen vanaf de moederboom?', ['Ze kunnen drijven en door water worden vervoerd', 'Eekhoorns nemen ze mee en verspreiden de zaden', 'Ze hebben speciale vleugels', 'Ze worden uit de boom geschoten als ze rijp zijn'], 2, 'De esdoornzaden hebben vleugels waarmee ze kunnen draaien en door de lucht kunnen zweven. Zo kunnen ze door de wind worden opgepikt en meer dan 1 kilometer afleggen. Dit vleugelontwerp is zelfs de inspiratie geweest voor de bouw van helikopters!'));
 
         // create area's here with coords (outline polygon) and pois
         const griftsteedeCoords = [
@@ -54268,16 +53991,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ POI)
 /* harmony export */ });
 /* harmony import */ var ol_Feature__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ol/Feature */ "./node_modules/ol/Feature.js");
-/* harmony import */ var ol_geom_Circle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/geom/Circle */ "./node_modules/ol/geom/Circle.js");
-/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
-/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
+/* harmony import */ var ol_layer_Vector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ol/layer/Vector */ "./node_modules/ol/layer/Vector.js");
+/* harmony import */ var ol_source_Vector__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/source/Vector */ "./node_modules/ol/source/Vector.js");
 /* harmony import */ var ol_proj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ol/proj */ "./node_modules/ol/proj.js");
-/* harmony import */ var ol_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style */ "./node_modules/ol/style/Style.js");
-/* harmony import */ var ol_style_Fill__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ol/style/Fill */ "./node_modules/ol/style/Fill.js");
-/* harmony import */ var ol_style_Stroke__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ol/style/Stroke */ "./node_modules/ol/style/Stroke.js");
 /* harmony import */ var _assets_icons_poi_icon_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/icons/poi_icon.png */ "./src/assets/icons/poi_icon.png");
-/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
-/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var ol_geom_Point__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ol/geom/Point */ "./node_modules/ol/geom/Point.js");
+/* harmony import */ var ol_style_Icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ol/style/Icon */ "./node_modules/ol/style/Icon.js");
+/* harmony import */ var ol_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ol/style */ "./node_modules/ol/style/Style.js");
 
 
 
@@ -54298,31 +54018,23 @@ class POI {
         this.poiContent = poiContent;
         this.userInside = false;
 
-        // Convert center to map projection
-        const projectedCenter = (0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords);
-
-        // Create a circle geometry
-        this.poiFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
-            geometry: new ol_geom_Circle__WEBPACK_IMPORTED_MODULE_3__["default"](projectedCenter, this.radius)
-        });
-
         this.poiMarker = new ol_Feature__WEBPACK_IMPORTED_MODULE_2__["default"]({
             geometry: null,
             poiReference: this
         });
 
-        this.poiMarker.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_4__["default"]({
-            image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_5__["default"]({
+        this.poiMarker.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_3__["default"]({
+            image: new ol_style_Icon__WEBPACK_IMPORTED_MODULE_4__["default"]({
                 src: _assets_icons_poi_icon_png__WEBPACK_IMPORTED_MODULE_1__,
                 scale: 0.8
             })
         }));
 
-        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
-            features: [this.poiFeature, this.poiMarker]
+        this.poiSource = new ol_source_Vector__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            features: [this.poiMarker]
         });
 
-        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_7__["default"]({
+        this.poiLayer = new ol_layer_Vector__WEBPACK_IMPORTED_MODULE_6__["default"]({
             source: this.poiSource
         });
 
@@ -54340,30 +54052,14 @@ class POI {
     setFound(isFound) {
         this.isFound = isFound;
         this.updateMarkerVisibility();
-
-        // SHOW RADIUS
-        this.updateStyle();
     }
 
     updateMarkerVisibility() {
         if (this.isFound || this.userInside) {
-            this.poiMarker.setGeometry(new ol_geom_Point__WEBPACK_IMPORTED_MODULE_8__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords)));
+            this.poiMarker.setGeometry(new ol_geom_Point__WEBPACK_IMPORTED_MODULE_7__["default"]((0,ol_proj__WEBPACK_IMPORTED_MODULE_0__.fromLonLat)(this.coords)));
         } else {
             this.poiMarker.setGeometry(null);
         }
-    }
-
-    updateStyle() {
-        const opacity = this.isFound ? 0.3 : 0.0;
-        this.poiFeature.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_4__["default"]({
-            stroke: new ol_style_Stroke__WEBPACK_IMPORTED_MODULE_9__["default"]({
-                color: `rgba(0, 0, 255, ${opacity * 3})`,
-                width: 2
-            }),
-            fill: new ol_style_Fill__WEBPACK_IMPORTED_MODULE_10__["default"]({
-                color: `rgba(30, 144, 255, ${opacity})`
-            })
-        }));
     }
 
     getLayer() {  
@@ -54570,13 +54266,123 @@ class QuizOverlay {
 
 /***/ }),
 
-/***/ "./src/assets/audio/amelisweerd1.mp3":
+/***/ "./src/assets/audio/Audio_Stop_1.mp3":
 /*!*******************************************!*\
-  !*** ./src/assets/audio/amelisweerd1.mp3 ***!
+  !*** ./src/assets/audio/Audio_Stop_1.mp3 ***!
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "d0279d5c5b0c8d5c9b91.mp3";
+module.exports = __webpack_require__.p + "62edd891c87e7bb1fc0f.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_10.mp3":
+/*!********************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_10.mp3 ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "4967e50ed38bd25da447.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_11.mp3":
+/*!********************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_11.mp3 ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "168ce26208fabf35a2c4.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_12.mp3":
+/*!********************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_12.mp3 ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "31075eeda67e0819a025.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_2.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_2.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "6603c4e7df615ea35971.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_3.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_3.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "255a1de2bea44d07995c.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_4.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_4.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "918fa48600639bd15aba.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_5.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_5.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "04127533d1f2f359fec0.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_6.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_6.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "d10d297027df6dadc678.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_7.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_7.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "71ae8678dca30f63174a.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_8.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_8.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "5eeb76b77d4ce58aa6f0.mp3";
+
+/***/ }),
+
+/***/ "./src/assets/audio/Audio_Stop_9.mp3":
+/*!*******************************************!*\
+  !*** ./src/assets/audio/Audio_Stop_9.mp3 ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "1d3649fee0ffca13d916.mp3";
 
 /***/ }),
 
@@ -54596,7 +54402,7 @@ module.exports = __webpack_require__.p + "e533a0767252b9c98798.png";
   \***************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "83c1d8c476943e124d69.png";
+module.exports = __webpack_require__.p + "3c126b237bfa38031334.png";
 
 /***/ }),
 

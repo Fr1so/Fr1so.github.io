@@ -18,14 +18,6 @@ export default class POI {
         this.poiContent = poiContent;
         this.userInside = false;
 
-        // Convert center to map projection
-        const projectedCenter = fromLonLat(this.coords);
-
-        // Create a circle geometry
-        this.poiFeature = new Feature({
-            geometry: new CircleGeom(projectedCenter, this.radius)
-        });
-
         this.poiMarker = new Feature({
             geometry: null,
             poiReference: this
@@ -39,7 +31,7 @@ export default class POI {
         }));
 
         this.poiSource = new VectorSource({
-            features: [this.poiFeature, this.poiMarker]
+            features: [this.poiMarker]
         });
 
         this.poiLayer = new VectorLayer({
@@ -60,9 +52,6 @@ export default class POI {
     setFound(isFound) {
         this.isFound = isFound;
         this.updateMarkerVisibility();
-
-        // SHOW RADIUS
-        this.updateStyle();
     }
 
     updateMarkerVisibility() {
@@ -71,19 +60,6 @@ export default class POI {
         } else {
             this.poiMarker.setGeometry(null);
         }
-    }
-
-    updateStyle() {
-        const opacity = this.isFound ? 0.3 : 0.0;
-        this.poiFeature.setStyle(new Style({
-            stroke: new Stroke({
-                color: `rgba(0, 0, 255, ${opacity * 3})`,
-                width: 2
-            }),
-            fill: new Fill({
-                color: `rgba(30, 144, 255, ${opacity})`
-            })
-        }));
     }
 
     getLayer() {  
