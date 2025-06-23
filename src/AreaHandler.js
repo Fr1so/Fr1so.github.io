@@ -13,6 +13,7 @@ import stone_wall from './assets/img/stone_wall.jpeg';
 import zwarte_els from './assets/img/zwarte_els.jpeg';
 import kleinbladige_linde from './assets/img/kleinbladige_linde.jpeg';
 import esdoorn from './assets/img/esdoorn.jpeg';
+import meelbes from './assets/img/meelbes.jpg';
 import rups1 from './assets/img/rups1.jpg';
 import rups2 from './assets/img/rups2.jpg';
 import rups3 from './assets/img/rups3.jpg';
@@ -50,6 +51,9 @@ export default class AreaHandler {
         const griftparkSouth1 = new POI([5.127430, 52.099501], 20, new POIContent('Klein Boompje', audioStop9, zwarte_els, 'Wat voor soort boom is dit?', ['Beuk', 'Hazelnoot', 'Linde', 'Els'], 3, 'Dit is een els, of beter gezegd een zwarte els. Deze bomen groeien het liefst in vochtige gebieden, of, zoals hier, zelfs in het water. Dit is mogelijk dankzij een symbiose met een bacterie die in hun wortels leeft en stikstof uit de lucht bindt. Hierdoor kan de els zelfs op voedselarme plekken overleven. Hij biedt beschutting aan dieren zoals de zwarte ooievaar en de glanskop.'));
         const griftparkSouth2 = new POI([5.1280447, 52.0994194], 20, new POIContent('Kleinbladige Linde', audioStop7, kleinbladige_linde, 'Deze kleinbladige linde is nog jong. Hoe oud is de oudste linde van Nederland ongeveer?', ['125 jaar', '420 jaar', '800 jaar', '2000 jaar'], 1, 'De oudste bekende lindeboom in Nederland is de Sambeeklinde (gemeente Boxmeer). De leeftijd wordt geschat op 400 tot 800 jaar, maar hij is waarschijnlijk rond 420 jaar oud. En hij is in alle opzichten groot: de stamomtrek is bijna 8 meter!'));
         const griftparkSouth3 = new POI([5.1277825, 52.0990538], 20, new POIContent('Esdoorn', audioStop8, esdoorn, 'Hoe kunnen esdoornzaden grote afstanden afleggen vanaf de moederboom?', ['Ze kunnen drijven en door water worden vervoerd', 'Eekhoorns nemen ze mee en verspreiden de zaden', 'Ze hebben speciale vleugels', 'Ze worden uit de boom geschoten als ze rijp zijn'], 2, 'De esdoornzaden hebben vleugels waarmee ze kunnen draaien en door de lucht kunnen zweven. Zo kunnen ze door de wind worden opgepikt en meer dan 1 kilometer afleggen. Dit vleugelontwerp is zelfs de inspiratie geweest voor de bouw van helikopters!'));
+
+        // UU Poits
+        const uu1 = new POI([5.182469, 52.082651], 20, new POIContent('Meelbes in de binnentuin', audioStop10, meelbes, 'Waar zou de Meelbes zijn naam vandaan hebben?', ['De bessen werden gedroogd, gemalen en in tijden van nood aan brood toegevoegd.', 'De onderkant van de bladeren is wit, viltig behaard, wat op meel lijkt.', 'Van het Latijnse woord mellis, wat honen betekent, vanwege de zoetgeurende bloemen.', 'Omdat het stuifmeel op fijn meel lijkt als het door de wind wordt verspreid.'], [0, 1], 'Hoewel het niet helemaal duidelijk is waar de naam vandaan komt, komt het waarschijnlijk voort uit het gebruik ervan voor bakken in moeilijke tijden, of de witte bladeren. De Meelbes is droogtetolerant en veerkrachtig, waardoor het een belangrijke boom is voor toekomstige stedelijke vergroening in tijden van klimaatverandering.'));
 
         // create area's here with coords (outline polygon) and pois
         const griftsteedeCoords = [
@@ -95,10 +99,21 @@ export default class AreaHandler {
             [5.128308, 52.099768]
         ];
 
+        const universiteitUtrechtCoords = [
+            [5.181651, 52.083063],
+            [5.183318, 52.083052],
+            [5.183290, 52.081434],
+            [5.181970, 52.081437],
+            [5.181942, 52.081891],
+            [5.181663, 52.081887],
+            [5.181651, 52.083063]
+        ];
+
         this.areas = [
             new Area('Stadsboerderij Griftsteede', griftsteedeCoords, [griftsteede1, griftsteede2, griftsteede3, griftsteede4, griftsteede5]),
             new Area('Griftpark West', griftparkWestCoords, [griftparkWest1, griftparkWest2, griftparkWest3, griftparkWest4]),
-            new Area('Griftpark Zuid', griftparkSouthCoords, [griftparkSouth1, griftparkSouth2, griftparkSouth3])
+            new Area('Griftpark Zuid', griftparkSouthCoords, [griftparkSouth1, griftparkSouth2, griftparkSouth3]),
+            new Area('Universiteit Utrecht', universiteitUtrechtCoords, [uu1])
         ];
     }
 
